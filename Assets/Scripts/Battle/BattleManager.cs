@@ -4,71 +4,84 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 
-public class BattleManager : Menu {
+public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, ChooseMoveMenuDelegate, CategoryManagerDelegate {
+
+    public EnemyManager _enemyManager;
+    public CategoryManager _categoryManager;
+    private TurnManager _turnManager;
+    private PlayerActionManager _playerActionManager;
 
     private BattleManagerDelegate _delegate;
-    private List<IEnemy> _enemies;
 
-    //TODO move this to Enemy Factory
-    public GameObject _impPrefab;
 
-    public RectTransform _enemyContainer;
     public ChooseMoveMenu _moveMenu;
+    public Text _infoLabel;
 
     public void SetUp(BattleManagerDelegate battleDelegate){
         _delegate = battleDelegate;
+        _turnManager = new TurnManager(this);
+        _enemyManager.SetUp(this);
+        _categoryManager.SetUp(this);
+        _playerActionManager = new PlayerActionManager();
+        _moveMenu.SetUp(this);
     }
     public void StartBattle(Battle battle) {
-        Debug.Log("Starting Battle");
-        _enemies = new List<IEnemy>();
-        CreateEnemy();
-        CreateEnemy();
-        CreateEnemy();
+        _turnManager.StartBattle();
+        _enemyManager.StartBattle(battle);
         _moveMenu.Hide();
-    }
-    public void CreateEnemy(){
-        GameObject g = Instantiate(_impPrefab);
-        g.transform.SetParent(_enemyContainer.transform);
-
-        //set button's text
-        //TODO store in an array
-        IEnemy enemy = g.GetComponent(typeof(IEnemy)) as IEnemy;
-        // locationButton.SetUp(this, location);
-
-        //find the button's position
-        float buttonWidth = 200.0f;
-        float buttonHeight = 200.0f;
-
-        float x1 = + _enemies.Count*buttonWidth + 0.0f;
-        float y1 = -buttonHeight;
-        float x2 = x1 + buttonWidth;
-        float y2 = y1 + buttonHeight;
-
-        //set the position
-        RectTransform rectTransform = g.GetComponent<RectTransform>();
-        rectTransform.offsetMin = new Vector2(x1,y1);
-        rectTransform.offsetMax = new Vector2(x2,y2);
-
-        _enemies.Add(enemy);
     }
     public void TakeTurn(){
         //triggered when the player is ready to take their turn
-        if(_enemies.Count == 0){
-            _delegate.DoneBattle();
-        }
+        _turnManager.EndPlayerTurn();
     }
-    public void OpenCategory(int i){
-        Debug.Log("open category " + i);
-        MoveType moveType = MoveTypeHelper.FindMoveType(i);
 
-        List<Move> moves = _delegate.GetPlayer().GetMoves().Where(x => x._partsUsed.Contains(moveType)).ToList();
-        _moveMenu.Show(moves);
-    }
     public void CloseCategory(){
         _moveMenu.Hide();
     }
 
+    //------------Turn Manager Delegate------------
+    public void StartPlayerTurn(){
+        Debug.Log("Start player turn");
+    }
+    public void StartPlayerAction(){
+        //start the mini game
+        //TODO impliment Game
+        Debug.Log("Start player action");
+        _turnManager.EndPlayerAction();
+    }
+    public void StartEnemyTurn(){
+        //start the enemies turn
+        Debug.Log("Start enemy turn");
+        //TODO take the turn
+        _turnManager.EndEnemyTurn();
+    }
+    public void CancelSecetMove(){
+        _infoLabel.text = "";
+        _playerActionManager.CancelSelected();
+    }
+
+    //--------------Enemy Manager Delegate----------------
+    public void EnemyPressed(IEnemy enemy){
+        //make sure it is the player's turn
+        if(_turnManager.GetStage() != TurnStage.PlayerTurn ){
+            return;
+        }
+        _playerActionManager.SelectEnemy(enemy);
+        _infoLabel.text = "";
+    }
+    //-------------Choose Move Menu Delegate---------------
+    public void MoveSelected(Move move){
+        _playerActionManager.SelectMove(move);
+        _infoLabel.text = "use " + move._name + " on...";
+    }
+
+    //-------------Category Manager Delegate
+    public void OpenCategory(MoveType moveType){
+        List<Move> moves = _delegate.GetPlayer().GetMoves().Where(x => x._partsUsed.Contains(moveType)).ToList();
+        _moveMenu.Show(moves);
+    }
 }
+
 public interface BattleManagerDelegate{
     //TODO pass in data about battle results
     void DoneBattle();

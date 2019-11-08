@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class ChooseMoveMenu : MonoBehaviour, MoveButtonDelegate {
 
+    ChooseMoveMenuDelegate _delegate;
+
     public GameObject _buttonContainer;
     public GameObject _moveButtonPrefab;
 
     private List<MoveButton> _moveButtons;
+
+    public void SetUp(ChooseMoveMenuDelegate menuDelegate){
+        _delegate = menuDelegate;
+    }
 
     public void Show(List<Move> moves){
         gameObject.SetActive(true);
@@ -60,9 +66,13 @@ public class ChooseMoveMenu : MonoBehaviour, MoveButtonDelegate {
     }
 
     //--------------MoveButtonDelegate Methods---------------
-    public void MoveButtonPressed(){
+    public void MoveButtonPressed(Move move){
         Debug.Log("a button was pressed");
+        _delegate.MoveSelected(move);
         Hide();
-        //TODO comunicate with Battle Manager
     }
+}
+
+public interface ChooseMoveMenuDelegate {
+    void MoveSelected(Move move);
 }
