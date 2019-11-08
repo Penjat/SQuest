@@ -9,7 +9,7 @@ public class ChooseMoveMenu : MonoBehaviour, MoveButtonDelegate {
 
     private List<MoveButton> _moveButtons;
 
-    public void Show(Move[] moves){
+    public void Show(List<Move> moves){
         gameObject.SetActive(true);
 
         Clear();

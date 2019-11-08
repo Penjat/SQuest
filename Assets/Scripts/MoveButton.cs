@@ -1,14 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MoveButton : MonoBehaviour {
 
     MoveButtonDelegate _delegate;
+    public Text _buttonLabel;
 
     public void SetUp(MoveButtonDelegate moveButtonDelegate, Move move){
         _delegate = moveButtonDelegate;
-        //TODO set up with move
+        _buttonLabel.text = move._name;
     }
 
     public void WasPressed(){

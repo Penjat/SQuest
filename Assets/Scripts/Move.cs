@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Move {
     public string _name;
+    public MoveType[] _partsUsed;
 
-    public Move(string name){
+    public Move(string name, MoveType[] partsUsed){
         _name = name;
+        _partsUsed = partsUsed;
     }
 }

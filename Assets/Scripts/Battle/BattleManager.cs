@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class BattleManager : Menu {
 
@@ -58,15 +59,15 @@ public class BattleManager : Menu {
     }
     public void OpenCategory(int i){
         Debug.Log("open category " + i);
-        Move[] moves = new Move[3];
-        moves[0] = new Move("dasfads");
-        moves[1] = new Move("hi");
-        moves[2] = new Move("frog");
+        MoveType moveType = MoveTypeHelper.FindMoveType(i);
+
+        List<Move> moves = _delegate.GetPlayer().GetMoves().Where(x => x._partsUsed.Contains(moveType)).ToList();
         _moveMenu.Show(moves);
     }
     public void CloseCategory(){
         _moveMenu.Hide();
     }
+
 }
 public interface BattleManagerDelegate{
     //TODO pass in data about battle results
