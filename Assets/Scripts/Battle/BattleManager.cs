@@ -4,15 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 
-public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, ChooseMoveMenuDelegate, CategoryManagerDelegate {
+public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, ChooseMoveMenuDelegate, CategoryManagerDelegate, MiniGameDelegate {
 
     public EnemyManager _enemyManager;
     public CategoryManager _categoryManager;
     private TurnManager _turnManager;
     private PlayerActionManager _playerActionManager;
+    public MiniGameManager _miniGameManager;
 
     private BattleManagerDelegate _delegate;
-
 
     public ChooseMoveMenu _moveMenu;
     public Text _infoLabel;
@@ -29,6 +29,7 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
         _turnManager.StartBattle();
         _enemyManager.StartBattle(battle);
         _moveMenu.Hide();
+        _miniGameManager.Hide();
     }
     public void TakeTurn(){
         //triggered when the player is ready to take their turn
@@ -42,12 +43,18 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
     //------------Turn Manager Delegate------------
     public void StartPlayerTurn(){
         Debug.Log("Start player turn");
+        //Reset all moves
+        _playerActionManager.ClearUsedParts();
+        HashSet<MoveType> used = _playerActionManager.GetUsedParts();
+        print("used count = " + used.Count);
+        _categoryManager.CheckCategories(used);
     }
     public void StartPlayerAction(){
         //start the mini game
-        //TODO impliment Game
         Debug.Log("Start player action");
-        _turnManager.EndPlayerAction();
+        _miniGameManager.StartGame(this);
+
+
     }
     public void StartEnemyTurn(){
         //start the enemies turn
@@ -68,6 +75,7 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
         }
         _playerActionManager.SelectEnemy(enemy);
         _infoLabel.text = "";
+        _categoryManager.CheckCategories(_playerActionManager.GetUsedParts());
     }
     //-------------Choose Move Menu Delegate---------------
     public void MoveSelected(Move move){
@@ -75,10 +83,18 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
         _infoLabel.text = "use " + move._name + " on...";
     }
 
-    //-------------Category Manager Delegate
+    //-------------Category Manager Delegate--------------
     public void OpenCategory(MoveType moveType){
         List<Move> moves = _delegate.GetPlayer().GetMoves().Where(x => x._partsUsed.Contains(moveType)).ToList();
-        _moveMenu.Show(moves);
+        HashSet<MoveType> partsUsed = _playerActionManager.GetUsedParts();
+        _moveMenu.Show(moves, partsUsed);
+    }
+
+    //-------------MiniGame Delegate----------------------
+    public void MiniGameFinished(){
+        //_playerActionManager.UseMoves();
+        _miniGameManager.Hide();
+        _turnManager.EndPlayerAction();
     }
 }
 

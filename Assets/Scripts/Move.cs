@@ -10,4 +10,13 @@ public class Move {
         _name = name;
         _partsUsed = partsUsed;
     }
+    public bool CheckLocked(HashSet<MoveType> partsBeingUsed){
+        //returns true if this move requires a part that is used already
+        foreach(MoveType m in _partsUsed){
+            if(partsBeingUsed.Contains(m)){
+                return true;
+            }
+        }
+        return false;
+    }
 }

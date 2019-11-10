@@ -15,6 +15,12 @@ public class CategoryManager : MonoBehaviour, MoveCategoryDelegate {
     public void CategoryPressed(MoveType moveType){
         _delegate.OpenCategory(moveType);
     }
+    public void CheckCategories(HashSet<MoveType> usedParts){
+        foreach(MoveCategory m in _categories){
+            bool isLocked = usedParts.Contains(m._type);
+            m.SetLocked(isLocked);
+        }
+    }
 }
 
 public interface CategoryManagerDelegate{

@@ -15,7 +15,7 @@ public class ChooseMoveMenu : MonoBehaviour, MoveButtonDelegate {
         _delegate = menuDelegate;
     }
 
-    public void Show(List<Move> moves){
+    public void Show(List<Move> moves, HashSet<MoveType> partsUsed){
         gameObject.SetActive(true);
 
         Clear();
@@ -23,7 +23,8 @@ public class ChooseMoveMenu : MonoBehaviour, MoveButtonDelegate {
         int i = 0;
         foreach(Move move in moves){
             Debug.Log("move name: " + move._name);
-            CreateButton(move, i);
+            bool isLoked = move.CheckLocked(partsUsed);
+            CreateButton(move, i, isLoked);
         }
     }
     public void Hide(){
@@ -39,7 +40,7 @@ public class ChooseMoveMenu : MonoBehaviour, MoveButtonDelegate {
         _moveButtons.Clear();
     }
 
-    public void CreateButton(Move move,int i){
+    public void CreateButton(Move move,int i, bool isLocked){
         GameObject g = Instantiate(_moveButtonPrefab);
         g.transform.SetParent(_buttonContainer.transform);
 
@@ -61,6 +62,7 @@ public class ChooseMoveMenu : MonoBehaviour, MoveButtonDelegate {
         RectTransform rectTransform = g.GetComponent<RectTransform>();
         rectTransform.offsetMin = new Vector2(x1,y1);
         rectTransform.offsetMax = new Vector2(x2,y2);
+        button.SetLocked(isLocked);
 
         _moveButtons.Add(button);
     }
