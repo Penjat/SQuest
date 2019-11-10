@@ -15,10 +15,19 @@ public class MiniGameManager : MonoBehaviour, TextTyperDelegate {
     public ActionInput[] _actionInputs;
     public TextTyper _descriptionLabel;
 
-    public void StartGame(MiniGameDelegate miniGameDelegate){
+    private const int TOP = 0;
+    private const int BOTTOM = 1;
+    private const int RIGHT = 2;
+    private const int LEFT = 3;
+
+    public void StartGame(MiniGameDelegate miniGameDelegate, HashSet<MoveType> partsUsed){
         //TODO pass in info
         _delegate = miniGameDelegate;
         gameObject.SetActive(true);
+        CalcInputActions(partsUsed);
+        foreach(ActionInput actionInput in _actionInputs){
+            actionInput.Show(false);
+        }
         ShowText();
     }
     public void ShowText(){
@@ -27,10 +36,18 @@ public class MiniGameManager : MonoBehaviour, TextTyperDelegate {
         string toType = "here is some text";
         _descriptionLabel.StartTyping(this, toType, 0.1f, 2.0f);
     }
+    private void CalcInputActions(HashSet<MoveType> partsUsed){
+        _actionInputs[RIGHT].SetNeeded(partsUsed.Contains(MoveType.Hand));
+        _actionInputs[TOP].SetNeeded(partsUsed.Contains(MoveType.Mouth));
+        _actionInputs[LEFT].SetNeeded(false);
+        _actionInputs[BOTTOM].SetNeeded(partsUsed.Contains(MoveType.Ass));
+
+    }
     public void StartRound(){
         _gameState = GameState.Playing;
         _timer = 10.0;
         foreach(ActionInput actionInput in _actionInputs){
+            actionInput.Show(true);
             actionInput.CreateGems();
             actionInput.StartMoving();
         }

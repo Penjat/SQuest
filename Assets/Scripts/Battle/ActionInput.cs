@@ -10,6 +10,7 @@ public class ActionInput : MonoBehaviour {
     public GameObject _gemPrefab;
 
     private bool _isMoving = false;
+    private bool _isNeeded = false;
     private int _curIndex = 0;
 
     private float _edgeOfScreen = 400.0f;
@@ -22,7 +23,7 @@ public class ActionInput : MonoBehaviour {
     private float _travelTime = 10.0f;
 
     void Update(){
-        if(_isMoving){
+        if(_isMoving && _isNeeded){
             _timer += Time.deltaTime;
             float normalizedValue = _timer/_travelTime;
 
@@ -38,6 +39,9 @@ public class ActionInput : MonoBehaviour {
     }
     public void Clear(){
         _isMoving = false;
+        if(_gems == null){
+            return;
+        }
         foreach(Gem gem in _gems){
             Destroy(gem.gameObject);
         }
@@ -54,6 +58,10 @@ public class ActionInput : MonoBehaviour {
     }
 
     public void CreateGems(){
+        //check if needed for this round
+        if(!_isNeeded){
+            return;
+        }
         int numGems = 5;
         _track.anchoredPosition = new Vector2(0.0f,0.0f);
         _gems = new Gem[numGems];
@@ -80,5 +88,13 @@ public class ActionInput : MonoBehaviour {
             gem.Clear(_track.anchoredPosition.y);
             _curIndex++;
         }
+    }
+    public void SetNeeded(bool b){
+        _isNeeded = b;
+    }
+    public void Show(bool b){
+        //only shows if needed
+        //TODO fade in
+        gameObject.SetActive(b && _isNeeded);
     }
 }
