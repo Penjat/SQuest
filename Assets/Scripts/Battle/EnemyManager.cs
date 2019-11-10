@@ -59,11 +59,17 @@ public class EnemyManager : MonoBehaviour, EnemyDelegate {
         enemy.SetDelegate(this);
         _enemies.Add(enemy);
     }
+    public bool CheckWin(){
+        return (_enemies.Count == 0);
+    }
 
     //---------------Enemy Delegate Methods--------------
     public void EnemyPressed(IEnemy enemy){
         Debug.Log("an enemy was pressed.");
         _delegate.EnemyPressed(enemy);
+    }
+    public void RemoveEnemy(IEnemy enemy){
+        _enemies.Remove(enemy);
     }
 }
 

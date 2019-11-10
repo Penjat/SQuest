@@ -32,6 +32,7 @@ public class ActionInput : MonoBehaviour {
         }
     }
     public void StartMoving(){
+        _curIndex = 0;
         _timer = 0.0f;
         float endY = -(160.0f*6.0f + _edgeOfScreen);
         _endPos = new Vector2(0.0f,endY);
@@ -45,6 +46,7 @@ public class ActionInput : MonoBehaviour {
         foreach(Gem gem in _gems){
             Destroy(gem.gameObject);
         }
+        _gems = null;
     }
 
     private void CheckNextGem(){

@@ -20,7 +20,6 @@ public class TextTyper : MonoBehaviour {
     private float _waitTime;//how long to wait after
     private int _index;
 
-    // Update is called once per frame
     void Update() {
         if(_isTyping){
             _timer-=Time.deltaTime;
@@ -47,6 +46,7 @@ public class TextTyper : MonoBehaviour {
     public void StartTyping(TextTyperDelegate textTyperDelegate, string toType, float rate, float waitTime){
         _delegate = textTyperDelegate;
         _isTyping = true;
+        _typed = "";
         _textBox.text = "";
         _index = -1;
         _toType = toType;

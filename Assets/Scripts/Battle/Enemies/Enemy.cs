@@ -18,8 +18,13 @@ public class Enemy : MonoBehaviour, IEnemy {
     public string GetName(){
         return "GENERIC";
     }
+    public void Destroy(){
+        Destroy(gameObject);
+        _delegate.RemoveEnemy(this);
+    }
 }
 
 public interface EnemyDelegate {
     void EnemyPressed(IEnemy enemy);
+    void RemoveEnemy(IEnemy enemy);
 }

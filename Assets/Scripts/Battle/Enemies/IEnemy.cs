@@ -6,4 +6,5 @@ public interface IEnemy {
     void SetDelegate(EnemyDelegate enemyDelegate);
     void ClearSelf();
     string GetName();
+    void Destroy();
 }

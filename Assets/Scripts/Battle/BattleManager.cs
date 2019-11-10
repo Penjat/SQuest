@@ -43,6 +43,10 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
     //------------Turn Manager Delegate------------
     public void StartPlayerTurn(){
         Debug.Log("Start player turn");
+        if(_enemyManager.CheckWin()){
+            _delegate.DoneBattle();
+        }
+
         //Reset all moves
         _playerActionManager.ClearUsedParts();
         HashSet<MoveType> used = _playerActionManager.GetUsedParts();
@@ -58,12 +62,16 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
         //start the enemies turn
         Debug.Log("Start enemy turn");
         //TODO take the turn
+        //_turnManager.EndEnemyTurn();
+        _playerActionManager.UseMoves();
+        //TODO wait some time
         _turnManager.EndEnemyTurn();
     }
     public void CancelSecetMove(){
         _infoLabel.text = "";
         _playerActionManager.CancelSelected();
     }
+
 
     //--------------Enemy Manager Delegate----------------
     public void EnemyPressed(IEnemy enemy){
@@ -90,7 +98,6 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
 
     //-------------MiniGame Delegate----------------------
     public void MiniGameFinished(){
-        //_playerActionManager.UseMoves();
         _miniGameManager.Hide();
         _turnManager.EndPlayerAction();
     }

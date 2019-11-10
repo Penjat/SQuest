@@ -50,6 +50,8 @@ public class PlayerActionManager {
         //TODO refactor for mini game
         foreach(KeyValuePair<Move, IEnemy> action in _actions){
             Debug.Log("using "+ action.Key._name + " on " + action.Value.GetName());
+            IEnemy enemy = action.Value;
+            enemy.Destroy();
         }
     }
 }
