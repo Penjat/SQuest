@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour, IEnemy {
 
     public EnemyDelegate _delegate;
+    public UIParticleSystem _explodeEffect;
 
     public void SetDelegate(EnemyDelegate enemyDelegate){
         _delegate = enemyDelegate;
@@ -19,8 +20,9 @@ public class Enemy : MonoBehaviour, IEnemy {
         return "GENERIC";
     }
     public void Destroy(){
-        Destroy(gameObject);
+        Destroy(gameObject,2.0f);
         _delegate.RemoveEnemy(this);
+        _explodeEffect.Play();
     }
 }
 
