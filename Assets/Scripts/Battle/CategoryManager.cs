@@ -21,6 +21,9 @@ public class CategoryManager : MonoBehaviour, MoveCategoryDelegate {
             m.SetLocked(isLocked);
         }
     }
+    public void CancelMove(MoveType moveType){
+
+    }
 }
 
 public interface CategoryManagerDelegate{

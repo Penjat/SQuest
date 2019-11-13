@@ -1,21 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ChooseMoveMenu : MonoBehaviour, MoveButtonDelegate {
 
     ChooseMoveMenuDelegate _delegate;
 
-    public GameObject _buttonContainer;
+    public RectTransform _buttonContainer;
     public GameObject _moveButtonPrefab;
 
     private List<MoveButton> _moveButtons;
+
+    public Text _menuTitle;
 
     public void SetUp(ChooseMoveMenuDelegate menuDelegate){
         _delegate = menuDelegate;
     }
 
-    public void Show(List<Move> moves, HashSet<MoveType> partsUsed){
+    public void Show(List<Move> moves, HashSet<MoveType> partsUsed, MoveType moveType){
+        _menuTitle.text = GetTitle(moveType);
         gameObject.SetActive(true);
 
         Clear();
@@ -42,7 +46,7 @@ public class ChooseMoveMenu : MonoBehaviour, MoveButtonDelegate {
 
     public void CreateButton(Move move,int i, bool isLocked){
         GameObject g = Instantiate(_moveButtonPrefab);
-        g.transform.SetParent(_buttonContainer.transform);
+        g.transform.SetParent(_buttonContainer);
 
         //set button's text
         //TODO store in an array
@@ -50,8 +54,8 @@ public class ChooseMoveMenu : MonoBehaviour, MoveButtonDelegate {
         button.SetUp(this, move);
 
         //find the button's position
-        float buttonWidth = 200.0f;
-        float buttonHeight = 40.0f;
+        float buttonWidth = _buttonContainer.rect.width;
+        float buttonHeight = 80.0f;
 
         float x1 = 0.0f;
         float y1 = -_moveButtons.Count*buttonHeight -buttonHeight;
@@ -66,7 +70,20 @@ public class ChooseMoveMenu : MonoBehaviour, MoveButtonDelegate {
 
         _moveButtons.Add(button);
     }
-
+    private string GetTitle(MoveType moveType){
+        switch(moveType){
+            case MoveType.Hand:
+            return "Hand";
+            case MoveType.Mouth:
+            return "Mouth";
+            case MoveType.Breasts:
+            return "Breasts";
+            case MoveType.Ass:
+            return "Ass";
+            default:
+            return "Choose Move";
+        }
+    }
     //--------------MoveButtonDelegate Methods---------------
     public void MoveButtonPressed(Move move){
         Debug.Log("a button was pressed");

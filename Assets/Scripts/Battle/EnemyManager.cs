@@ -56,7 +56,7 @@ public class EnemyManager : MonoBehaviour, EnemyDelegate {
         rectTransform.offsetMin = new Vector2(x1,y1);
         rectTransform.offsetMax = new Vector2(x2,y2);
 
-        enemy.SetDelegate(this);
+        enemy.SetUp(this);
         _enemies.Add(enemy);
     }
     public bool CheckWin(){

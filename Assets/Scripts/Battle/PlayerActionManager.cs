@@ -51,7 +51,7 @@ public class PlayerActionManager {
         foreach(KeyValuePair<Move, IEnemy> action in _actions){
             Debug.Log("using "+ action.Key._name + " on " + action.Value.GetName());
             IEnemy enemy = action.Value;
-            enemy.Destroy();
+            enemy.DoDmg(4.0f);
         }
     }
 }

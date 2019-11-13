@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public interface IEnemy {
-    void SetDelegate(EnemyDelegate enemyDelegate);
+    void SetUp(EnemyDelegate enemyDelegate);
     void ClearSelf();
     string GetName();
     void Destroy();
+    void DoDmg(float dmg);
 }

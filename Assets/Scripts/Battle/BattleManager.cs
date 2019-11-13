@@ -11,6 +11,7 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
     private TurnManager _turnManager;
     private PlayerActionManager _playerActionManager;
     public MiniGameManager _miniGameManager;
+    public PlayerControls _playerControls;
 
     private BattleManagerDelegate _delegate;
 
@@ -26,13 +27,14 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
         _moveMenu.SetUp(this);
     }
     public void StartBattle(Battle battle) {
-        _turnManager.StartBattle();
         _enemyManager.StartBattle(battle);
         _moveMenu.Hide();
         _miniGameManager.Hide();
+        _turnManager.StartBattle();
     }
     public void TakeTurn(){
         //triggered when the player is ready to take their turn
+        _playerControls.ShowMenu(false);
         _turnManager.EndPlayerTurn();
     }
 
@@ -46,6 +48,7 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
         if(_enemyManager.CheckWin()){
             _delegate.DoneBattle();
         }
+        _playerControls.ShowMenu(true);
 
         //Reset all moves
         _playerActionManager.ClearUsedParts();
@@ -93,7 +96,7 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
     public void OpenCategory(MoveType moveType){
         List<Move> moves = _delegate.GetPlayer().GetMoves().Where(x => x._partsUsed.Contains(moveType)).ToList();
         HashSet<MoveType> partsUsed = _playerActionManager.GetUsedParts();
-        _moveMenu.Show(moves, partsUsed);
+        _moveMenu.Show(moves, partsUsed, moveType);
     }
 
     //-------------MiniGame Delegate----------------------

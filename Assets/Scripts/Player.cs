@@ -8,9 +8,11 @@ public class Player {
 
     public Player(){
         _moves = new List<Move>();
-        AddMove(new Move("move 1", new []{MoveType.Hand}));
-        AddMove(new Move("move 2", new []{MoveType.Mouth}));
-        AddMove(new Move("move 6", new []{MoveType.Ass, MoveType.Hand }));
+        AddMove(new Move("Hand Job", new []{MoveType.Hand}));
+        AddMove(new Move("Blowjob", new []{MoveType.Mouth}));
+        AddMove(new Move("Kiss", new []{MoveType.Mouth}));
+        AddMove(new Move("Blowjob +Hands", new []{MoveType.Mouth, MoveType.Hand}));
+        AddMove(new Move("Flash Tits", new []{MoveType.Breasts}));
 
     }
     public void AddMove(Move move){

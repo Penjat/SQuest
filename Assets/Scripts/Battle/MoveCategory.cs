@@ -10,6 +10,7 @@ public class MoveCategory : MonoBehaviour {
 
     //TODO change to use with animator
     public Button _button;
+    public GameObject _cancleButton;
 
     public void SetUp(MoveCategoryDelegate categoryDelegate){
         _delegate = categoryDelegate;
@@ -28,10 +29,8 @@ public class MoveCategory : MonoBehaviour {
         }
         _button.image.color = Color.white;
     }
+
 }
-
-
-
 public interface MoveCategoryDelegate {
     void CategoryPressed(MoveType moveType);
 }

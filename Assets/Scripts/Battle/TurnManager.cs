@@ -17,6 +17,7 @@ public class TurnManager {
         //called when the battle starts
         Debug.Log("Starting Battleee");
         _stage = TurnStage.PlayerTurn;
+        _delegate.StartPlayerTurn();
     }
     public void EndPlayerTurn(){
         //called when player presses ready
