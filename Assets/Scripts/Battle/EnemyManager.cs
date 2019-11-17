@@ -71,6 +71,9 @@ public class EnemyManager : MonoBehaviour, EnemyDelegate {
     public void RemoveEnemy(IEnemy enemy){
         _enemies.Remove(enemy);
     }
+    public void PointerOver(IEnemy enemy, bool b){
+        
+    }
 }
 
 public interface EnemyManagerDelegate {

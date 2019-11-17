@@ -20,7 +20,7 @@ public class MiniGameManager : MonoBehaviour, TextTyperDelegate {
     private const int RIGHT = 2;
     private const int LEFT = 3;
 
-    public void StartGame(MiniGameDelegate miniGameDelegate, HashSet<MoveType> partsUsed){
+    public void StartGame(MiniGameDelegate miniGameDelegate, IDictionary<MoveType,Move> partsUsed){
         //TODO pass in info
         _delegate = miniGameDelegate;
         gameObject.SetActive(true);
@@ -36,11 +36,11 @@ public class MiniGameManager : MonoBehaviour, TextTyperDelegate {
         string toType = "here is some text";
         _descriptionLabel.StartTyping(this, toType, 0.1f, 2.0f);
     }
-    private void CalcInputActions(HashSet<MoveType> partsUsed){
-        _actionInputs[RIGHT].SetNeeded(partsUsed.Contains(MoveType.Hand));
-        _actionInputs[TOP].SetNeeded(partsUsed.Contains(MoveType.Mouth));
+    private void CalcInputActions(IDictionary<MoveType,Move> partsUsed){
+        _actionInputs[RIGHT].SetNeeded(partsUsed.ContainsKey(MoveType.Hand) );
+        _actionInputs[TOP].SetNeeded(partsUsed.ContainsKey(MoveType.Mouth));
         _actionInputs[LEFT].SetNeeded(false);
-        _actionInputs[BOTTOM].SetNeeded(partsUsed.Contains(MoveType.Ass));
+        _actionInputs[BOTTOM].SetNeeded(partsUsed.ContainsKey(MoveType.Ass));
 
     }
     public void StartRound(){

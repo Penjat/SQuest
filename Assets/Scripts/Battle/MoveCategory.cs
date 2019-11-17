@@ -11,6 +11,8 @@ public class MoveCategory : MonoBehaviour {
     //TODO change to use with animator
     public Button _button;
     public GameObject _cancleButton;
+    public Animator _animator;
+    public Text _moveNameLabel;
 
     public void SetUp(MoveCategoryDelegate categoryDelegate){
         _delegate = categoryDelegate;
@@ -24,13 +26,22 @@ public class MoveCategory : MonoBehaviour {
     public void SetLocked(bool b){
         _isLocked = b;
         if(_isLocked){
-            _button.image.color = Color.grey;
+            //_button.image.color = Color.grey;
+            _animator.Play("FlipCategory");
             return;
         }
-        _button.image.color = Color.white;
+        //_button.image.color = Color.white;
+        _animator.Play("FlipBack");
+    }
+    public void SetMove(Move move){
+        _moveNameLabel.text = move._name;
+    }
+    public void PressedCancel(){
+        _delegate.CancelMove(_type);
     }
 
 }
 public interface MoveCategoryDelegate {
     void CategoryPressed(MoveType moveType);
+    void CancelMove(MoveType moveTyoe);
 }

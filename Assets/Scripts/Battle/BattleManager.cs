@@ -52,7 +52,7 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
 
         //Reset all moves
         _playerActionManager.ClearUsedParts();
-        HashSet<MoveType> used = _playerActionManager.GetUsedParts();
+        IDictionary<MoveType,Move> used = _playerActionManager.GetUsedParts();
         print("used count = " + used.Count);
         _categoryManager.CheckCategories(used);
     }
@@ -95,8 +95,16 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
     //-------------Category Manager Delegate--------------
     public void OpenCategory(MoveType moveType){
         List<Move> moves = _delegate.GetPlayer().GetMoves().Where(x => x._partsUsed.Contains(moveType)).ToList();
-        HashSet<MoveType> partsUsed = _playerActionManager.GetUsedParts();
+        IDictionary<MoveType,Move> partsUsed = _playerActionManager.GetUsedParts();
         _moveMenu.Show(moves, partsUsed, moveType);
+    }
+    public void CancelMove(MoveType moveType){
+        //make sure it is the player's turn
+        if(_turnManager.GetStage() != TurnStage.PlayerTurn ){
+            return;
+        }
+        _playerActionManager.CancelMoveType(moveType);
+        _categoryManager.CheckCategories(_playerActionManager.GetUsedParts());
     }
 
     //-------------MiniGame Delegate----------------------

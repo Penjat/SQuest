@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PartIndicator : MonoBehaviour {
     public RectTransform _rect;
     public GameObject _iconPrefab;
-    public void SetUp(MoveType[] partsUsed){
+    public void SetUp(HashSet<MoveType> partsUsed){
 
         //create an ico for each part used
         int i=0;

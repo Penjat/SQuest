@@ -18,7 +18,7 @@ public class ChooseMoveMenu : MonoBehaviour, MoveButtonDelegate {
         _delegate = menuDelegate;
     }
 
-    public void Show(List<Move> moves, HashSet<MoveType> partsUsed, MoveType moveType){
+    public void Show(List<Move> moves, IDictionary<MoveType,Move> partsUsed, MoveType moveType){
         _menuTitle.text = GetTitle(moveType);
         gameObject.SetActive(true);
 

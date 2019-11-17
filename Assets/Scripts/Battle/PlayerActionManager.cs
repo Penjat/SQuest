@@ -10,7 +10,7 @@ public class PlayerActionManager {
 
     Move _curMove;
     IDictionary<Move,IEnemy> _actions = new Dictionary<Move, IEnemy>();
-    HashSet<MoveType> _usedParts = new HashSet<MoveType>();
+    IDictionary<MoveType,Move> _usedParts = new Dictionary<MoveType, Move>();
     //TODO posibly have IEnemy[] for multiple targets
 
     public void SelectMove(Move move){
@@ -30,16 +30,35 @@ public class PlayerActionManager {
     public void UsedMoveOn(IEnemy enemy){
         _actions.Add(_curMove, enemy);
         Debug.Log("using move " + _curMove._name + " on enemy.");
-        AddToUsedParts(_curMove._partsUsed);
+        AddToUsedParts(_curMove);
         _curMove = null;
 
     }
-    public void AddToUsedParts(MoveType[] parts){
-        foreach(MoveType m in parts){
-            _usedParts.Add(m);
+    public void CancelMoveType(MoveType moveType){
+        foreach(KeyValuePair<Move,IEnemy> action in _actions){
+            Move move = action.Key;
+            if(move._partsUsed.Contains(moveType)){
+                _actions.Remove(move);
+                RemoveFromUsedParts(move._partsUsed);
+                Debug.Log("removing move " + move._name);
+                return;
+                //doesn't cycle through everymove
+                //This should be fine as there will only be on move using each body type
+            }
         }
     }
-    public HashSet<MoveType> GetUsedParts(){
+    public void AddToUsedParts(Move move){
+
+        foreach(MoveType m in move._partsUsed){
+            _usedParts.Add(m,move);
+        }
+    }
+    public void RemoveFromUsedParts(HashSet<MoveType> parts){
+        foreach(MoveType m in parts){
+            _usedParts.Remove(m);
+        }
+    }
+    public IDictionary<MoveType,Move> GetUsedParts(){
         return _usedParts;
     }
     public void ClearUsedParts(){

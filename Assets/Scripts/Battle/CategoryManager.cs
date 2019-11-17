@@ -15,17 +15,21 @@ public class CategoryManager : MonoBehaviour, MoveCategoryDelegate {
     public void CategoryPressed(MoveType moveType){
         _delegate.OpenCategory(moveType);
     }
-    public void CheckCategories(HashSet<MoveType> usedParts){
+    public void CheckCategories(IDictionary<MoveType,Move> usedParts){
         foreach(MoveCategory m in _categories){
-            bool isLocked = usedParts.Contains(m._type);
+            bool isLocked = usedParts.ContainsKey(m._type);
             m.SetLocked(isLocked);
+            if(isLocked){
+                m.SetMove(usedParts[m._type]);
+            }
         }
     }
     public void CancelMove(MoveType moveType){
-
+        _delegate.CancelMove(moveType);
     }
 }
 
 public interface CategoryManagerDelegate{
     void OpenCategory(MoveType moveType);
+    void CancelMove(MoveType moveType);
 }

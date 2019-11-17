@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum SelectState{
+Norm, Over
+};
+
 public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate {
 
     public EnemyDelegate _delegate;
@@ -11,14 +15,21 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate {
     public StatusBar _climaxBar;
     public Animator _animator;
 
+    public Image _button;
+
     private float _curClimax = 0.0f;
     private float _maxClimax = 8.0f;
+
+    private SelectState _state;
+    public Color _overColor;
+    public Color _normColor;
 
     public void SetUp(EnemyDelegate enemyDelegate){
         _delegate = enemyDelegate;
         _nameLabel.text = GetName();
         _climaxBar.SetUp(this,_maxClimax,2.0f);
         _climaxBar.SetValue(0.0f);
+        SetState(SelectState.Norm);
     }
     public void WasPressed(){
         _delegate.EnemyPressed(this);
@@ -45,6 +56,23 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate {
             Destroy();
         }
     }
+    public void MouseEnter(){
+        SetState(SelectState.Over);
+    }
+    public void MouseExit(){
+        SetState(SelectState.Norm);
+    }
+    public void SetState(SelectState state){
+        _state = state;
+        switch(state){
+            case SelectState.Norm:
+            _button.color = _normColor;
+            break;
+            case SelectState.Over:
+            _button.color = _overColor;
+            break;
+        }
+    }
     //--------------StatusBarDelegate---------------
     public void DoneFilling(){
         CheckClimax();
@@ -54,4 +82,5 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate {
 public interface EnemyDelegate {
     void EnemyPressed(IEnemy enemy);
     void RemoveEnemy(IEnemy enemy);
+    void PointerOver(IEnemy enemy, bool b);
 }
