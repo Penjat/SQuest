@@ -27,4 +27,10 @@ public class Gem : MonoBehaviour {
         _accuracy = _goal + trackPos;
         Debug.Log("cleared at " + _accuracy);
     }
+    public bool InRange(float trackPos){
+        //checks if the gem is in range to be cleared
+        //assuming a range of 40 for button size
+        return (_goal + trackPos < 40.0f + _rect.rect.width/2);
+
+    }
 }

@@ -18,12 +18,15 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
     public ChooseMoveMenu _moveMenu;
     public Text _infoLabel;
 
+
     public void SetUp(BattleManagerDelegate battleDelegate){
         _delegate = battleDelegate;
         _turnManager = new TurnManager(this);
         _enemyManager.SetUp(this);
         _categoryManager.SetUp(this);
-        _playerActionManager = new PlayerActionManager();
+
+        StatusBar playerHealthBar = GameObject.Find("Player Health").GetComponent<StatusBar>();
+        _playerActionManager = new PlayerActionManager(_delegate.GetPlayer(), playerHealthBar);
         _moveMenu.SetUp(this);
     }
     public void StartBattle(Battle battle) {
@@ -45,9 +48,6 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
     //------------Turn Manager Delegate------------
     public void StartPlayerTurn(){
         Debug.Log("Start player turn");
-        if(_enemyManager.CheckWin()){
-            _delegate.DoneBattle();
-        }
         _playerControls.ShowMenu(true);
 
         //Reset all moves
@@ -74,7 +74,9 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
         _infoLabel.text = "";
         _playerActionManager.CancelSelected();
     }
-
+    //---------------------------------------------------
+    //-------------Delegate Methods---------------------
+    //---------------------------------------------------
 
     //--------------Enemy Manager Delegate----------------
     public void EnemyPressed(IEnemy enemy){
@@ -85,6 +87,12 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
         _playerActionManager.SelectEnemy(enemy);
         _infoLabel.text = "";
         _categoryManager.CheckCategories(_playerActionManager.GetUsedParts());
+    }
+    public void DoneBattle(){
+        //TODO post battle screen
+        _enemyManager.ClearEnemies();
+        _delegate.DoneBattle();
+
     }
     //-------------Choose Move Menu Delegate---------------
     public void MoveSelected(Move move){
@@ -111,6 +119,9 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
     public void MiniGameFinished(){
         _miniGameManager.Hide();
         _turnManager.EndPlayerAction();
+    }
+    public void GemCleared(MoveType moveType, float accuracy){
+        _playerActionManager.GemCleared(moveType, accuracy);
     }
 }
 

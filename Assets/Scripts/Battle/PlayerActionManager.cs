@@ -6,13 +6,22 @@ using UnityEngine;
 //Manages the move the player will use this round
 //-------
 
-public class PlayerActionManager {
+public class PlayerActionManager : StatusBarDelegate {
 
-    Move _curMove;
-    IDictionary<Move,IEnemy> _actions = new Dictionary<Move, IEnemy>();
-    IDictionary<MoveType,Move> _usedParts = new Dictionary<MoveType, Move>();
+    private Move _curMove;
+    private IDictionary<Move,IEnemy> _actions = new Dictionary<Move, IEnemy>();
+    private IDictionary<MoveType,Move> _usedParts = new Dictionary<MoveType, Move>();
     //TODO posibly have IEnemy[] for multiple targets
 
+    private StatusBar _playerHealthBar;
+    private Player _player;
+
+    public PlayerActionManager(Player player, StatusBar playerHealthBar){
+        _player = player;
+        _playerHealthBar = playerHealthBar;
+        _playerHealthBar.SetUp(this,_player.GetMaxHealth(),50.0f);
+        _playerHealthBar.SetValue(_player.GetCurHealth());
+    }
     public void SelectMove(Move move){
         _curMove = move;
         Debug.Log("selected Move " + move._name);
@@ -72,5 +81,21 @@ public class PlayerActionManager {
             IEnemy enemy = action.Value;
             enemy.DoDmg(4.0f);
         }
+    }
+    public void PlayerTakeDmg(int dmg){
+        _player.TakeDmg(dmg);
+        _playerHealthBar.SetValueAnimated(_player.GetCurHealth());
+    }
+    public void GemCleared(MoveType moveType, float accuracy){
+        //there will be many modifiers to add here
+        if(moveType == MoveType.Hand){
+            //hand jobs dont do dmg to player
+            return;
+        }
+        PlayerTakeDmg(1);
+    }
+    //---------------StatusBar Delegate-----------------
+    public void DoneFilling(){
+
     }
 }

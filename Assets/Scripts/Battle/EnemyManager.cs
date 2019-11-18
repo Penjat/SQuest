@@ -70,12 +70,16 @@ public class EnemyManager : MonoBehaviour, EnemyDelegate {
     }
     public void RemoveEnemy(IEnemy enemy){
         _enemies.Remove(enemy);
+        if(CheckWin()){
+            _delegate.DoneBattle();
+        }
     }
     public void PointerOver(IEnemy enemy, bool b){
-        
+
     }
 }
 
 public interface EnemyManagerDelegate {
     void EnemyPressed(IEnemy enemy);
+    void DoneBattle();
 }

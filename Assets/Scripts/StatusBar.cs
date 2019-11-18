@@ -48,12 +48,14 @@ public class StatusBar : MonoBehaviour {
         }
 
     }
-    public void SetUp(StatusBarDelegate statusBarDelegate, float maxValue, float fillRate){
+    public void SetUp(StatusBarDelegate statusBarDelegate, float maxValue, float fillRate = 2.0f){
         _delegate = statusBarDelegate;
         _maxValue = maxValue;
         _fillRate = fillRate;
     }
-
+    public void SetValueAnimated(int value){
+        SetValueAnimated((float)value);
+    }
     public void SetValueAnimated(float value){
         Debug.Log("starting. value = " + value + " , curValue = " + _curValue);
         _toValue = value;
@@ -72,12 +74,15 @@ public class StatusBar : MonoBehaviour {
         }
 
     }
+    public void SetValue(int value){
+        SetValue((float)value);
+    }
     public void SetValue(float value){
-        Debug.Log("_maxValue = " +  _maxValue);
+        if(_maxValue == 0.0f){
+            return;
+        }
         _curValue = value;
         float ratio = _curValue/_maxValue;
-        Debug.Log("ratio = " + ratio);
-
         _topBar.localScale = new Vector2(ratio,1.0f);
     }
     private void DoneFilling(){

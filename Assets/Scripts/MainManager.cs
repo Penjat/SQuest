@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainManager : MonoBehaviour, BattleManagerDelegate {
+public class MainManager : MonoBehaviour, BattleManagerDelegate, PlayerDelegate {
 
     private Player _player;
     public MenuManager _menuManager;
@@ -15,7 +15,7 @@ public class MainManager : MonoBehaviour, BattleManagerDelegate {
     }
 
     private void SetUpManagers(){
-        _player = new Player();
+        _player = new Player(this);
         _battleManager.SetUp(this);
     }
 
@@ -35,5 +35,9 @@ public class MainManager : MonoBehaviour, BattleManagerDelegate {
     }
     public Player GetPlayer(){
         return _player;
+    }
+    //----------------Player Delegate methods--------------------
+    public void HealthIsZero(){
+        Debug.Log("player health is zero, should do something");
     }
 }

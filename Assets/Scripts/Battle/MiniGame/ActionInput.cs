@@ -5,6 +5,11 @@ using UnityEngine.UI;
 
 public class ActionInput : MonoBehaviour {
 
+    private ActionInputDelegate _delegate;
+    private MoveType _moveType;
+    private KeyCode _keyCode;
+    public Animator _animator;
+
     private Gem[] _gems;
     public RectTransform _track;
     public GameObject _gemPrefab;
@@ -24,12 +29,30 @@ public class ActionInput : MonoBehaviour {
 
     void Update(){
         if(_isMoving && _isNeeded){
-            _timer += Time.deltaTime;
-            float normalizedValue = _timer/_travelTime;
-
-            _track.anchoredPosition = Vector3.Lerp(_startPos,_endPos, normalizedValue);
+            MoveTrack();
+            CheckInput();
             CheckNextGem();
         }
+    }
+    private void MoveTrack(){
+        _timer += Time.deltaTime;
+        float normalizedValue = _timer/_travelTime;
+        _track.anchoredPosition = Vector3.Lerp(_startPos,_endPos, normalizedValue);
+    }
+    private void CheckInput(){
+        if (Input.GetKeyDown(_keyCode)){
+            WasPressed();
+        }
+    }
+    public void SetUp(ActionInputDelegate actionInputDelegate, KeyCode keyCode){
+        //set up delegate
+        //connect key code to detect press
+        _delegate = actionInputDelegate;
+        _keyCode = keyCode;
+
+        //set the button's text
+        Text buttonText = GetComponentInChildren<Text>();
+        buttonText.text = keyCode.ToString();
     }
     public void StartMoving(){
         _curIndex = 0;
@@ -53,8 +76,7 @@ public class ActionInput : MonoBehaviour {
         if(_curIndex < _gems.Length){
             Gem gem = _gems[_curIndex];
             if (gem.CheckMissed(_track.anchoredPosition.y)){
-                gem.Clear(_track.anchoredPosition.y);
-                _curIndex++;
+                ClearCurGem();
             }
         }
     }
@@ -86,17 +108,33 @@ public class ActionInput : MonoBehaviour {
         //clear the next gem according to the curIndex
         //make sure not outside of range
         if(_curIndex < _gems.Length){
-            Gem gem = _gems[_curIndex];
-            gem.Clear(_track.anchoredPosition.y);
-            _curIndex++;
+            ClearCurGem();
         }
+        _animator.Play("Press");
     }
-    public void SetNeeded(bool b){
-        _isNeeded = b;
+    public void SetActive(MoveType moveType){
+        _isNeeded = true;
+        _moveType = moveType;
+    }
+    public void Hide(){
+        _isNeeded = false;
     }
     public void Show(bool b){
         //only shows if needed
         //TODO fade in
         gameObject.SetActive(b && _isNeeded);
     }
+    private void ClearCurGem(){
+        Gem gem = _gems[_curIndex];
+        if(!gem.InRange(_track.anchoredPosition.y)){
+            return;
+        }
+        gem.Clear(_track.anchoredPosition.y);
+        _curIndex++;
+        _delegate.GemCleared(_moveType);
+    }
+}
+
+public interface ActionInputDelegate{
+    void GemCleared(MoveType moveType);
 }

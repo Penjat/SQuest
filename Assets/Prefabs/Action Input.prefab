@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6606925761877224005}
   - component: {fileID: 6606925761877224006}
   - component: {fileID: 6606925761877224003}
+  - component: {fileID: 4827830396832041234}
   m_Layer: 5
   m_Name: Action Input
   m_TagString: Untagged
@@ -147,9 +148,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2bd1fcab3123411bb78035d70d35fcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animator: {fileID: 4827830396832041234}
   _track: {fileID: 6606925762252626413}
   _gemPrefab: {fileID: 4723628850184664114, guid: c0e32f4336efd48f7bf11f59a3977f3c,
     type: 3}
+--- !u!95 &4827830396832041234
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6606925761877224024}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 89a2d2298e00e48a797d0d6bd708e7e1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6606925762252626414
 GameObject:
   m_ObjectHideFlags: 0
@@ -251,16 +272,16 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_Font: {fileID: 12800000, guid: 883ed1d5a48664bb2898a31057291822, type: 3}
+    m_FontSize: 28
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
+    m_MinSize: 0
+    m_MaxSize: 300
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: o
+  m_Text: W

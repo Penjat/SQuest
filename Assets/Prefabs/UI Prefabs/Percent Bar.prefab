@@ -52,6 +52,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _topBar: {fileID: 1053055876699591894}
   _bottomBar: {fileID: 1053055877220336397}
+  _topImage: {fileID: 1053055876699591895}
+  _bottomImage: {fileID: 1053055877220336398}
+  _barColor: {r: 0.9100466, g: 0, b: 1, a: 1}
+  _backgroundColor: {r: 0.6981132, g: 0.6981132, b: 0.6981132, a: 1}
 --- !u!1 &1053055876699591893
 GameObject:
   m_ObjectHideFlags: 0

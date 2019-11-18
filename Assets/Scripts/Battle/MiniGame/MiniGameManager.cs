@@ -7,7 +7,7 @@ enum GameState{
     Waiting,TypingText,Playing
 };
 
-public class MiniGameManager : MonoBehaviour, TextTyperDelegate {
+public class MiniGameManager : MonoBehaviour, TextTyperDelegate, ActionInputDelegate {
     MiniGameDelegate _delegate;
     private GameState _gameState;
     private double _timer = 0.0;
@@ -20,6 +20,13 @@ public class MiniGameManager : MonoBehaviour, TextTyperDelegate {
     private const int RIGHT = 2;
     private const int LEFT = 3;
 
+    void Start(){
+        //set up the actionInputs with the correct keycodes
+        _actionInputs[TOP].SetUp(this,KeyCode.W);
+        _actionInputs[BOTTOM].SetUp(this,KeyCode.S);
+        _actionInputs[LEFT].SetUp(this,KeyCode.A);
+        _actionInputs[RIGHT].SetUp(this,KeyCode.D);
+    }
     public void StartGame(MiniGameDelegate miniGameDelegate, IDictionary<MoveType,Move> partsUsed){
         //TODO pass in info
         _delegate = miniGameDelegate;
@@ -37,11 +44,18 @@ public class MiniGameManager : MonoBehaviour, TextTyperDelegate {
         _descriptionLabel.StartTyping(this, toType, 0.1f, 2.0f);
     }
     private void CalcInputActions(IDictionary<MoveType,Move> partsUsed){
-        _actionInputs[RIGHT].SetNeeded(partsUsed.ContainsKey(MoveType.Hand) );
-        _actionInputs[TOP].SetNeeded(partsUsed.ContainsKey(MoveType.Mouth));
-        _actionInputs[LEFT].SetNeeded(false);
-        _actionInputs[BOTTOM].SetNeeded(partsUsed.ContainsKey(MoveType.Ass));
-
+        if(partsUsed.ContainsKey(MoveType.Hand)){
+            _actionInputs[RIGHT].SetActive(MoveType.Hand);
+        }
+        if(partsUsed.ContainsKey(MoveType.Mouth)){
+            _actionInputs[TOP].SetActive(MoveType.Mouth);
+        }
+        if(partsUsed.ContainsKey(MoveType.Breasts)){
+            _actionInputs[LEFT].SetActive(MoveType.Breasts);
+        }
+        if(partsUsed.ContainsKey(MoveType.Ass)){
+            _actionInputs[BOTTOM].SetActive(MoveType.Ass);
+        }
     }
     public void StartRound(){
         _gameState = GameState.Playing;
@@ -75,8 +89,13 @@ public class MiniGameManager : MonoBehaviour, TextTyperDelegate {
     public void DoneTyping(){
         StartRound();
     }
+    //------------ActionInputDelegate--------------
+    public void GemCleared(MoveType moveType){
+        _delegate.GemCleared(moveType, 33.0f);
+    }
 }
 
 public interface MiniGameDelegate{
     void MiniGameFinished();
+    void GemCleared(MoveType moveType, float accuracy);
 }
