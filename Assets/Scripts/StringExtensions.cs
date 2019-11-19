@@ -18,11 +18,17 @@ namespace StringMethods{
                 str1 = "<b><color=white>";
                 str2 = "</color></b>";
                 break;
+
+                case Entity.INSTRUCTIONS:
+                str1 = "<size=18><color=grey>";
+                str2 = "</color></size>";
+                break;
+
             }
             return str1 + str + str2;
         }
     }
 }
 public enum Entity{
-    ENEMY, MOVE
+    ENEMY, MOVE, INSTRUCTIONS
 }

@@ -62,6 +62,8 @@ public class InfoLabelManager : MonoBehaviour{
     public void ShowMoveNoTarget(){
         //a move has been selected, but is not over an enemy
         string moveName = _playerActionManager.GetCurMove()._name.ColorFor(Entity.MOVE);
-        _infoLabel.text = "use " + moveName + " on...";
+        string instructions = "\ndouble click to cancel".ColorFor(Entity.INSTRUCTIONS);
+        _infoLabel.text = "use " + moveName + " on..." + instructions;
+
     }
 }
