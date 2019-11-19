@@ -34,6 +34,7 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
         _moveMenu.Hide();
         _miniGameManager.Hide();
         _turnManager.StartBattle();
+        ClearInfoLabel();
     }
     public void TakeTurn(){
         //triggered when the player is ready to take their turn
