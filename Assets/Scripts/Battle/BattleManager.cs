@@ -18,6 +18,18 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
 
     public ChooseMoveMenu _moveMenu;
 
+    private double _lastPress = 0.0f;
+
+    void Update(){
+        if (Input.GetMouseButtonDown(0)){
+            double click = Time.time;
+            if(click - _lastPress <= 0.3){
+                CancelSecetMove();
+            }
+            _lastPress = click;
+        }
+    }
+
     public void SetUp(BattleManagerDelegate battleDelegate){
         _delegate = battleDelegate;
         _turnManager = new TurnManager(this);
