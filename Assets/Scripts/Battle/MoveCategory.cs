@@ -40,6 +40,17 @@ public class MoveCategory : MonoBehaviour {
         _delegate.CancelMove(_type);
     }
 
+    public void MouseEnter(){
+        if(_isLocked){
+            Debug.Log("Mouse Over: Should show targets");
+            return;
+        }
+        Debug.Log("Mouse Over: Should highlight button");
+    }
+    public void MouseExit(){
+        Debug.Log("Mouse Exit");
+    }
+
 }
 public interface MoveCategoryDelegate {
     void CategoryPressed(MoveType moveType);
