@@ -117,9 +117,14 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
     public void ShowTargets(Move selectedMove){
         IEnemy[] targeted = _playerActionManager.GetTargetsFor(selectedMove);
         _enemyManager.SetTargeted(targeted);
+        _infoLabel.text = "using " + selectedMove._name + " on " + targeted.First().GetName();
     }
     public void HideTargets(){
         _enemyManager.ClearTargets();
+        ClearInfoLabel();
+    }
+    public void ClearInfoLabel(){
+        _infoLabel.text = "";
     }
 
     //-------------MiniGame Delegate----------------------
