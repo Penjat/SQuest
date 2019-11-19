@@ -115,7 +115,11 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
         _categoryManager.CheckCategories(_playerActionManager.GetUsedParts());
     }
     public void ShowTargets(Move selectedMove){
-        Debug.Log("show for move " + selectedMove._name);
+        IEnemy[] targeted = _playerActionManager.GetTargetsFor(selectedMove);
+        _enemyManager.SetTargeted(targeted);
+    }
+    public void HideTargets(){
+        _enemyManager.ClearTargets();
     }
 
     //-------------MiniGame Delegate----------------------

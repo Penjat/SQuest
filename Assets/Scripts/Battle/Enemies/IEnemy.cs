@@ -8,4 +8,5 @@ public interface IEnemy {
     string GetName();
     void Destroy();
     void DoDmg(float dmg);
+    void SetTargeted(bool b);
 }

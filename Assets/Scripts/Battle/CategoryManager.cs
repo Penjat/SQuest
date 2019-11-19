@@ -30,10 +30,14 @@ public class CategoryManager : MonoBehaviour, MoveCategoryDelegate {
     public void ShowTargets(Move selectedMove){
         _delegate.ShowTargets(selectedMove);
     }
+    public void HideTargets(){
+        _delegate.HideTargets();
+    }
 }
 
 public interface CategoryManagerDelegate{
     void OpenCategory(MoveType moveType);
     void CancelMove(MoveType moveType);
     void ShowTargets(Move selectedMove);
+    void HideTargets();
 }

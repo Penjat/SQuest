@@ -52,6 +52,7 @@ public class MoveCategory : MonoBehaviour {
     }
     public void MouseExit(){
         Debug.Log("Mouse Exit");
+        _delegate.HideTargets();
     }
 
 }
@@ -59,4 +60,5 @@ public interface MoveCategoryDelegate {
     void CategoryPressed(MoveType moveType);
     void CancelMove(MoveType moveType);
     void ShowTargets(Move selectedMove);
+    void HideTargets();
 }

@@ -73,6 +73,13 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate {
             break;
         }
     }
+    public void SetTargeted(bool b){
+        if(b){
+            _animator.Play("Targeted");
+            return;
+        }
+        _animator.Play("Idle");
+    }
     //--------------StatusBarDelegate---------------
     public void DoneFilling(){
         CheckClimax();

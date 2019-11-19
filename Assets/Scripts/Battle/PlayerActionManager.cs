@@ -96,6 +96,9 @@ public class PlayerActionManager : StatusBarDelegate {
         }
         PlayerTakeDmg(1);
     }
+    public IEnemy[] GetTargetsFor(Move move){
+        return _actions[move];
+    }
     //---------------StatusBar Delegate-----------------
     public void DoneFilling(){
 

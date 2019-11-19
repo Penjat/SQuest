@@ -77,6 +77,24 @@ public class EnemyManager : MonoBehaviour, EnemyDelegate {
     public void PointerOver(IEnemy enemy, bool b){
 
     }
+    public void SetTargeted(IEnemy[] targetedEnemies){
+        //check all the enemies to see if they should be targeted
+        //TODO fix how bad this is maybe, maybe doen't matter
+
+        //untarget all
+        ClearTargets();
+
+        //target the targeted
+        foreach(IEnemy enemy in targetedEnemies){
+            enemy.SetTargeted(true);
+        }
+    }
+    public void ClearTargets(){
+        //untarget all
+        foreach(IEnemy enemy in _enemies){
+            enemy.SetTargeted(false);
+        }
+    }
 }
 
 public interface EnemyManagerDelegate {
