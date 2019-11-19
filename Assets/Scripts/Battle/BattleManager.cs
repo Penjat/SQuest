@@ -18,7 +18,6 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
 
     public ChooseMoveMenu _moveMenu;
 
-
     public void SetUp(BattleManagerDelegate battleDelegate){
         _delegate = battleDelegate;
         _turnManager = new TurnManager(this);
@@ -41,6 +40,8 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
         //triggered when the player is ready to take their turn
         _playerControls.ShowMenu(false);
         _turnManager.EndPlayerTurn();
+        _playerActionManager.CancelSelected();
+        _infoLabelManager.EndTurn();
     }
 
     public void CloseCategory(){
@@ -116,6 +117,7 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
         List<Move> moves = _delegate.GetPlayer().GetMoves().Where(x => x._partsUsed.Contains(moveType)).ToList();
         IDictionary<MoveType,Move> partsUsed = _playerActionManager.GetUsedParts();
         _moveMenu.Show(moves, partsUsed, moveType);
+        _playerActionManager.CancelSelected();
     }
     public void CancelMove(MoveType moveType){
         //make sure it is the player's turn

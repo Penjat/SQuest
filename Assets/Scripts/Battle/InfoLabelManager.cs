@@ -39,6 +39,9 @@ public class InfoLabelManager : MonoBehaviour{
         }
         ShowBlank();
     }
+    public void EndTurn(){
+        ShowBlank();
+    }
 
 
     //---------------------Show Methods-------------------------------
