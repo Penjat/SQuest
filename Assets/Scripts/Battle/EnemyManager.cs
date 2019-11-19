@@ -45,16 +45,23 @@ public class EnemyManager : MonoBehaviour, EnemyDelegate {
         //find the button's position
         float buttonWidth = 200.0f;
         float buttonHeight = 200.0f;
+        float dir = 1;
+        float count = Mathf.Floor(_enemies.Count/2);
+        if ((_enemies.Count & 1) == 0) {
+            dir = count*-1;
+        }else{
+            dir = count+1;
+        }
 
-        float x1 = + _enemies.Count*buttonWidth + 0.0f;
+        float x1 = dir*buttonWidth + 0.0f;
         float y1 = -buttonHeight;
         float x2 = x1 + buttonWidth;
         float y2 = y1 + buttonHeight;
 
         //set the position
         RectTransform rectTransform = g.GetComponent<RectTransform>();
-        rectTransform.offsetMin = new Vector2(x1,y1);
-        rectTransform.offsetMax = new Vector2(x2,y2);
+        rectTransform.anchoredPosition = new Vector2(x1,0.0f);
+        rectTransform.sizeDelta = new Vector2(buttonWidth, buttonHeight);
 
         enemy.SetUp(this);
         _enemies.Add(enemy);
