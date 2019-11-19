@@ -9,7 +9,7 @@ using UnityEngine;
 public class PlayerActionManager : StatusBarDelegate {
 
     private Move _curMove;
-    private IDictionary<Move,IEnemy> _actions = new Dictionary<Move, IEnemy>();
+    private IDictionary<Move,IEnemy[]> _actions = new Dictionary<Move, IEnemy[]>();
     private IDictionary<MoveType,Move> _usedParts = new Dictionary<MoveType, Move>();
     //TODO posibly have IEnemy[] for multiple targets
 
@@ -37,14 +37,16 @@ public class PlayerActionManager : StatusBarDelegate {
         _curMove = null;
     }
     public void UsedMoveOn(IEnemy enemy){
-        _actions.Add(_curMove, enemy);
+        //TODO fix to pass in array
+        IEnemy[] targets = {enemy};
+        _actions.Add(_curMove, targets);
         Debug.Log("using move " + _curMove._name + " on enemy.");
         AddToUsedParts(_curMove);
         _curMove = null;
 
     }
     public void CancelMoveType(MoveType moveType){
-        foreach(KeyValuePair<Move,IEnemy> action in _actions){
+        foreach(KeyValuePair<Move,IEnemy[]> action in _actions){
             Move move = action.Key;
             if(move._partsUsed.Contains(moveType)){
                 _actions.Remove(move);
@@ -75,11 +77,11 @@ public class PlayerActionManager : StatusBarDelegate {
         _actions.Clear();
     }
     public void UseMoves(){
-        //TODO refactor for mini game
-        foreach(KeyValuePair<Move, IEnemy> action in _actions){
-            Debug.Log("using "+ action.Key._name + " on " + action.Value.GetName());
-            IEnemy enemy = action.Value;
-            enemy.DoDmg(4.0f);
+        foreach(KeyValuePair<Move, IEnemy[]> action in _actions){
+            IEnemy[] enemies = action.Value;
+            foreach(IEnemy enemy in enemies){
+                enemy.DoDmg(4.0f);
+            }
         }
     }
     public void PlayerTakeDmg(int dmg){
