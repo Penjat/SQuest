@@ -12,11 +12,11 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
     private PlayerActionManager _playerActionManager;
     public MiniGameManager _miniGameManager;
     public PlayerControls _playerControls;
+    public InfoLabelManager _infoLabelManager;
 
     private BattleManagerDelegate _delegate;
 
     public ChooseMoveMenu _moveMenu;
-    public Text _infoLabel;
 
 
     public void SetUp(BattleManagerDelegate battleDelegate){
@@ -28,13 +28,14 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
         StatusBar playerHealthBar = GameObject.Find("Player Health").GetComponent<StatusBar>();
         _playerActionManager = new PlayerActionManager(_delegate.GetPlayer(), playerHealthBar);
         _moveMenu.SetUp(this);
+        _infoLabelManager.SetUp(_playerActionManager);
     }
     public void StartBattle(Battle battle) {
         _enemyManager.StartBattle(battle);
         _moveMenu.Hide();
         _miniGameManager.Hide();
         _turnManager.StartBattle();
-        ClearInfoLabel();
+        _infoLabelManager.CheckState();
     }
     public void TakeTurn(){
         //triggered when the player is ready to take their turn
@@ -60,7 +61,6 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
         //Reset all moves
         _playerActionManager.ClearUsedParts();
         IDictionary<MoveType,Move> used = _playerActionManager.GetUsedParts();
-        print("used count = " + used.Count);
         _categoryManager.CheckCategories(used);
     }
     public void StartPlayerAction(){
@@ -78,8 +78,9 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
         _turnManager.EndEnemyTurn();
     }
     public void CancelSecetMove(){
-        _infoLabel.text = "";
         _playerActionManager.CancelSelected();
+        _infoLabelManager.MoveSelected();
+        //TODO make sure this is ok
     }
 
     //--------------Enemy Manager Delegate----------------
@@ -89,8 +90,8 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
             return;
         }
         _playerActionManager.SelectEnemy(enemy);
-        _infoLabel.text = "";
         _categoryManager.CheckCategories(_playerActionManager.GetUsedParts());
+        _infoLabelManager.MoveSelected();
     }
     public void DoneBattle(){
         //TODO post battle screen
@@ -99,19 +100,15 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
 
     }
     public void OverEnemy(IEnemy enemy){
-        if(_playerActionManager.IsSelectingTarget()){
-            _infoLabel.text = "use " + _playerActionManager.GetCurMove()._name + " on " + enemy.GetName();
-        }
+        _infoLabelManager.OverEnemy(enemy);
     }
     public void ExitEnemy(){
-        if(_playerActionManager.IsSelectingTarget()){
-            _infoLabel.text = "use " + _playerActionManager.GetCurMove()._name + " on...";
-        }
+        _infoLabelManager.ExitEnemy();
     }
     //-------------Choose Move Menu Delegate---------------
     public void MoveSelected(Move move){
         _playerActionManager.SelectMove(move);
-        _infoLabel.text = "use " + move._name + " on...";
+        _infoLabelManager.MoveSelected();
     }
 
     //-------------Category Manager Delegate--------------
@@ -131,15 +128,13 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
     public void ShowTargets(Move selectedMove){
         IEnemy[] targeted = _playerActionManager.GetTargetsFor(selectedMove);
         _enemyManager.SetTargeted(targeted);
-        _infoLabel.text = "using " + selectedMove._name + " on " + targeted.First().GetName();
+        _infoLabelManager.ShowTargetsForMove(selectedMove);
     }
     public void HideTargets(){
         _enemyManager.ClearTargets();
-        ClearInfoLabel();
+        _infoLabelManager.HideTargets();
     }
-    public void ClearInfoLabel(){
-        _infoLabel.text = "";
-    }
+
 
     //-------------MiniGame Delegate----------------------
     public void MiniGameFinished(){
