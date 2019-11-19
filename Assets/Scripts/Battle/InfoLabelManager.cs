@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using StringMethods;
 
 public class InfoLabelManager : MonoBehaviour{
     public Text _infoLabel;
@@ -46,14 +47,18 @@ public class InfoLabelManager : MonoBehaviour{
     }
     public void ShowTargetsForMove(Move move){
         IEnemy[] targeted = _playerActionManager.GetTargetsFor(move);
-        _infoLabel.text = "using " + move._name + " on " + targeted[0].GetName();
+        string moveName = move._name.ColorFor(Entity.MOVE);
+        string enemyName = targeted[0].GetName().ColorFor(Entity.ENEMY);
+        _infoLabel.text = "using " + moveName + " on " + enemyName;
     }
     public void ShowTargetEnemy(IEnemy enemy){
-        _infoLabel.text = "use <color=white>" + _playerActionManager.GetCurMove()._name + "</color> on <color=red>" + enemy.GetName() + "</color>";
+        string moveName = _playerActionManager.GetCurMove()._name.ColorFor(Entity.MOVE);
+        string enemyName = enemy.GetName().ColorFor(Entity.ENEMY);
+        _infoLabel.text = "use " + moveName + " on " + enemyName;
     }
     public void ShowMoveNoTarget(){
         //a move has been selected, but is not over an enemy
-        Move move = _playerActionManager.GetCurMove();
-        _infoLabel.text = "use " + move._name + " on...";
+        string moveName = _playerActionManager.GetCurMove()._name.ColorFor(Entity.MOVE);
+        _infoLabel.text = "use " + moveName + " on...";
     }
 }
