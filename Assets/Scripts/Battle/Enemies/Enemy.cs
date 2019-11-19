@@ -37,7 +37,7 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate {
     public void ClearSelf(){
         Destroy(gameObject);
     }
-    public string GetName(){
+    public virtual string GetName(){
         return "GENERIC";
     }
     public void Destroy(){

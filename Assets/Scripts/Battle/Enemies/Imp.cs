@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Imp : Enemy {
-    public string GetName(){
+    public override string GetName(){
         return "Imp";
     }
 }
