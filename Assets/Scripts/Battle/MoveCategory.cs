@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class MoveCategory : MonoBehaviour {
     MoveCategoryDelegate _delegate;
     public MoveType _type;
+    private Move _selectedMove;
     private bool _isLocked = false;
 
     //TODO change to use with animator
@@ -34,6 +35,7 @@ public class MoveCategory : MonoBehaviour {
         _animator.Play("FlipBack");
     }
     public void SetMove(Move move){
+        _selectedMove = move;
         _moveNameLabel.text = move._name;
     }
     public void PressedCancel(){
@@ -43,6 +45,7 @@ public class MoveCategory : MonoBehaviour {
     public void MouseEnter(){
         if(_isLocked){
             Debug.Log("Mouse Over: Should show targets");
+            _delegate.ShowTargets(_selectedMove);
             return;
         }
         Debug.Log("Mouse Over: Should highlight button");
@@ -54,5 +57,6 @@ public class MoveCategory : MonoBehaviour {
 }
 public interface MoveCategoryDelegate {
     void CategoryPressed(MoveType moveType);
-    void CancelMove(MoveType moveTyoe);
+    void CancelMove(MoveType moveType);
+    void ShowTargets(Move selectedMove);
 }

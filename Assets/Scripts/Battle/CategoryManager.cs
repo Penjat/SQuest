@@ -27,9 +27,13 @@ public class CategoryManager : MonoBehaviour, MoveCategoryDelegate {
     public void CancelMove(MoveType moveType){
         _delegate.CancelMove(moveType);
     }
+    public void ShowTargets(Move selectedMove){
+        _delegate.ShowTargets(selectedMove);
+    }
 }
 
 public interface CategoryManagerDelegate{
     void OpenCategory(MoveType moveType);
     void CancelMove(MoveType moveType);
+    void ShowTargets(Move selectedMove);
 }

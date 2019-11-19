@@ -114,6 +114,9 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
         _playerActionManager.CancelMoveType(moveType);
         _categoryManager.CheckCategories(_playerActionManager.GetUsedParts());
     }
+    public void ShowTargets(Move selectedMove){
+        Debug.Log("show for move " + selectedMove._name);
+    }
 
     //-------------MiniGame Delegate----------------------
     public void MiniGameFinished(){
