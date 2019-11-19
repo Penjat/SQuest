@@ -41,7 +41,7 @@ public class MiniGameManager : MonoBehaviour, TextTyperDelegate, ActionInputDele
         //TODO calculate time properly
         _gameState = GameState.TypingText;
         string toType = "here is some text";
-        _descriptionLabel.StartTyping(this, toType, 0.1f, 2.0f);
+        _descriptionLabel.StartTyping(this, toType, 0.04f, 2.0f);
     }
     private void CalcInputActions(IDictionary<MoveType,Move> partsUsed){
         if(partsUsed.ContainsKey(MoveType.Hand)){

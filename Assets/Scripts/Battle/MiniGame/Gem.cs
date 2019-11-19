@@ -10,6 +10,8 @@ public class Gem : MonoBehaviour {
 
     private bool _wasCleared = false;
     private float _accuracy;
+    public UIParticleSystem _explode;
+    public Animator _animator;
 
     public bool CheckMissed(float pos){
         //check if has moved too far
@@ -23,9 +25,10 @@ public class Gem : MonoBehaviour {
     }
     public void Clear(float trackPos){
         _wasCleared = true;
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
         _accuracy = _goal + trackPos;
-        Debug.Log("cleared at " + _accuracy);
+        _explode.Play();
+        _animator.Play("gem_clear");
     }
     public bool InRange(float trackPos){
         //checks if the gem is in range to be cleared
