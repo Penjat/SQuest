@@ -46,6 +46,12 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
         _moveMenu.Hide();
     }
 
+
+
+    //------------------------------------------------------
+    //                   DELEGATE METHODS
+    //------------------------------------------------------
+
     //------------Turn Manager Delegate------------
     public void StartPlayerTurn(){
         Debug.Log("Start player turn");
@@ -75,9 +81,6 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
         _infoLabel.text = "";
         _playerActionManager.CancelSelected();
     }
-    //---------------------------------------------------
-    //-------------Delegate Methods---------------------
-    //---------------------------------------------------
 
     //--------------Enemy Manager Delegate----------------
     public void EnemyPressed(IEnemy enemy){
@@ -94,6 +97,16 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
         _enemyManager.ClearEnemies();
         _delegate.DoneBattle();
 
+    }
+    public void OverEnemy(IEnemy enemy){
+        if(_playerActionManager.IsSelectingTarget()){
+            _infoLabel.text = "use " + _playerActionManager.GetCurMove()._name + " on " + enemy.GetName();
+        }
+    }
+    public void ExitEnemy(){
+        if(_playerActionManager.IsSelectingTarget()){
+            _infoLabel.text = "use " + _playerActionManager.GetCurMove()._name + " on...";
+        }
     }
     //-------------Choose Move Menu Delegate---------------
     public void MoveSelected(Move move){

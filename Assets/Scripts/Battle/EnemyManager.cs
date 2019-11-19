@@ -75,7 +75,10 @@ public class EnemyManager : MonoBehaviour, EnemyDelegate {
         }
     }
     public void PointerOver(IEnemy enemy, bool b){
-
+        _delegate.OverEnemy(enemy);
+    }
+    public void PointerExit(){
+        _delegate.ExitEnemy();
     }
     public void SetTargeted(IEnemy[] targetedEnemies){
         //check all the enemies to see if they should be targeted
@@ -100,4 +103,6 @@ public class EnemyManager : MonoBehaviour, EnemyDelegate {
 public interface EnemyManagerDelegate {
     void EnemyPressed(IEnemy enemy);
     void DoneBattle();
+    void OverEnemy(IEnemy enemy);
+    void ExitEnemy();
 }

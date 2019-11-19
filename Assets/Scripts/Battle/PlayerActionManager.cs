@@ -99,6 +99,12 @@ public class PlayerActionManager : StatusBarDelegate {
     public IEnemy[] GetTargetsFor(Move move){
         return _actions[move];
     }
+    public bool IsSelectingTarget(){
+        return _curMove != null;
+    }
+    public Move GetCurMove(){
+        return _curMove;
+    }
     //---------------StatusBar Delegate-----------------
     public void DoneFilling(){
 

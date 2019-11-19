@@ -58,9 +58,11 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate {
     }
     public void MouseEnter(){
         SetState(SelectState.Over);
+        _delegate.PointerOver(this,true);
     }
     public void MouseExit(){
         SetState(SelectState.Norm);
+        _delegate.PointerExit();
     }
     public void SetState(SelectState state){
         _state = state;
@@ -90,4 +92,5 @@ public interface EnemyDelegate {
     void EnemyPressed(IEnemy enemy);
     void RemoveEnemy(IEnemy enemy);
     void PointerOver(IEnemy enemy, bool b);
+    void PointerExit();
 }
