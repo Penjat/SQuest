@@ -9,4 +9,5 @@ public interface IEnemy {
     void Destroy();
     void DoDmg(float dmg);
     void SetTargeted(bool b);
+    void SetDelay(double delay);
 }

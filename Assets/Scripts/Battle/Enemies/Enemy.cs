@@ -24,6 +24,24 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate {
     public Color _overColor;
     public Color _normColor;
 
+    private bool _willAppear;
+    private double _delayTime = 0.0;
+
+    void Update(){
+        if(_willAppear){
+            _delayTime -= Time.deltaTime;
+            if(_delayTime <= 0){
+                _willAppear = false;
+                _animator.speed = 1.0f;
+            }
+        }
+    }
+    public void SetDelay(double delay){
+        _delayTime = delay;
+        _willAppear = true;
+        _animator.speed = 0.0f;
+        //TODO maybe trigger animation
+    }
     public void SetUp(EnemyDelegate enemyDelegate){
         _delegate = enemyDelegate;
         _nameLabel.text = GetName();

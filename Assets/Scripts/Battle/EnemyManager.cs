@@ -11,6 +11,8 @@ public class EnemyManager : MonoBehaviour, EnemyDelegate {
     public GameObject _impPrefab;
     public RectTransform _enemyContainer;
 
+    private const double DELAY_TIME = 0.5;
+
     public void SetUp(EnemyManagerDelegate enemyManagerDelegate){
         _delegate = enemyManagerDelegate;
     }
@@ -64,6 +66,7 @@ public class EnemyManager : MonoBehaviour, EnemyDelegate {
         rectTransform.sizeDelta = new Vector2(buttonWidth, buttonHeight);
 
         enemy.SetUp(this);
+        enemy.SetDelay(_enemies.Count*DELAY_TIME);
         _enemies.Add(enemy);
     }
     public bool CheckWin(){

@@ -182,6 +182,7 @@ GameObject:
   - component: {fileID: -1491852884781570737}
   - component: {fileID: 608012715128619973}
   - component: {fileID: -8350440434864230927}
+  - component: {fileID: 5938731461231758288}
   m_Layer: 5
   m_Name: Imp
   m_TagString: Untagged
@@ -351,6 +352,18 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+--- !u!225 &5938731461231758288
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4467983372739670613}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &3209538570361862962
 PrefabInstance:
   m_ObjectHideFlags: 0
