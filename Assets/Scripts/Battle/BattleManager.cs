@@ -99,12 +99,18 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
     //--------------Enemy Manager Delegate----------------
     public void EnemyPressed(IEnemy enemy){
         //make sure it is the player's turn
-        if(_turnManager.GetStage() != TurnStage.PlayerTurn ){
+        //make sure we are selecting a target
+        if(_turnManager.GetStage() != TurnStage.PlayerTurn || !_playerActionManager.IsSelectingTarget()){
             return;
         }
-        _playerActionManager.SelectEnemy(enemy);
+        if(_playerActionManager.GetCurMove()._areaAffect){
+            _playerActionManager.SelectTargets(_enemyManager.GetEnemiesAsArray());
+        }
+
         _categoryManager.CheckCategories(_playerActionManager.GetUsedParts());
         _infoLabelManager.MoveSelected();
+        enemy.SetState(SelectState.Over);
+        _enemyManager.ClearTargets();
     }
     public void DoneBattle(){
         //TODO post battle screen
@@ -114,9 +120,18 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
     }
     public void OverEnemy(IEnemy enemy){
         _infoLabelManager.OverEnemy(enemy);
+        //TODO check if is area effect
+        if(_playerActionManager.IsSelectingTarget()){
+            if(_playerActionManager.GetCurMove()._areaAffect){
+                Debug.Log("this is an area affect move");
+                _enemyManager.AreaAffect();
+            }
+            enemy.SetState(SelectState.Targeted);
+        }
     }
     public void ExitEnemy(){
         _infoLabelManager.ExitEnemy();
+        _enemyManager.ClearTargets();
     }
     //-------------Choose Move Menu Delegate---------------
     public void MoveSelected(Move move){

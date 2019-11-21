@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public enum SelectState{
-Norm, Over
+Norm, Over, Targeted
 };
 
 public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate {
@@ -47,7 +47,8 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate {
         _nameLabel.text = GetName();
         _climaxBar.SetUp(this,_maxClimax,2.0f);
         _climaxBar.SetValue(0.0f);
-        SetState(SelectState.Norm);
+        _state = SelectState.Norm;
+        _button.color = _normColor;
     }
     public void WasPressed(){
         _delegate.EnemyPressed(this);
@@ -87,9 +88,16 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate {
         switch(state){
             case SelectState.Norm:
             _button.color = _normColor;
+            SetTargeted(false);
             break;
+            case SelectState.Targeted:
+            _button.color = _normColor;
+            SetTargeted(true);
+            break;
+
             case SelectState.Over:
             _button.color = _overColor;
+            SetTargeted(false);
             break;
         }
     }

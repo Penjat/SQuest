@@ -45,8 +45,10 @@ public class EnemyManager : MonoBehaviour, EnemyDelegate {
         // locationButton.SetUp(this, location);
 
         //find the button's position
-        float buttonWidth = 200.0f;
-        float buttonHeight = 200.0f;
+        float buttonSize = 5.0f;
+        float buttonWidth = 64.0f*buttonSize;
+        float buttonHeight = 89.0f*buttonSize;
+        float padding = 40.0f;
         float dir = 1;
         float count = Mathf.Floor(_enemies.Count/2);
         if ((_enemies.Count & 1) == 0) {
@@ -55,7 +57,7 @@ public class EnemyManager : MonoBehaviour, EnemyDelegate {
             dir = count+1;
         }
 
-        float x1 = dir*buttonWidth + 0.0f;
+        float x1 = dir*(buttonWidth + padding);
         float y1 = -buttonHeight;
         float x2 = x1 + buttonWidth;
         float y2 = y1 + buttonHeight;
@@ -107,6 +109,15 @@ public class EnemyManager : MonoBehaviour, EnemyDelegate {
         foreach(IEnemy enemy in _enemies){
             enemy.SetTargeted(false);
         }
+    }
+    public void AreaAffect(){
+        //TODO pass in move
+        foreach(IEnemy enemy in _enemies){
+            enemy.SetState(SelectState.Targeted);
+        }
+    }
+    public IEnemy[] GetEnemiesAsArray(){
+        return _enemies.ToArray();
     }
 }
 

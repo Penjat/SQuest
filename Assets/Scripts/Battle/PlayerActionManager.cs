@@ -26,21 +26,19 @@ public class PlayerActionManager : StatusBarDelegate {
         _curMove = move;
         Debug.Log("selected Move " + move._name);
     }
-    public void SelectEnemy(IEnemy enemy){
+    public void SelectTargets(IEnemy[] targets){
         //TODO check if valid target
         if(_curMove == null){
             return;
         }
-        UsedMoveOn(enemy);
+        UsedMoveOn(targets);
     }
     public void CancelSelected(){
         _curMove = null;
     }
-    public void UsedMoveOn(IEnemy enemy){
+    public void UsedMoveOn(IEnemy[] targets){
         //TODO fix to pass in array
-        IEnemy[] targets = {enemy};
         _actions.Add(_curMove, targets);
-        Debug.Log("using move " + _curMove._name + " on enemy.");
         AddToUsedParts(_curMove);
         _curMove = null;
 

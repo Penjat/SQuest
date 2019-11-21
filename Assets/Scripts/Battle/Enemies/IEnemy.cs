@@ -10,4 +10,5 @@ public interface IEnemy {
     void DoDmg(float dmg);
     void SetTargeted(bool b);
     void SetDelay(double delay);
+    void SetState(SelectState state);
 }
