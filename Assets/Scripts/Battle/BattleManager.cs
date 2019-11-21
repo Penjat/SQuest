@@ -105,6 +105,8 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
         }
         if(_playerActionManager.GetCurMove()._areaAffect){
             _playerActionManager.SelectTargets(_enemyManager.GetEnemiesAsArray());
+        }else{
+            _playerActionManager.SelectTargets(new IEnemy[]{enemy});
         }
 
         _categoryManager.CheckCategories(_playerActionManager.GetUsedParts());

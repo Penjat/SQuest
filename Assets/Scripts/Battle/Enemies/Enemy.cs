@@ -26,6 +26,7 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate {
 
     private bool _willAppear;
     private double _delayTime = 0.0;
+    private bool _isDead = false;
 
     void Update(){
         if(_willAppear){
@@ -64,6 +65,7 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate {
         _delegate.RemoveEnemy(this);
         _explodeEffect.Play();
         _animator.Play("Climax");
+        _isDead = true;
     }
     public void DoDmg(float dmg){
         Debug.Log("doing dmg --------------------------");
@@ -76,14 +78,23 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate {
         }
     }
     public void MouseEnter(){
+        if(_isDead){
+            return;
+        }
         SetState(SelectState.Over);
         _delegate.PointerOver(this,true);
     }
     public void MouseExit(){
+        if(_isDead){
+            return;
+        }
         SetState(SelectState.Norm);
         _delegate.PointerExit();
     }
     public void SetState(SelectState state){
+        if(_isDead){
+            return;
+        }
         _state = state;
         switch(state){
             case SelectState.Norm:

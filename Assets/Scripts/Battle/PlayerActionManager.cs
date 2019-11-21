@@ -77,8 +77,9 @@ public class PlayerActionManager : StatusBarDelegate {
     public void UseMoves(){
         foreach(KeyValuePair<Move, IEnemy[]> action in _actions){
             IEnemy[] enemies = action.Value;
+            Move move = action.Key;
             foreach(IEnemy enemy in enemies){
-                enemy.DoDmg(4.0f);
+                enemy.DoDmg(move._dmg);
             }
         }
     }

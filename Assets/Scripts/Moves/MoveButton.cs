@@ -6,10 +6,14 @@ using UnityEngine.UI;
 public class MoveButton : MonoBehaviour {
 
     MoveButtonDelegate _delegate;
+
     public Text _buttonLabel;
     public Button _button;
     public PartIndicator _partIndicator;
+    public Text _dmgLabel;
+
     private bool _isLocked;
+
 
     Move _move;
 
@@ -18,6 +22,7 @@ public class MoveButton : MonoBehaviour {
         _buttonLabel.text = move._name;
         _move = move;
         _partIndicator.SetUp(_move._partsUsed);
+        _dmgLabel.text = move._dmg.ToString();
     }
 
     public void WasPressed(){
