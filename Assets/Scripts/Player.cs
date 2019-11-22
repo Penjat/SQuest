@@ -17,6 +17,7 @@ public class Player {
         AddMove(new Move("Blowjob", new HashSet<MoveType>{MoveType.Mouth}, 6));
         AddMove(new Move("Kiss", new HashSet<MoveType>{MoveType.Mouth}, 1));
         AddMove(new Move("Blowjob +Hands", new HashSet<MoveType>{MoveType.Mouth, MoveType.Hand}, 5));
+        AddMove(new Move("Doggy Style", new HashSet<MoveType>{MoveType.Ass, MoveType.Hand}, 6));
         AddMove(new Move("Flash Tits", new HashSet<MoveType>{MoveType.Breasts}, 1, true));
 
     }

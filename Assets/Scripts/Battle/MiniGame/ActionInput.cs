@@ -111,6 +111,7 @@ public class ActionInput : MonoBehaviour {
             ClearCurGem();
         }
         _animator.Play("Press");
+
     }
     public void SetActive(MoveType moveType){
         _isNeeded = true;

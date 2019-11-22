@@ -1,0 +1,1711 @@
+fileFormatVersion: 2
+guid: fd6e939897fc847e79262dcfa0218869
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5977599576430250601
+    second: breast_0
+  - first:
+      213: -4226462398865743051
+    second: breast_1
+  - first:
+      213: -7536127281909138845
+    second: breast_2
+  - first:
+      213: 634114333903459969
+    second: breast_3
+  - first:
+      213: -7992522624302632087
+    second: breast_4
+  - first:
+      213: 4290551798917746087
+    second: breast_5
+  - first:
+      213: 5741743812951116477
+    second: breast_6
+  - first:
+      213: 1768235681316602156
+    second: breast_7
+  - first:
+      213: -5378679664985730422
+    second: breast_8
+  - first:
+      213: 869655438644885456
+    second: breast_9
+  - first:
+      213: 4477647438369499533
+    second: breast_10
+  - first:
+      213: 2493893737913108964
+    second: breast_11
+  - first:
+      213: 8856243002203102495
+    second: breast_12
+  - first:
+      213: -6667738398158291672
+    second: breast_13
+  - first:
+      213: -7826875783098296749
+    second: breast_14
+  - first:
+      213: 3241777542273260965
+    second: breast_15
+  - first:
+      213: -1746543823099311949
+    second: breast_16
+  - first:
+      213: -4087267118909909072
+    second: breast_17
+  - first:
+      213: 1674087550459513210
+    second: breast_18
+  - first:
+      213: 5214958689011030075
+    second: breast_19
+  - first:
+      213: 819202769649109185
+    second: breast_20
+  - first:
+      213: 8097684356153089696
+    second: breast_21
+  - first:
+      213: 8168273208382085753
+    second: breast_22
+  - first:
+      213: -4601218506892574216
+    second: breast_23
+  - first:
+      213: -8634221765999961561
+    second: breast_24
+  - first:
+      213: -2779780216404985883
+    second: breast_25
+  - first:
+      213: -2035909760385800725
+    second: breast_26
+  - first:
+      213: -5315999054842470813
+    second: breast_27
+  - first:
+      213: -1429636103320219518
+    second: breast_28
+  - first:
+      213: 8998582263820299331
+    second: breast_29
+  - first:
+      213: -4900731556553782862
+    second: breast_30
+  - first:
+      213: 5755761575245245085
+    second: breast_31
+  - first:
+      213: 8018319359232544666
+    second: breast_32
+  - first:
+      213: 3278893852538559625
+    second: breast_33
+  - first:
+      213: -2796333781766086935
+    second: breast_34
+  - first:
+      213: 1248461374967251176
+    second: breast_35
+  - first:
+      213: -5619080723362993838
+    second: breast_36
+  - first:
+      213: -4713742966302403864
+    second: breast_37
+  - first:
+      213: 2262410252415628469
+    second: breast_38
+  - first:
+      213: 6693320083574699292
+    second: breast_39
+  - first:
+      213: 5658196400026557577
+    second: breast_40
+  - first:
+      213: -6750727176162753018
+    second: breast_41
+  - first:
+      213: -2039659631687751102
+    second: breast_42
+  - first:
+      213: 3187599857714277487
+    second: breast_43
+  - first:
+      213: 2918121593086504576
+    second: breast_44
+  - first:
+      213: -101189805277672212
+    second: breast_45
+  - first:
+      213: 5281800312260282831
+    second: breast_46
+  - first:
+      213: 612099746905895327
+    second: breast_47
+  - first:
+      213: 6284569206138618850
+    second: breast_48
+  - first:
+      213: 56907445669373354
+    second: breast_49
+  - first:
+      213: -1637680334057376205
+    second: breast_50
+  - first:
+      213: 1143469695946358674
+    second: breast_51
+  - first:
+      213: 3807977763589649126
+    second: breast_52
+  - first:
+      213: -1131218214687642003
+    second: breast_53
+  - first:
+      213: 7853298189911612012
+    second: breast_54
+  - first:
+      213: 1986044387952370157
+    second: breast_55
+  - first:
+      213: -3292120826754725160
+    second: breast_56
+  - first:
+      213: 1807120609803905210
+    second: breast_57
+  - first:
+      213: 8125167276634463046
+    second: breast_58
+  - first:
+      213: 3237330346906421341
+    second: breast_59
+  - first:
+      213: 2121678134903562888
+    second: breast_60
+  - first:
+      213: 3992607364639727083
+    second: breast_61
+  - first:
+      213: -1281530683932662391
+    second: breast_62
+  - first:
+      213: 896324764694617846
+    second: breast_63
+  - first:
+      213: 3608135550520102333
+    second: breast_64
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: tvOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: breast_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1654.1538
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a1bbed3a5cf647968eaf2942cfc034c
+      internalID: -5977599576430250601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_1
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 1654.1538
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 168cf02bea86e441bb575935c382b87e
+      internalID: -4226462398865743051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_2
+      rect:
+        serializedVersion: 2
+        x: 508
+        y: 1654.1538
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe30c109d2db54462a13f7178c898dd1
+      internalID: -7536127281909138845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_3
+      rect:
+        serializedVersion: 2
+        x: 762
+        y: 1654.1538
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25737a82b6ecd4ae1b49329b49adacf8
+      internalID: 634114333903459969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_4
+      rect:
+        serializedVersion: 2
+        x: 1016
+        y: 1654.1538
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 302b91e39cc9c46e1b9c564b5fe11a30
+      internalID: -7992522624302632087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1517.1538
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 265dab66e2b494a75aa8546a70413124
+      internalID: 4290551798917746087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_6
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 1517.1538
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd17986165c6540d4917dafb69933e1e
+      internalID: 5741743812951116477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_7
+      rect:
+        serializedVersion: 2
+        x: 508
+        y: 1517.1538
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9238bf9b7cf284760a3bab7d6cd5e7ae
+      internalID: 1768235681316602156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_8
+      rect:
+        serializedVersion: 2
+        x: 762
+        y: 1517.1538
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0db34c8dd6f3748479773e925617c3c7
+      internalID: -5378679664985730422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_9
+      rect:
+        serializedVersion: 2
+        x: 1016
+        y: 1517.1538
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5de1ef016ada4d95ab8d9822c5ae754
+      internalID: 869655438644885456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1380.1538
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edc0dce1d2b304ff7827795231d99bc6
+      internalID: 4477647438369499533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_11
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 1380.1538
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c465764b422d14c68a495ecf5e0c3435
+      internalID: 2493893737913108964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_12
+      rect:
+        serializedVersion: 2
+        x: 508
+        y: 1380.1538
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3748a318bf79f4bcabc51e8d2ea7ccc5
+      internalID: 8856243002203102495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_13
+      rect:
+        serializedVersion: 2
+        x: 762
+        y: 1380.1538
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9ffd780c354b4f24b42197bd9b8ebc0
+      internalID: -6667738398158291672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_14
+      rect:
+        serializedVersion: 2
+        x: 1016
+        y: 1380.1538
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9adcd8038019f47d881289250686929c
+      internalID: -7826875783098296749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1243.1538
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e0a0d89798e24f8f9995c69b5e8cba8
+      internalID: 3241777542273260965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_16
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 1243.1538
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 639a8586ea087430ea63a7c66043d074
+      internalID: -1746543823099311949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_17
+      rect:
+        serializedVersion: 2
+        x: 508
+        y: 1243.1538
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9a28fe13eae4477abf850a3e4f87f3d
+      internalID: -4087267118909909072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_18
+      rect:
+        serializedVersion: 2
+        x: 762
+        y: 1243.1538
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2eb407234ab54674a298a3cb0a235b3
+      internalID: 1674087550459513210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_19
+      rect:
+        serializedVersion: 2
+        x: 1016
+        y: 1243.1538
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3a759336219141c0bb7a97126c4cb02
+      internalID: 5214958689011030075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1106.1538
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcf5eb4162a4b4d6c9b15df30e15c61b
+      internalID: 819202769649109185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_21
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 1106.1538
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f96731bdc0544a7192676f9f7f3a5b4
+      internalID: 8097684356153089696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_22
+      rect:
+        serializedVersion: 2
+        x: 508
+        y: 1106.1538
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9822770e40efc429b978b14df17a28b6
+      internalID: 8168273208382085753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_23
+      rect:
+        serializedVersion: 2
+        x: 762
+        y: 1106.1538
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7aff4aa906f7548039a696505045103e
+      internalID: -4601218506892574216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_24
+      rect:
+        serializedVersion: 2
+        x: 1016
+        y: 1106.1538
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 313416a727b8c4944a7abec2e3c92bc6
+      internalID: -8634221765999961561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_25
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 969.1538
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29db3f41aac324cba953c6cba333595b
+      internalID: -2779780216404985883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_26
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 969.1538
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb15811356ad54bfb858c810341fb964
+      internalID: -2035909760385800725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_27
+      rect:
+        serializedVersion: 2
+        x: 508
+        y: 969.1538
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51e1ac8fb887b4ade9af0d3fa4dc9628
+      internalID: -5315999054842470813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_28
+      rect:
+        serializedVersion: 2
+        x: 762
+        y: 969.1538
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c25c78c369df44b18befed590b88f53
+      internalID: -1429636103320219518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_29
+      rect:
+        serializedVersion: 2
+        x: 1016
+        y: 969.1538
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b441c8197d404501a05016c2e14cbe4
+      internalID: 8998582263820299331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 832.1538
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8a6987606c5e43a3b30258047f0bc8e
+      internalID: -4900731556553782862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_31
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 832.1538
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07cdce05404bd4d40a6cf31c4cf90129
+      internalID: 5755761575245245085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_32
+      rect:
+        serializedVersion: 2
+        x: 508
+        y: 832.1538
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52bbafa96087c403bb2bedef74585d25
+      internalID: 8018319359232544666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_33
+      rect:
+        serializedVersion: 2
+        x: 762
+        y: 832.1538
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e48885974606490e8295bf4ced636a9
+      internalID: 3278893852538559625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_34
+      rect:
+        serializedVersion: 2
+        x: 1016
+        y: 832.1538
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ba645edc8bc94b48a8716a7aae36ee4
+      internalID: -2796333781766086935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 695.1538
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0a8ee97c2b714fa09bf05e20e752a36
+      internalID: 1248461374967251176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_36
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 695.1538
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f06871762aa84db1a625a23d4b24cb2
+      internalID: -5619080723362993838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_37
+      rect:
+        serializedVersion: 2
+        x: 508
+        y: 695.1538
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6135b4c74a9144de8c72eb7611365eb
+      internalID: -4713742966302403864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_38
+      rect:
+        serializedVersion: 2
+        x: 762
+        y: 695.1538
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7309f63557b047b29333265c854c03c
+      internalID: 2262410252415628469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_39
+      rect:
+        serializedVersion: 2
+        x: 1016
+        y: 695.1538
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13937918682094fbbbaee51c7d66f65d
+      internalID: 6693320083574699292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 558.1538
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d48247dfe7a874057bb44fb6cc20b709
+      internalID: 5658196400026557577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_41
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 558.1538
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ae20a3e4316e4a80b17ed7056ef39c0
+      internalID: -6750727176162753018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_42
+      rect:
+        serializedVersion: 2
+        x: 508
+        y: 558.1538
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8d4d2913b3574f6d944b73ef90af139
+      internalID: -2039659631687751102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_43
+      rect:
+        serializedVersion: 2
+        x: 762
+        y: 558.1538
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e67596774a29e48068b5563cd128f326
+      internalID: 3187599857714277487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_44
+      rect:
+        serializedVersion: 2
+        x: 1016
+        y: 558.1538
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ccbc63c4bd714d5fb55dde64a924c5a
+      internalID: 2918121593086504576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_45
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 421.15384
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23272ae2187cb46568a746450a4d43ee
+      internalID: -101189805277672212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_46
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 421.15384
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fe3ac22492894fd1b14d3fedc960622
+      internalID: 5281800312260282831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_47
+      rect:
+        serializedVersion: 2
+        x: 508
+        y: 421.15384
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cc1507f2c0ef4cb1a33a2bc7447f494
+      internalID: 612099746905895327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_48
+      rect:
+        serializedVersion: 2
+        x: 762
+        y: 421.15384
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02d0d7e41d6a64864abc83b96aad11d2
+      internalID: 6284569206138618850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_49
+      rect:
+        serializedVersion: 2
+        x: 1016
+        y: 421.15384
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26ca7c301005342d7869cfc48d38b4ba
+      internalID: 56907445669373354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_50
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 284.15384
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 424aa3a543bae4afa92abcffc79ed22a
+      internalID: -1637680334057376205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_51
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 284.15384
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e07c39681d3264fe495bf0caaf40b8a3
+      internalID: 1143469695946358674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_52
+      rect:
+        serializedVersion: 2
+        x: 508
+        y: 284.15384
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d44193ebf85484fb086228afb9eb9d5d
+      internalID: 3807977763589649126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_53
+      rect:
+        serializedVersion: 2
+        x: 762
+        y: 284.15384
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bcfb0f52a70649fa98a81c3f58b6ade
+      internalID: -1131218214687642003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_54
+      rect:
+        serializedVersion: 2
+        x: 1016
+        y: 284.15384
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39a44afd92f6045b0b7dbaa725da1656
+      internalID: 7853298189911612012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_55
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 147.15384
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c7cb9151183c4993b4fbf1691f0b3a2
+      internalID: 1986044387952370157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_56
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 147.15384
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58615506009df4c6fb6f71c657226a94
+      internalID: -3292120826754725160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_57
+      rect:
+        serializedVersion: 2
+        x: 508
+        y: 147.15384
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d154016f5b9334d28873968858b6fe6a
+      internalID: 1807120609803905210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_58
+      rect:
+        serializedVersion: 2
+        x: 762
+        y: 147.15384
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 200fef6f1f26b4a888646de07a8635f5
+      internalID: 8125167276634463046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_59
+      rect:
+        serializedVersion: 2
+        x: 1016
+        y: 147.15384
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb7a1714cbb134e959575f49dfe132c8
+      internalID: 3237330346906421341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_60
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 10.153839
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c211a8fc1a9494327af08b12aaf1bd3c
+      internalID: 2121678134903562888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_61
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 10.153839
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b230666131e234490b6239538d53cd78
+      internalID: 3992607364639727083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_62
+      rect:
+        serializedVersion: 2
+        x: 508
+        y: 10.153839
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a66c45ca40d8542a6ae6b8a7f50fec97
+      internalID: -1281530683932662391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_63
+      rect:
+        serializedVersion: 2
+        x: 762
+        y: 10.153839
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a0cf05539c7f4e4194d46f9ace84d25
+      internalID: 896324764694617846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breast_64
+      rect:
+        serializedVersion: 2
+        x: 1016
+        y: 10.153839
+        width: 254
+        height: 137.84616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40bb51a9e68314d59b3ebe59ea621bcf
+      internalID: 3608135550520102333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 88860cb4b852145059dbd6427072d814
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

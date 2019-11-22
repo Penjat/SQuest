@@ -9,6 +9,7 @@ enum GameState{
 
 public class MiniGameManager : MonoBehaviour, TextTyperDelegate, ActionInputDelegate {
     MiniGameDelegate _delegate;
+    public BackgroundManager _backgroundManager;
     private GameState _gameState;
     private double _timer = 0.0;
 
@@ -92,6 +93,7 @@ public class MiniGameManager : MonoBehaviour, TextTyperDelegate, ActionInputDele
     //------------ActionInputDelegate--------------
     public void GemCleared(MoveType moveType){
         _delegate.GemCleared(moveType, 33.0f);
+        _backgroundManager.ShowImage(moveType);
     }
 }
 
