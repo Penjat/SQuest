@@ -44,19 +44,19 @@ public class MiniGameManager : MonoBehaviour, TextTyperDelegate, ActionInputDele
         _descriptionLabel.StartTyping(this, toType, 0.04f, 2.0f);
     }
     private void CalcInputActions(IDictionary<MoveType,Move> partsUsed){
-        if(partsUsed.ContainsKey(MoveType.Hand)){
-            _actionInputs[RIGHT].SetActive(MoveType.Hand);
-        }
-        if(partsUsed.ContainsKey(MoveType.Mouth)){
-            _actionInputs[TOP].SetActive(MoveType.Mouth);
-        }
-        if(partsUsed.ContainsKey(MoveType.Breasts)){
-            _actionInputs[LEFT].SetActive(MoveType.Breasts);
-        }
-        if(partsUsed.ContainsKey(MoveType.Ass)){
-            _actionInputs[BOTTOM].SetActive(MoveType.Ass);
-        }
+        CheckActionInput(partsUsed, _actionInputs[RIGHT], MoveType.Hand);
+        CheckActionInput(partsUsed, _actionInputs[TOP], MoveType.Mouth);
+        CheckActionInput(partsUsed, _actionInputs[LEFT], MoveType.Breasts);
+        CheckActionInput(partsUsed, _actionInputs[BOTTOM], MoveType.Ass);
     }
+    private void CheckActionInput(IDictionary<MoveType,Move> partsUsed, ActionInput actionInput, MoveType moveType){
+        if(partsUsed.ContainsKey(moveType)){
+            actionInput.SetActive(moveType);
+            return;
+        }
+        actionInput.Hide();
+    }
+
     public void StartRound(){
         _gameState = GameState.Playing;
         _timer = 10.0;
