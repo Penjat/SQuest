@@ -4,11 +4,11 @@ using UnityEngine;
 
 public abstract class Move {
 
-    public string _name;
-    public MoveType _primaryType;
-    public HashSet<MoveType> _partsUsed;
-    public bool _areaAffect;
-    public int _dmg;
+    protected string _name;
+    protected MoveType _primaryType;
+    protected HashSet<MoveType> _partsUsed;
+    protected bool _areaAffect;
+    protected int _dmg;
 
     public Move(){
 
@@ -21,5 +21,20 @@ public abstract class Move {
             }
         }
         return false;
+    }
+    public virtual string GetName(){
+        return _name;
+    }
+    public virtual MoveType GetPrimaryType(){
+        return _primaryType;
+    }
+    public virtual HashSet<MoveType> GetPartsUsed(){
+        return _partsUsed;
+    }
+    public virtual bool IsAreaFX(){
+        return _areaAffect;
+    }
+    public virtual int GetDmg(){
+        return _dmg;
     }
 }

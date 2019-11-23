@@ -26,7 +26,7 @@ public class ChooseMoveMenu : MonoBehaviour, MoveButtonDelegate {
         _moveButtons = new List<MoveButton>();
         int i = 0;
         foreach(Move move in moves){
-            Debug.Log("move name: " + move._name);
+            Debug.Log("move name: " + move.GetName());
             bool isLoked = move.CheckLocked(partsUsed);
             CreateButton(move, i, isLoked);
         }

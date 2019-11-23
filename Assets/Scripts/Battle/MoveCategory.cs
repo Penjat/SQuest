@@ -36,7 +36,7 @@ public class MoveCategory : MonoBehaviour {
     }
     public void SetMove(Move move){
         _selectedMove = move;
-        _moveNameLabel.text = move._name;
+        _moveNameLabel.text = move.GetName();
     }
     public void PressedCancel(){
         _delegate.CancelMove(_type);

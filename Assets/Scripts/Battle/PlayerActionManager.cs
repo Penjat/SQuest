@@ -24,7 +24,7 @@ public class PlayerActionManager : StatusBarDelegate {
     }
     public void SelectMove(Move move){
         _curMove = move;
-        Debug.Log("selected Move " + move._name);
+        Debug.Log("selected Move " + move.GetName());
     }
     public void SelectTargets(IEnemy[] targets){
         //TODO check if valid target
@@ -46,10 +46,10 @@ public class PlayerActionManager : StatusBarDelegate {
     public void CancelMoveType(MoveType moveType){
         foreach(KeyValuePair<Move,IEnemy[]> action in _actions){
             Move move = action.Key;
-            if(move._partsUsed.Contains(moveType)){
+            if(move.GetPartsUsed().Contains(moveType)){
                 _actions.Remove(move);
-                RemoveFromUsedParts(move._partsUsed);
-                Debug.Log("removing move " + move._name);
+                RemoveFromUsedParts(move.GetPartsUsed());
+                Debug.Log("removing move " + move.GetName());
                 return;
                 //doesn't cycle through everymove
                 //This should be fine as there will only be on move using each body type
@@ -58,7 +58,7 @@ public class PlayerActionManager : StatusBarDelegate {
     }
     public void AddToUsedParts(Move move){
 
-        foreach(MoveType m in move._partsUsed){
+        foreach(MoveType m in move.GetPartsUsed()){
             _usedParts.Add(m,move);
         }
     }
@@ -79,7 +79,7 @@ public class PlayerActionManager : StatusBarDelegate {
             IEnemy[] enemies = action.Value;
             Move move = action.Key;
             foreach(IEnemy enemy in enemies){
-                enemy.DoDmg(move._dmg);
+                enemy.DoDmg(move.GetDmg());
             }
         }
     }

@@ -103,7 +103,7 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
         if(_turnManager.GetStage() != TurnStage.PlayerTurn || !_playerActionManager.IsSelectingTarget()){
             return;
         }
-        if(_playerActionManager.GetCurMove()._areaAffect){
+        if(_playerActionManager.GetCurMove().IsAreaFX()){
             _playerActionManager.SelectTargets(_enemyManager.GetEnemiesAsArray());
         }else{
             _playerActionManager.SelectTargets(new IEnemy[]{enemy});
@@ -124,7 +124,7 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
         _infoLabelManager.OverEnemy(enemy);
         //TODO check if is area effect
         if(_playerActionManager.IsSelectingTarget()){
-            if(_playerActionManager.GetCurMove()._areaAffect){
+            if(_playerActionManager.GetCurMove().IsAreaFX()){
                 Debug.Log("this is an area affect move");
                 _enemyManager.AreaAffect();
             }
@@ -143,7 +143,7 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
 
     //-------------Category Manager Delegate--------------
     public void OpenCategory(MoveType moveType){
-        List<Move> moves = _delegate.GetPlayer().GetMoves().Where(x => x._partsUsed.Contains(moveType)).ToList();
+        List<Move> moves = _delegate.GetPlayer().GetMoves().Where(x => x.GetPartsUsed().Contains(moveType)).ToList();
         IDictionary<MoveType,Move> partsUsed = _playerActionManager.GetUsedParts();
         _moveMenu.Show(moves, partsUsed, moveType);
         _playerActionManager.CancelSelected();

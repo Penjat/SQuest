@@ -19,10 +19,10 @@ public class MoveButton : MonoBehaviour {
 
     public void SetUp(MoveButtonDelegate moveButtonDelegate, Move move){
         _delegate = moveButtonDelegate;
-        _buttonLabel.text = move._name;
+        _buttonLabel.text = move.GetName();
         _move = move;
-        _partIndicator.SetUp(_move._partsUsed);
-        _dmgLabel.text = move._dmg.ToString();
+        _partIndicator.SetUp(_move.GetPartsUsed());
+        _dmgLabel.text = move.GetDmg().ToString();
     }
 
     public void WasPressed(){
