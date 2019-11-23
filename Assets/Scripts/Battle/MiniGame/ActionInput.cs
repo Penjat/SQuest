@@ -19,7 +19,7 @@ public class ActionInput : MonoBehaviour {
     private int _curIndex = 0;
 
     private float _edgeOfScreen = 400.0f;
-    private float _spacing = 160.0f;
+    private float _spacing = 624.0f;
     private float _gemOffset = 0.0f;
 
 
@@ -82,28 +82,29 @@ public class ActionInput : MonoBehaviour {
         }
     }
 
-    public void CreateGems(){
+    public void CreateGems(float startingOffset,int[] timingArray){
         //check if needed for this round
         if(!_isNeeded){
             return;
         }
         //reset where the gems start
-        _gemOffset = _edgeOfScreen;
-        int numGems = 5;
+        _gemOffset = _edgeOfScreen+startingOffset;
+        int numGems = timingArray.Length;
         _track.anchoredPosition = new Vector2(0.0f,0.0f);
         _gems = new Gem[numGems];
         for(int i=0;i<numGems;i++){
-            CreateGem(i);
+            float duration = timingArray[i];
+            CreateGem(i,duration);
         }
     }
-    private void CreateGem(int index){
+    private void CreateGem(int index, float duration){
         GameObject g = Instantiate(_gemPrefab);
         g.transform.SetParent(_track);
 
         Gem gem = g.GetComponent<Gem>();
         //float pos = _edgeOfScreen + index*_spacing;
         gem.SetPosition(_gemOffset);
-        _gemOffset += _spacing;
+        _gemOffset += _spacing/duration;
         _gems[index] = gem;
     }
     public void WasPressed(){

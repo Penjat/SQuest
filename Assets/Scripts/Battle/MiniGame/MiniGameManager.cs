@@ -63,7 +63,7 @@ public class MiniGameManager : MonoBehaviour, TextTyperDelegate, ActionInputDele
         _timer = 10.0;
         foreach(ActionInput actionInput in _actionInputs){
             actionInput.Show(true);
-            actionInput.CreateGems();
+            actionInput.CreateGems(0.0f,new int[]{8,8,4,4});
             actionInput.StartMoving();
         }
     }
