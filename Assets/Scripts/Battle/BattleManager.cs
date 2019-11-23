@@ -79,7 +79,7 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
     public void StartPlayerAction(){
         //start the mini game
         Debug.Log("Start player action");
-        _miniGameManager.StartGame(this,_playerActionManager.GetUsedParts());
+        _miniGameManager.StartGame(this,_playerActionManager.GetActions());
     }
     public void StartEnemyTurn(){
         //start the enemies turn

@@ -104,6 +104,9 @@ public class PlayerActionManager : StatusBarDelegate {
     public Move GetCurMove(){
         return _curMove;
     }
+    public IDictionary<Move, IEnemy[]> GetActions(){
+        return _actions;
+    }
     //---------------StatusBar Delegate-----------------
     public void DoneFilling(){
 

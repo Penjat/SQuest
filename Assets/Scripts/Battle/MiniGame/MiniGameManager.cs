@@ -28,17 +28,25 @@ public class MiniGameManager : MonoBehaviour, TextTyperDelegate, ActionInputDele
         _actionInputs[LEFT].SetUp(this,KeyCode.A);
         _actionInputs[RIGHT].SetUp(this,KeyCode.D);
     }
-    public void StartGame(MiniGameDelegate miniGameDelegate, IDictionary<MoveType,Move> partsUsed){
+    public void StartGame(MiniGameDelegate miniGameDelegate, IDictionary<Move, IEnemy[]> actions){
+        Debug.Log("starting mini game");
         //TODO pass in info
         _delegate = miniGameDelegate;
         gameObject.SetActive(true);
-        CalcInputActions(partsUsed);
         foreach(ActionInput actionInput in _actionInputs){
             actionInput.Show(false);
         }
+        //CalcInputActions(partsUsed);//should be an empty set
+        Sequence[] sequenceArray = SequenceFactory.CreateSequence(actions);
+        for(int i=0;i<sequenceArray.Length;i++){
+            _actionInputs[i].CreateGems(0.0f, sequenceArray[i].GetSequence());
+            //TODO change for move type
+            _actionInputs[i].SetActive(MoveType.Mouth);
+        }
+
         ShowText();
     }
-    public void ShowText(){
+    private void ShowText(){
         //TODO calculate time properly
         _gameState = GameState.TypingText;
         string toType = "here is some text";
@@ -63,7 +71,7 @@ public class MiniGameManager : MonoBehaviour, TextTyperDelegate, ActionInputDele
         _timer = 10.0;
         foreach(ActionInput actionInput in _actionInputs){
             actionInput.Show(true);
-            actionInput.CreateGems(0.0f,new int[]{8,8,4,4});
+            //actionInput.CreateGems(0.0f,new int[]{8,8,4,4});
             actionInput.StartMoving();
         }
     }
