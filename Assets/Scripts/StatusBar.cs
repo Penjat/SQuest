@@ -59,6 +59,12 @@ public class StatusBar : MonoBehaviour {
     public void SetValueAnimated(float value){
         Debug.Log("starting. value = " + value + " , curValue = " + _curValue);
         _toValue = value;
+        if(_toValue > _maxValue){
+            _toValue = _maxValue;
+        }else if(_toValue < 0){
+            _toValue = 0;
+        }
+
         _isChanging = true;
         if(_toValue > _curValue){
             //Should fill up
@@ -78,11 +84,17 @@ public class StatusBar : MonoBehaviour {
         SetValue((float)value);
     }
     public void SetValue(float value){
+        //don't divide by 0
         if(_maxValue == 0.0f){
             return;
         }
         _curValue = value;
         float ratio = _curValue/_maxValue;
+
+        //don't go past 100%
+        if(ratio > 1){
+            ratio = 1;
+        }
         _topBar.localScale = new Vector2(ratio,1.0f);
     }
     private void DoneFilling(){

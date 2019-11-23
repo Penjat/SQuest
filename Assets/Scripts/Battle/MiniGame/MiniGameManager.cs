@@ -92,8 +92,13 @@ public class MiniGameManager : MonoBehaviour, TextTyperDelegate, ActionInputDele
     }
     //------------ActionInputDelegate--------------
     public void GemCleared(MoveType moveType){
+        //TODO fix for missed
         _delegate.GemCleared(moveType, 33.0f);
         _backgroundManager.ShowImage(moveType);
+    }
+    public void GemMissed(MoveType moveType){
+        //TODO fix for missed
+        _delegate.GemCleared(moveType, 33.0f);
     }
 }
 

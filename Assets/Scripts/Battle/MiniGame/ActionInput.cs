@@ -76,7 +76,7 @@ public class ActionInput : MonoBehaviour {
         if(_curIndex < _gems.Length){
             Gem gem = _gems[_curIndex];
             if (gem.CheckMissed(_track.anchoredPosition.y)){
-                ClearCurGem();
+                ClearCurGem(true);
             }
         }
     }
@@ -125,17 +125,23 @@ public class ActionInput : MonoBehaviour {
         //TODO fade in
         gameObject.SetActive(b && _isNeeded);
     }
-    private void ClearCurGem(){
+    private void ClearCurGem(bool wasMissed=false){
         Gem gem = _gems[_curIndex];
         if(!gem.InRange(_track.anchoredPosition.y)){
             return;
         }
         gem.Clear(_track.anchoredPosition.y);
         _curIndex++;
+        if(wasMissed){
+            _delegate.GemMissed(_moveType);
+            return;
+        }
+        //TODO calculate accuracy
         _delegate.GemCleared(_moveType);
     }
 }
 
 public interface ActionInputDelegate{
     void GemCleared(MoveType moveType);
+    void GemMissed(MoveType moveType);
 }
