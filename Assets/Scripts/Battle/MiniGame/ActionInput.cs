@@ -20,6 +20,7 @@ public class ActionInput : MonoBehaviour {
 
     private float _edgeOfScreen = 400.0f;
     private float _spacing = 160.0f;
+    private float _gemOffset = 0.0f;
 
 
     private Vector2 _startPos = new Vector2(0.0f,0.0f);
@@ -86,6 +87,8 @@ public class ActionInput : MonoBehaviour {
         if(!_isNeeded){
             return;
         }
+        //reset where the gems start
+        _gemOffset = _edgeOfScreen;
         int numGems = 5;
         _track.anchoredPosition = new Vector2(0.0f,0.0f);
         _gems = new Gem[numGems];
@@ -98,8 +101,9 @@ public class ActionInput : MonoBehaviour {
         g.transform.SetParent(_track);
 
         Gem gem = g.GetComponent<Gem>();
-        float pos = _edgeOfScreen + index*_spacing;
-        gem.SetPosition(pos);
+        //float pos = _edgeOfScreen + index*_spacing;
+        gem.SetPosition(_gemOffset);
+        _gemOffset += _spacing;
         _gems[index] = gem;
     }
     public void WasPressed(){
