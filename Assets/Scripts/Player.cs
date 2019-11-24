@@ -21,6 +21,7 @@ public class Player {
         // AddMove(new Move("Flash Tits", new HashSet<MoveType>{MoveType.Breasts}, 1, true));
         AddMove(new Blowjob());
         AddMove(new HandJob());
+        AddMove(new FlashTits());
 
     }
     public void AddMove(Move move){
