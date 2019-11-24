@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Sequence  {
-    int[] _array;
+    Note[] _noteArray;
     MoveType _moveType;
-    public Sequence(MoveType moveType, int[] array){
+    public Sequence(MoveType moveType, Note[] noteArray){
         _moveType = moveType;
-        _array = array;
+        _noteArray = noteArray;
     }
-    public int[] GetArray(){
-        return _array;
+    public Note[] GetNotes(){
+        return _noteArray;
     }
     public MoveType GetMoveType(){
         return _moveType;

@@ -11,25 +11,10 @@ public class SequenceFactory {
         foreach(KeyValuePair<Move, IEnemy[]> action in actions){
             //TODO add data from move
             Move move = action.Key;
-            sequenceList.Add(CreateSequence(move.GetPrimaryType()));
         }
         return sequenceList.ToArray();
     }
-    private static Sequence CreateSequence(MoveType moveType){
-        float relativeTime = 0.0f;
-        int numberOfGems = 6;
-        List<int> noteList = new List<int>();
 
-        //adds up to 1 bars
-        while(relativeTime < 1.0f){
-            //get a random duration
-            int note = GetRandDuration();
-            //add it to the time
-            relativeTime += 1.0f/(float)note;
-            noteList.Add(note);
-        }
-        return new Sequence(moveType,noteList.ToArray());
-    }
     private static int GetRandDuration(){
         int r = Random.Range(0, 2);
         switch(r){

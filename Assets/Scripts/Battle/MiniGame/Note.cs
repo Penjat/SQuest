@@ -9,4 +9,10 @@ public class Note {
         _duration = duration;
         _isRest = isRest;
     }
+    public int GetDuration(){
+        return _duration;
+    }
+    public bool IsRest(){
+        return _isRest;
+    }
 }
