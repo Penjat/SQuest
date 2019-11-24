@@ -10,7 +10,7 @@ public class ActionInput : MonoBehaviour {
     private KeyCode _keyCode;
     public Animator _animator;
 
-    private Gem[] _gems;
+    private List<Gem> _gems;
     public RectTransform _track;
     public GameObject _gemPrefab;
 
@@ -74,7 +74,7 @@ public class ActionInput : MonoBehaviour {
     }
 
     private void CheckNextGem(){
-        if(_curIndex < _gems.Length){
+        if(_curIndex < _gems.Count){
             Gem gem = _gems[_curIndex];
             if (gem.CheckMissed(_track.anchoredPosition.y)){
                 ClearCurGem(true);
@@ -82,7 +82,7 @@ public class ActionInput : MonoBehaviour {
         }
     }
 
-    public void CreateGems(float startingOffset,Sequence sequence){
+    public void CreateGems(float startingOffset, Sequence sequence){
         Debug.Log("creating gems");
         _isNeeded = true;
 
@@ -93,7 +93,7 @@ public class ActionInput : MonoBehaviour {
         _gemOffset = _edgeOfScreen+startingOffset;
         int numGems = noteArray.Length;
         _track.anchoredPosition = new Vector2(0.0f,0.0f);
-        _gems = new Gem[numGems];
+        _gems = new List<Gem>();
         for(int i=0;i<numGems;i++){
             Note note = noteArray[i];
             CreateGem(i, note);
@@ -111,14 +111,14 @@ public class ActionInput : MonoBehaviour {
         //float pos = _edgeOfScreen + index*_spacing;
         gem.SetPosition(_gemOffset);
         _gemOffset += _spacing/note.GetDuration();
-        _gems[index] = gem;
+        _gems.Add(gem);
     }
     public void WasPressed(){
         Debug.Log("should delete the next gem");
 
         //clear the next gem according to the curIndex
         //make sure not outside of range
-        if(_curIndex < _gems.Length){
+        if(_curIndex < _gems.Count){
             ClearCurGem();
         }
         _animator.Play("Press");
