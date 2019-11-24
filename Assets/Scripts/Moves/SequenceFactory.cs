@@ -28,7 +28,7 @@ public class SequenceFactory {
         return new Sequence(moveType,noteList.ToArray());
     }
     private static int GetRandNote(){
-        int r = Random.Range(0, 3);
+        int r = Random.Range(0, 2);
         switch(r){
             case 0:
             return 2;

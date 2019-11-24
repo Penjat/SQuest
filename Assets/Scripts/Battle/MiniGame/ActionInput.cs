@@ -84,10 +84,11 @@ public class ActionInput : MonoBehaviour {
 
     public void CreateGems(float startingOffset,Sequence sequence){
         Debug.Log("creating gems");
+        _isNeeded = true;
 
         int[] timingArray = sequence.GetArray();
         SetActive(sequence.GetMoveType());
-        
+
         //reset where the gems start
         _gemOffset = _edgeOfScreen+startingOffset;
         int numGems = timingArray.Length;
@@ -125,6 +126,7 @@ public class ActionInput : MonoBehaviour {
     }
     public void Hide(){
         _isNeeded = false;
+        gameObject.SetActive(false);
     }
     public void Show(bool b){
         //only shows if needed

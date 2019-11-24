@@ -34,7 +34,7 @@ public class MiniGameManager : MonoBehaviour, TextTyperDelegate, ActionInputDele
         _delegate = miniGameDelegate;
         gameObject.SetActive(true);
         foreach(ActionInput actionInput in _actionInputs){
-            actionInput.Show(false);
+            actionInput.Hide();
         }
         //CalcInputActions(partsUsed);//should be an empty set
         Sequence[] sequenceArray = SequenceFactory.CreateSequenceArray(actions);
@@ -49,19 +49,6 @@ public class MiniGameManager : MonoBehaviour, TextTyperDelegate, ActionInputDele
         _gameState = GameState.TypingText;
         string toType = "here is some text";
         _descriptionLabel.StartTyping(this, toType, 0.04f, 2.0f);
-    }
-    private void CalcInputActions(IDictionary<MoveType,Move> partsUsed){
-        CheckActionInput(partsUsed, _actionInputs[RIGHT], MoveType.Hand);
-        CheckActionInput(partsUsed, _actionInputs[TOP], MoveType.Mouth);
-        CheckActionInput(partsUsed, _actionInputs[LEFT], MoveType.Breasts);
-        CheckActionInput(partsUsed, _actionInputs[BOTTOM], MoveType.Ass);
-    }
-    private void CheckActionInput(IDictionary<MoveType,Move> partsUsed, ActionInput actionInput, MoveType moveType){
-        if(partsUsed.ContainsKey(moveType)){
-            actionInput.SetActive(moveType);
-            return;
-        }
-        actionInput.Hide();
     }
 
     public void StartRound(){
