@@ -7,11 +7,12 @@ public class SequenceFactory {
         List<Sequence> sequenceList = new List<Sequence>();
         foreach(KeyValuePair<Move, IEnemy[]> action in actions){
             //TODO add data from move
-            sequenceList.Add(CreateSequence());
+            Move move = action.Key;
+            sequenceList.Add(CreateSequence(move.GetPrimaryType()));
         }
         return sequenceList.ToArray();
     }
-    private static Sequence CreateSequence(){
+    private static Sequence CreateSequence(MoveType moveType){
         float relativeTime = 0.0f;
         int numberOfGems = 6;
         List<int> noteList = new List<int>();
@@ -24,7 +25,7 @@ public class SequenceFactory {
             relativeTime += 1.0f/(float)note;
             noteList.Add(note);
         }
-        return new Sequence(noteList.ToArray());
+        return new Sequence(moveType,noteList.ToArray());
     }
     private static int GetRandNote(){
         int r = Random.Range(0, 3);

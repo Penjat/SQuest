@@ -39,9 +39,7 @@ public class MiniGameManager : MonoBehaviour, TextTyperDelegate, ActionInputDele
         //CalcInputActions(partsUsed);//should be an empty set
         Sequence[] sequenceArray = SequenceFactory.CreateSequenceArray(actions);
         for(int i=0;i<sequenceArray.Length;i++){
-            _actionInputs[i].CreateGems(0.0f, sequenceArray[i].GetSequence());
-            //TODO change for move type
-            _actionInputs[i].SetActive(MoveType.Mouth);
+            _actionInputs[i].CreateGems(0.0f, sequenceArray[i]);
         }
 
         ShowText();

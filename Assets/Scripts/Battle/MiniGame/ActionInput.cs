@@ -82,8 +82,12 @@ public class ActionInput : MonoBehaviour {
         }
     }
 
-    public void CreateGems(float startingOffset,int[] timingArray){
+    public void CreateGems(float startingOffset,Sequence sequence){
         Debug.Log("creating gems");
+
+        int[] timingArray = sequence.GetArray();
+        SetActive(sequence.GetMoveType());
+        
         //reset where the gems start
         _gemOffset = _edgeOfScreen+startingOffset;
         int numGems = timingArray.Length;

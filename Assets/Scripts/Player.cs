@@ -20,6 +20,7 @@ public class Player {
         // AddMove(new Move("Doggy Style", new HashSet<MoveType>{MoveType.Ass, MoveType.Hand}, 6));
         // AddMove(new Move("Flash Tits", new HashSet<MoveType>{MoveType.Breasts}, 1, true));
         AddMove(new Blowjob());
+        AddMove(new HandJob());
 
     }
     public void AddMove(Move move){

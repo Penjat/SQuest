@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class Sequence  {
     int[] _array;
-    public Sequence(int[] array){
+    MoveType _moveType;
+    public Sequence(MoveType moveType, int[] array){
+        _moveType = moveType;
         _array = array;
     }
-    public int[] GetSequence(){
+    public int[] GetArray(){
         return _array;
+    }
+    public MoveType GetMoveType(){
+        return _moveType;
     }
 }
