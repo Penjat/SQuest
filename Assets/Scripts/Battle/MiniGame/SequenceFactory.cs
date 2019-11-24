@@ -17,23 +17,36 @@ public class SequenceFactory {
 
         //distribute the playerSequence amounst the sequence List
         foreach(BeatEvent beat in playerSequence){
-            //choose a random sequence
-            int r = Random.Range(0,sequenceList.Count);
+            //finds all the active beats at this instance
+            HashSet<int> activeBeats = FindActiveBeats(beat.GetNumNotes(), sequenceList.Count);
             for(int i=0;i<sequenceList.Count;i++){
-                int duration = beat.GetDuration();
+                //add a note to each sequence
                 Sequence sequence = sequenceList[i];
-                if(i == r){
-                    Note note = new Note(duration,false);
-                    sequence.AddNote(note);
-                }else{
-                    Note note = new Note(duration,true);
-                    sequence.AddNote(note);
-                }
+                int duration = beat.GetDuration();
+                //set the note to be a rest or not
+                bool isRest = !activeBeats.Contains(i);
+                Note note = new Note(duration,isRest);
+                sequence.AddNote(note);
             }
         }
-
-
         return sequenceList.ToArray();
+    }
+    private static HashSet<int> FindActiveBeats(int numActiveBeats, int listCount){
+        //returns a set with the index of the actionInputs that will have active beats
+        HashSet<int> activeBeats = new HashSet<int>();
+
+        //create a list of all the posible numbers
+        List<int> posNumbers = new List<int>();
+        for(int i=0;i<listCount;i++){
+            posNumbers.Add(i);
+        }
+        //for every beat we want, pull out a posible number
+        for(int i=0;i<numActiveBeats;i++){
+            int r = Random.Range(0,posNumbers.Count);
+            activeBeats.Add(posNumbers[r]);
+            posNumbers.RemoveAt(r);
+        }
+        return activeBeats;
     }
 
     private static int GetRandDuration(){
@@ -58,8 +71,8 @@ public class SequenceFactory {
 
         //adds up to 1 bars
         while(relativeTime < 1.0f){
-            //get a random duration
-            BeatEvent beat = new BeatEvent(4, 1);
+            int notesAtOnce = Random.Range(1,3);
+            BeatEvent beat = new BeatEvent(4, notesAtOnce);
             //add it to the time
             relativeTime += 1.0f/(float)beat.GetDuration();
             beatList.Add(beat);
