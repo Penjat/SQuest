@@ -41,7 +41,8 @@ public class SequenceFactory {
             posNumbers.Add(i);
         }
         //for every beat we want, pull out a posible number
-        for(int i=0;i<numActiveBeats;i++){
+        //check to make sure there are that many moves active
+        for(int i=0;i<numActiveBeats && i<listCount;i++){
             int r = Random.Range(0,posNumbers.Count);
             activeBeats.Add(posNumbers[r]);
             posNumbers.RemoveAt(r);
