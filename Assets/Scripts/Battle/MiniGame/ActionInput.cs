@@ -26,7 +26,7 @@ public class ActionInput : MonoBehaviour {
     private Vector2 _startPos = new Vector2(0.0f,0.0f);
     private Vector2 _endPos;
     private float _timer = 0.0f;
-    private float _travelTime = 10.0f;
+    private float _travelTime = 6.0f;
 
     void Update(){
         if(_isMoving && _isNeeded){
@@ -58,6 +58,7 @@ public class ActionInput : MonoBehaviour {
     public void StartMoving(){
         _curIndex = 0;
         _timer = 0.0f;
+        //TODO fix how this is calculated
         float endY = -(160.0f*6.0f + _edgeOfScreen);
         _endPos = new Vector2(0.0f,endY);
         _isMoving = true;
