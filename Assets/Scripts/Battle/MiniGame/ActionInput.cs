@@ -19,7 +19,7 @@ public class ActionInput : MonoBehaviour {
     private int _curIndex = 0;
 
     private float _edgeOfScreen = 400.0f;
-    private float _spacing = 624.0f;
+    private float _spacing = 600.0f;//spacing for one bar
     private float _gemOffset = 0.0f;
 
 
@@ -55,11 +55,12 @@ public class ActionInput : MonoBehaviour {
         Text buttonText = GetComponentInChildren<Text>();
         buttonText.text = keyCode.ToString();
     }
-    public void StartMoving(double bpm,int numberOfBeats){
+    public void StartMoving(float bpm,int numberOfBeats){
         _curIndex = 0;
         _timer = 0.0f;
         //TODO fix how this is calculated
-        float endY = -(160.0f*6.0f + _edgeOfScreen);
+        _travelTime = (float)numberOfBeats*(60.0f/bpm);
+        float endY = -(_spacing/4*numberOfBeats + _edgeOfScreen);
         _endPos = new Vector2(0.0f,endY);
         _isMoving = true;
     }
@@ -84,7 +85,7 @@ public class ActionInput : MonoBehaviour {
     }
 
     public void CreateGems(float startingOffset, Sequence sequence){
-        Debug.Log("creating gems");
+        Debug.Log("creating gems " + sequence.GetNotes().Length);
         _isNeeded = true;
 
         Note[] noteArray = sequence.GetNotes();
@@ -103,6 +104,7 @@ public class ActionInput : MonoBehaviour {
     private void CreateGem(int index, Note note){
         if(note.IsRest()){
             _gemOffset += _spacing/note.GetDuration();
+            Debug.Log("is rest");
             return;
         }
         GameObject g = Instantiate(_gemPrefab);

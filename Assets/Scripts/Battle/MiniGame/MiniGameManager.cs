@@ -21,8 +21,8 @@ public class MiniGameManager : MonoBehaviour, TextTyperDelegate, ActionInputDele
     private const int RIGHT = 2;
     private const int LEFT = 3;
 
-    private double bpm = 120.0;
-    private int numberOfBeats = 17;
+    private float bpm = 60.0f;
+    private int numberOfBeats = 16;
 
     void Start(){
         //set up the actionInputs with the correct keycodes
@@ -40,7 +40,7 @@ public class MiniGameManager : MonoBehaviour, TextTyperDelegate, ActionInputDele
             actionInput.Hide();
         }
         //CalcInputActions(partsUsed);//should be an empty set
-        Sequence[] sequenceArray = SequenceFactory.CreateSequenceArray(actions);
+        Sequence[] sequenceArray = SequenceFactory.CreateSequenceArray(actions, numberOfBeats);
         for(int i=0;i<sequenceArray.Length;i++){
             _actionInputs[i].CreateGems(0.0f, sequenceArray[i]);
         }
@@ -56,7 +56,7 @@ public class MiniGameManager : MonoBehaviour, TextTyperDelegate, ActionInputDele
 
     public void StartRound(){
         _gameState = GameState.Playing;
-        _timer = 10.0;
+        _timer = (numberOfBeats+1)*(60/bpm);
         foreach(ActionInput actionInput in _actionInputs){
             actionInput.Show(true);
             //actionInput.CreateGems(0.0f,new int[]{8,8,4,4});

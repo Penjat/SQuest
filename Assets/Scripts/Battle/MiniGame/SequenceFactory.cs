@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SequenceFactory {
-    public static Sequence[] CreateSequenceArray(IDictionary<Move, IEnemy[]> actions){
+    public static Sequence[] CreateSequenceArray(IDictionary<Move, IEnemy[]> actions, int numberOfBeats){
         //create a general array of what inputs will be for the player
-        BeatEvent[] playerSequence = CreatePlayerSequence();
+        BeatEvent[] playerSequence = CreatePlayerSequence(numberOfBeats);
 
         //create a list of the sequences needed
         List<Sequence> sequenceList = new List<Sequence>();
@@ -62,16 +62,17 @@ public class SequenceFactory {
         }
         return 4;
     }
-    private static BeatEvent[] CreatePlayerSequence(){
+    private static BeatEvent[] CreatePlayerSequence(int numberOfBeats){
         //creates a sequence of inputs of the appropriate difficulty
         //considers how many actions a player will have to make at once
         //will later divide between the different action inputs involved
 
         float relativeTime = 0.0f;
+        float timeLimit = (float)(numberOfBeats/4);
         List<BeatEvent> beatList = new List<BeatEvent>();
 
-        //adds up to 1 bars
-        while(relativeTime < 1.0f){
+        //adds up to number of bars
+        while(relativeTime < timeLimit){
             int notesAtOnce = Random.Range(1,3);
             BeatEvent beat = new BeatEvent(4, notesAtOnce);
             //add it to the time
