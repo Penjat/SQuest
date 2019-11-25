@@ -55,7 +55,7 @@ public class ActionInput : MonoBehaviour {
         Text buttonText = GetComponentInChildren<Text>();
         buttonText.text = keyCode.ToString();
     }
-    public void StartMoving(){
+    public void StartMoving(double bpm,int numberOfBeats){
         _curIndex = 0;
         _timer = 0.0f;
         //TODO fix how this is calculated

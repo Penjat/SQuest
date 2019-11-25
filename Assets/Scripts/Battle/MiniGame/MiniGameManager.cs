@@ -21,6 +21,9 @@ public class MiniGameManager : MonoBehaviour, TextTyperDelegate, ActionInputDele
     private const int RIGHT = 2;
     private const int LEFT = 3;
 
+    private double bpm = 120.0;
+    private int numberOfBeats = 17;
+
     void Start(){
         //set up the actionInputs with the correct keycodes
         _actionInputs[TOP].SetUp(this,KeyCode.W);
@@ -57,7 +60,7 @@ public class MiniGameManager : MonoBehaviour, TextTyperDelegate, ActionInputDele
         foreach(ActionInput actionInput in _actionInputs){
             actionInput.Show(true);
             //actionInput.CreateGems(0.0f,new int[]{8,8,4,4});
-            actionInput.StartMoving();
+            actionInput.StartMoving(bpm, numberOfBeats);
         }
     }
     void Update(){
