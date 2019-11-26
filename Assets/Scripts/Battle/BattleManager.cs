@@ -6,6 +6,8 @@ using System.Linq;
 
 public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, ChooseMoveMenuDelegate, CategoryManagerDelegate, MiniGameDelegate {
 
+    private BattleManagerDelegate _delegate;
+
     public EnemyManager _enemyManager;
     public CategoryManager _categoryManager;
     private TurnManager _turnManager;
@@ -13,8 +15,7 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
     public MiniGameManager _miniGameManager;
     public PlayerControls _playerControls;
     public InfoLabelManager _infoLabelManager;
-
-    private BattleManagerDelegate _delegate;
+    private BattleTextFactory _battleTextFactory;
 
     public ChooseMoveMenu _moveMenu;
 
@@ -40,6 +41,7 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
         _playerActionManager = new PlayerActionManager(_delegate.GetPlayer(), playerHealthBar);
         _moveMenu.SetUp(this);
         _infoLabelManager.SetUp(_playerActionManager);
+        _battleTextFactory = new BattleTextFactory();
     }
     public void StartBattle(Battle battle) {
         _enemyManager.StartBattle(battle);
@@ -79,7 +81,8 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
     public void StartPlayerAction(){
         //start the mini game
         Debug.Log("Start player action");
-        _miniGameManager.StartGame(this,_playerActionManager.GetActions(),"hi");
+        string textToType = _battleTextFactory.GetText(_delegate.GetPlayer(), _playerActionManager.GetActions());
+        _miniGameManager.StartGame(this,_playerActionManager.GetActions(),textToType);
     }
     public void StartEnemyTurn(){
         //start the enemies turn
