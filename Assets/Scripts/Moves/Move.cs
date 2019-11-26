@@ -25,6 +25,10 @@ public abstract class Move {
     public virtual string GetName(){
         return _name;
     }
+    public virtual string GetText(Player player, IEnemy[] enemies){
+        string text = "you use " + this.GetName() + " on the enemies.";
+        return text;
+    }
     public virtual MoveType GetPrimaryType(){
         return _primaryType;
     }

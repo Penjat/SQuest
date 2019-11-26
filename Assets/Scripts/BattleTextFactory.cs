@@ -15,7 +15,7 @@ public class BattleTextFactory {
         foreach(KeyValuePair<Move,IEnemy[]> action in actions){
             Move move = action.Key;
             IEnemy[] targetedEnemies = action.Value;
-            battleText += move.GetName(); 
+            battleText += move.GetText(player,targetedEnemies); 
         }
         return battleText;
     }
