@@ -31,7 +31,7 @@ public class MiniGameManager : MonoBehaviour, TextTyperDelegate, ActionInputDele
         _actionInputs[LEFT].SetUp(this,KeyCode.A);
         _actionInputs[RIGHT].SetUp(this,KeyCode.D);
     }
-    public void StartGame(MiniGameDelegate miniGameDelegate, IDictionary<Move, IEnemy[]> actions){
+    public void StartGame(MiniGameDelegate miniGameDelegate, IDictionary<Move, IEnemy[]> actions, string battleText){
         Debug.Log("starting mini game");
         //TODO pass in info
         _delegate = miniGameDelegate;
@@ -45,13 +45,11 @@ public class MiniGameManager : MonoBehaviour, TextTyperDelegate, ActionInputDele
             _actionInputs[i].CreateGems(0.0f, sequenceArray[i]);
         }
 
-        ShowText();
+        ShowText(battleText);
     }
-    private void ShowText(){
-        //TODO calculate time properly
+    private void ShowText(string battleText){
         _gameState = GameState.TypingText;
-        string toType = "here is some text";
-        _descriptionLabel.StartTyping(this, toType, 0.04f, 2.0f);
+        _descriptionLabel.StartTyping(this, battleText, 0.04f, 2.0f);
     }
 
     public void StartRound(){
