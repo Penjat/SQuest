@@ -23,9 +23,10 @@ public class SequenceFactory {
                 //add a note to each sequence
                 Sequence sequence = sequenceList[i];
                 int duration = beat.GetDuration();
+                int beatPos = beat.GetBeatPos();
                 //set the note to be a rest or not
                 bool isRest = !activeBeats.Contains(i);
-                Note note = new Note(duration,isRest);
+                Note note = new Note(duration,isRest,beatPos);
                 sequence.AddNote(note);
             }
         }
@@ -69,14 +70,21 @@ public class SequenceFactory {
 
         float relativeTime = 0.0f;
         float timeLimit = (float)(numberOfBeats/4);
+        int curBeat = 0;
         List<BeatEvent> beatList = new List<BeatEvent>();
 
         //adds up to number of bars
         while(relativeTime < timeLimit){
             int notesAtOnce = Random.Range(1,3);
-            BeatEvent beat = new BeatEvent(4, notesAtOnce);
+            if(curBeat%16 == 0){
+                notesAtOnce = 2;
+            }else{
+                notesAtOnce = 1;
+            }
+            BeatEvent beat = new BeatEvent(4, notesAtOnce, curBeat);
             //add it to the time
             relativeTime += 1.0f/(float)beat.GetDuration();
+            curBeat += 16/beat.GetDuration();
             beatList.Add(beat);
         }
         //TODO maybe to array is not needed

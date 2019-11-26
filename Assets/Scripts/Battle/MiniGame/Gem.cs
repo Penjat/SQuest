@@ -12,10 +12,17 @@ public class Gem : MonoBehaviour {
     private float _accuracy;
     public UIParticleSystem _explode;
     public Animator _animator;
+    public Image _image;
 
     public bool CheckMissed(float pos){
         //check if has moved too far
         return (_goal + 40.0f + pos < 0.0f);//adding half the size of the button
+    }
+    public void SetDownBeat(bool b){
+        if(b){
+            _image.color = Color.blue;
+            return;
+        }
     }
 
     public void SetPosition(float pos){

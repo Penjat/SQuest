@@ -142,6 +142,7 @@ MonoBehaviour:
   _rect: {fileID: 7762861625202364987}
   _explode: {fileID: 8025195415757724211}
   _animator: {fileID: 4924692927082106740}
+  _image: {fileID: 7089067866089423397}
 --- !u!95 &4924692927082106740
 Animator:
   serializedVersion: 3

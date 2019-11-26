@@ -112,6 +112,9 @@ public class ActionInput : MonoBehaviour {
 
         Gem gem = g.GetComponent<Gem>();
         //float pos = _edgeOfScreen + index*_spacing;
+        if(note.GetBeatPos()%16 == 0){
+            gem.SetDownBeat(true);
+        }
         gem.SetPosition(_gemOffset);
         _gemOffset += _spacing/note.GetDuration();
         _gems.Add(gem);

@@ -5,9 +5,11 @@ using UnityEngine;
 public class Note {
     int _duration;
     bool _isRest;
-    public Note(int duration, bool isRest){
+    int _beatPos;
+    public Note(int duration, bool isRest, int beatPos){
         _duration = duration;
         _isRest = isRest;
+        _beatPos = beatPos;
     }
 
     public int GetDuration(){
@@ -15,5 +17,8 @@ public class Note {
     }
     public bool IsRest(){
         return _isRest;
+    }
+    public int GetBeatPos(){
+        return _beatPos;
     }
 }

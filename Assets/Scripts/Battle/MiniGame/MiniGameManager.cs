@@ -21,7 +21,7 @@ public class MiniGameManager : MonoBehaviour, TextTyperDelegate, ActionInputDele
     private const int RIGHT = 2;
     private const int LEFT = 3;
 
-    private float bpm = 60.0f;
+    private float bpm = 80.0f;
     private int numberOfBeats = 16;
 
     void Start(){
