@@ -10,4 +10,8 @@ public class HandJob : Move {
         _primaryType = MoveType.Hand;
         _partsUsed = new HashSet<MoveType>{MoveType.Hand};
     }
+    public override string GetText(Player player, IEnemy[] targetedEnemies){
+        string text = "you grab the " + targetedEnemies[0].GetName()+"'s hard cock and begin jerking";
+        return text;
+    }
 }
