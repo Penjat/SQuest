@@ -16,6 +16,7 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
     public PlayerControls _playerControls;
     public InfoLabelManager _infoLabelManager;
     private BattleTextFactory _battleTextFactory;
+    public MenuLoseBattle _menuLoseBattle;
 
     public ChooseMoveMenu _moveMenu;
 
@@ -42,6 +43,7 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
         _moveMenu.SetUp(this);
         _infoLabelManager.SetUp(_playerActionManager);
         _battleTextFactory = new BattleTextFactory();
+        _menuLoseBattle.Hide();
     }
     public void StartBattle(Battle battle) {
         _enemyManager.StartBattle(battle);
@@ -120,7 +122,8 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
     public void DoneBattle(){
         //TODO post battle screen
         _enemyManager.ClearEnemies();
-        _delegate.DoneBattle();
+        _menuLoseBattle.DisplayMenu("you pass out...");
+        //_delegate.DoneBattle();
 
     }
     public void OverEnemy(IEnemy enemy){
