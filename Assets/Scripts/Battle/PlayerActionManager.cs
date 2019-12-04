@@ -94,8 +94,8 @@ public class PlayerActionManager : StatusBarDelegate {
             return;
         }
         //TODO calculate this properly
-        if(accuracy >99.0f){
-            PlayerTakeDmg(4);
+        if(accuracy > 99.0f){
+            PlayerTakeDmg(10);
         }
     }
     public IEnemy[] GetTargetsFor(Move move){
