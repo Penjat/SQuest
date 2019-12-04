@@ -157,6 +157,9 @@ public class ActionInput : MonoBehaviour {
         //TODO calculate accuracy
         _delegate.GemCleared(_moveType);
     }
+    public bool GetIsNeeded(){
+        return _isNeeded;
+    }
 }
 
 public interface ActionInputDelegate{

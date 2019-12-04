@@ -71,10 +71,20 @@ public class MiniGameManager : MonoBehaviour, TextTyperDelegate, ActionInputDele
     public void StartRound(){
         _gameState = GameState.Playing;
         _timer = (numberOfBeats+1)*(60/bpm);
+
+        bool willPlay = false;
         foreach(ActionInput actionInput in _actionInputs){
             actionInput.Show(true);
-            //actionInput.CreateGems(0.0f,new int[]{8,8,4,4});
+            if(actionInput.GetIsNeeded()){
+                //there is at least one input active
+                willPlay = true;
+            }
             actionInput.StartMoving(bpm, numberOfBeats);
+        }
+
+        //check if there actually are inputs needed
+        if(!willPlay){
+            _timer = 0.0f;
         }
     }
 
