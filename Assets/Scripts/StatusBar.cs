@@ -57,7 +57,6 @@ public class StatusBar : MonoBehaviour {
         SetValueAnimated((float)value);
     }
     public void SetValueAnimated(float value){
-        Debug.Log("starting. value = " + value + " , curValue = " + _curValue);
         _toValue = value;
         if(_toValue > _maxValue){
             _toValue = _maxValue;
@@ -68,11 +67,9 @@ public class StatusBar : MonoBehaviour {
         _isChanging = true;
         if(_toValue > _curValue){
             //Should fill up
-            Debug.Log("should go up");
             _fillDir = FillDir.UP;
         }else if(_toValue < _curValue){
             //should fill down
-            Debug.Log("should go down");
             _fillDir = FillDir.DOWN;
         }else{
             //does not need to fill
