@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate {
     public Animator _animator;
 
     public Image _button;
+    public DMGLabel _dmgLabel;
 
     private float _curClimax = 0.0f;
     private float _maxClimax = 8.0f;
@@ -71,6 +72,7 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate {
         Debug.Log("doing dmg --------------------------");
         _curClimax += dmg;
         _climaxBar.SetValueAnimated(_curClimax);
+        _dmgLabel.ShowDmg(dmg);
     }
     public void CheckClimax(){
         if(_curClimax >= _maxClimax){
