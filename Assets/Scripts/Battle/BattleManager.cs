@@ -189,7 +189,8 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
 
 
     //-------------MiniGame Delegate----------------------
-    public void MiniGameFinished(){
+    public void MiniGameFinished(IDictionary<Move,float> results){
+        _playerActionManager.SetResults(results);
         _miniGameManager.Hide();
         _turnManager.EndPlayerAction();
     }

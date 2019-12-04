@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class Sequence  {
     List<Note> _noteList;
-    MoveType _moveType;
-    public Sequence(MoveType moveType){
-        _moveType = moveType;
+    Move _move;
+    public Sequence(Move move){
+        _move = move;
         _noteList = new List<Note>();
     }
     public Note[] GetNotes(){
         return _noteList.ToArray();
     }
     public MoveType GetMoveType(){
-        return _moveType;
+        return _move.GetPrimaryType();
     }
     public void AddNote(Note note){
         _noteList.Add(note);

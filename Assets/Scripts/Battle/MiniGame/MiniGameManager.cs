@@ -100,7 +100,17 @@ public class MiniGameManager : MonoBehaviour, TextTyperDelegate, ActionInputDele
         foreach(ActionInput actionInput in _actionInputs){
             actionInput.Clear();
         }
-        _delegate.MiniGameFinished();
+        //TODO create dictionary
+        IDictionary<Move,float> results = new Dictionary<Move, float>();
+
+        //cycle through the action inputs and calculate the results
+        foreach(ActionInput actionInput in _actionInputs){
+            if(actionInput.GetIsNeeded()){
+                //TODO fix this
+                //results.Add()
+            }
+        }
+        _delegate.MiniGameFinished(results);
     }
     public void Hide(){
         gameObject.SetActive(false);
@@ -130,6 +140,6 @@ public class MiniGameManager : MonoBehaviour, TextTyperDelegate, ActionInputDele
 }
 
 public interface MiniGameDelegate{
-    void MiniGameFinished();
+    void MiniGameFinished(IDictionary<Move,float> results);
     void GemCleared(MoveType moveType, float accuracy);
 }

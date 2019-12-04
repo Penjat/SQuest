@@ -12,7 +12,7 @@ public class SequenceFactory {
         foreach(KeyValuePair<Move, IEnemy[]> action in actions){
             //TODO add data from move
             Move move = action.Key;
-            sequenceList.Add(new Sequence(move.GetPrimaryType()));
+            sequenceList.Add(new Sequence(move));
         }
 
         //distribute the playerSequence amounst the sequence List

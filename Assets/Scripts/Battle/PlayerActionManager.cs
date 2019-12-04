@@ -11,6 +11,7 @@ public class PlayerActionManager : StatusBarDelegate {
     private Move _curMove;
     private IDictionary<Move,IEnemy[]> _actions = new Dictionary<Move, IEnemy[]>();
     private IDictionary<MoveType,Move> _usedParts = new Dictionary<MoveType, Move>();
+    private IDictionary<Move,float> _actionResults;
     //TODO posibly have IEnemy[] for multiple targets
 
     private StatusBar _playerHealthBar;
@@ -41,7 +42,6 @@ public class PlayerActionManager : StatusBarDelegate {
         _actions.Add(_curMove, targets);
         AddToUsedParts(_curMove);
         _curMove = null;
-
     }
     public void CancelMoveType(MoveType moveType){
         foreach(KeyValuePair<Move,IEnemy[]> action in _actions){
@@ -78,8 +78,10 @@ public class PlayerActionManager : StatusBarDelegate {
         foreach(KeyValuePair<Move, IEnemy[]> action in _actions){
             IEnemy[] enemies = action.Value;
             Move move = action.Key;
+            //float result = _actionResults[move];
+            int dmg = move.GetDmg();
             foreach(IEnemy enemy in enemies){
-                enemy.DoDmg(move.GetDmg());
+                enemy.DoDmg(dmg);
             }
         }
     }
@@ -109,6 +111,9 @@ public class PlayerActionManager : StatusBarDelegate {
     }
     public IDictionary<Move, IEnemy[]> GetActions(){
         return _actions;
+    }
+    public void SetResults(IDictionary<Move,float> results){
+        _actionResults = results;
     }
     //---------------StatusBar Delegate-----------------
     public void DoneFilling(){
