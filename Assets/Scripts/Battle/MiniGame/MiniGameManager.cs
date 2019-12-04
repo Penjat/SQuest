@@ -31,6 +31,14 @@ public class MiniGameManager : MonoBehaviour, TextTyperDelegate, ActionInputDele
         _actionInputs[LEFT].SetUp(this,KeyCode.A);
         _actionInputs[RIGHT].SetUp(this,KeyCode.D);
     }
+    void Update(){
+        if(_gameState == GameState.Playing){
+            _timer -= Time.deltaTime;
+            if(_timer <= 0.0){
+                EndRound();
+            }
+        }
+    }
     public void StartGame(MiniGameDelegate miniGameDelegate, IDictionary<Move, IEnemy[]> actions, string battleText){
         Debug.Log("starting mini game");
         //TODO pass in info
@@ -69,14 +77,7 @@ public class MiniGameManager : MonoBehaviour, TextTyperDelegate, ActionInputDele
             actionInput.StartMoving(bpm, numberOfBeats);
         }
     }
-    void Update(){
-        if(_gameState == GameState.Playing){
-            _timer -= Time.deltaTime;
-            if(_timer <= 0.0){
-                EndRound();
-            }
-        }
-    }
+
     private void EndRound(){
         _timer = 0.0;
         _gameState = GameState.Waiting;
