@@ -28,6 +28,8 @@ public class ActionInput : MonoBehaviour {
     private float _timer = 0.0f;
     private float _travelTime = 6.0f;
 
+    private float _accuracy;
+
     void Update(){
         if(_isMoving && _isNeeded){
             MoveTrack();
@@ -81,7 +83,15 @@ public class ActionInput : MonoBehaviour {
             if (gem.CheckMissed(_track.anchoredPosition.y)){
                 ClearCurGem(true);
             }
+            return;
         }
+        GemsDone();
+    }
+    private void GemsDone(){
+
+        _isMoving = false;
+        float gemAccuracy = _accuracy / (float)_gems.Count;
+        Debug.Log("Done. Accuracy was " + gemAccuracy);
     }
 
     public void CreateGems(float startingOffset, Sequence sequence){
@@ -151,10 +161,13 @@ public class ActionInput : MonoBehaviour {
         gem.Clear(_track.anchoredPosition.y);
         _curIndex++;
         if(wasMissed){
+            //TODO assume 100 accuarcy for miss
+            _accuracy += 100.0f;
             _delegate.GemMissed(_moveType);
             return;
         }
         //TODO calculate accuracy
+        //pretend has perfect accuracy
         _delegate.GemCleared(_moveType);
     }
     public bool GetIsNeeded(){
