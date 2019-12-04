@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MenuLoseBattle : MonoBehaviour, TextTyperDelegate {
+public class MenuLoseBattle : BattleMenu, TextTyperDelegate {
     public TextTyper _textTyper;
 
     public void DisplayMenu(string loseText){
@@ -16,6 +16,7 @@ public class MenuLoseBattle : MonoBehaviour, TextTyperDelegate {
     //--------------Delegate Methiods---------------
     public void DoneTyping(){
         Debug.Log("done typing");
+        _delegate.SendMSG(BattleMSG.LOSE);
     }
 
 }

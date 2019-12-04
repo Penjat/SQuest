@@ -21,8 +21,8 @@ public class EnemyManager : MonoBehaviour, EnemyDelegate {
 
         //TODO create based on battle
         CreateEnemy();
-        CreateEnemy();
-        CreateEnemy();
+        //CreateEnemy();
+        //CreateEnemy();
     }
 
     public void ClearEnemies(){

@@ -30,7 +30,7 @@ public class MainManager : MonoBehaviour, BattleManagerDelegate, PlayerDelegate 
     }
 
     //----------------BattleManagerDelegate Methods--------------
-    public void DoneBattle(){
+    public void ExitBattle(){
         _menuManager.NavigateTo(MenuManager.TITLE);
     }
     public Player GetPlayer(){
