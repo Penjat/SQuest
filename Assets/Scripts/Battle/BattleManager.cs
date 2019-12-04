@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 
-public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, ChooseMoveMenuDelegate, CategoryManagerDelegate, MiniGameDelegate, BattleMenuManagerDelegate {
+public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, ChooseMoveMenuDelegate, CategoryManagerDelegate, MiniGameDelegate, BattleMenuManagerDelegate, MainManagerDelegate {
 
-    private BattleManagerDelegate _delegate;
+    private SubManagerDelegate _delegate;
 
     public EnemyManager _enemyManager;
     public CategoryManager _categoryManager;
@@ -23,6 +23,13 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
 
     private double _lastPress = 0.0f;
 
+    void Start(){
+        //Find the main manager
+        SubManagerDelegate subDelegate = GameObject.Find("MainManager").GetComponent<SubManagerDelegate>();
+        SetUp(subDelegate);
+        Battle battle = new Battle();
+        StartBattle(battle);
+    }
     void Update(){
         if (Input.GetMouseButtonDown(0)){
             double click = Time.time;
@@ -33,10 +40,12 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
         }
     }
 
-    public void SetUp(BattleManagerDelegate battleDelegate){
+    public void SetUp(SubManagerDelegate battleDelegate){
 
         Debug.Log("setting up for battle");
         _delegate = battleDelegate;
+        _delegate.SetSubManager(this);
+
         _turnManager = new TurnManager(this);
         _enemyManager.SetUp(this);
         _categoryManager.SetUp(this);
@@ -191,10 +200,4 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
     public void ExitBattle(){
         _delegate.ExitBattle();
     }
-}
-
-public interface BattleManagerDelegate{
-    //TODO pass in data about battle results
-    void ExitBattle();
-    Player GetPlayer();
 }
