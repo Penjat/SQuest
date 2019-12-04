@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 enum GameState{
-    Waiting,TypingText,Playing
+    Waiting,TypingText,Playing,Results
 };
 
 public class MiniGameManager : MonoBehaviour, TextTyperDelegate, ActionInputDelegate {
@@ -32,7 +32,13 @@ public class MiniGameManager : MonoBehaviour, TextTyperDelegate, ActionInputDele
         _actionInputs[RIGHT].SetUp(this,KeyCode.D);
     }
     void Update(){
+        //TODO handel timers differently
         if(_gameState == GameState.Playing){
+            _timer -= Time.deltaTime;
+            if(_timer <= 0.0){
+                ShowResults();
+            }
+        }else if(_gameState == GameState.Results){
             _timer -= Time.deltaTime;
             if(_timer <= 0.0){
                 EndRound();
@@ -98,6 +104,14 @@ public class MiniGameManager : MonoBehaviour, TextTyperDelegate, ActionInputDele
     }
     public void Hide(){
         gameObject.SetActive(false);
+    }
+    public void ShowResults(){
+        //shows the accuracy of the mini game
+        foreach(ActionInput actionInput in _actionInputs){
+            actionInput.ShowAccuracy();
+        }
+        _timer = 2.0f;
+        _gameState = GameState.Results;
     }
     //------------TextTyperDelegate
     public void DoneTyping(){

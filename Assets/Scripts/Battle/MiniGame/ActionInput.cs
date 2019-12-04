@@ -9,6 +9,7 @@ public class ActionInput : MonoBehaviour {
     private MoveType _moveType;
     private KeyCode _keyCode;
     public Animator _animator;
+    public GemScore _gemScore;
 
     private List<Gem> _gems;
     public RectTransform _track;
@@ -60,6 +61,8 @@ public class ActionInput : MonoBehaviour {
     public void StartMoving(float bpm,int numberOfBeats){
         _curIndex = 0;
         _timer = 0.0f;
+        _accuracy = 0.0f;
+        _gemScore.Hide();
         //TODO fix how this is calculated
         _travelTime = (float)numberOfBeats*(60.0f/bpm);
         float endY = -(_spacing/4*numberOfBeats + _edgeOfScreen);
@@ -172,6 +175,12 @@ public class ActionInput : MonoBehaviour {
     }
     public bool GetIsNeeded(){
         return _isNeeded;
+    }
+    public void ShowAccuracy(){
+        if(_isNeeded){
+            float gemAccuracy = Mathf.Round(100.0f - (_accuracy / (float)_gems.Count));
+            _gemScore.ShowScore(gemAccuracy);
+        }
     }
 }
 
