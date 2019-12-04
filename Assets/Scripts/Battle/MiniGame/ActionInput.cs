@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ActionInput : MonoBehaviour {
 
     private ActionInputDelegate _delegate;
-    private MoveType _moveType;
+    private Move _move;
     private KeyCode _keyCode;
     public Animator _animator;
     public GemScore _gemScore;
@@ -102,7 +102,7 @@ public class ActionInput : MonoBehaviour {
         _isNeeded = true;
 
         Note[] noteArray = sequence.GetNotes();
-        SetActive(sequence.GetMoveType());
+        SetActive(sequence.GetMove());
 
         //reset where the gems start
         _gemOffset = _edgeOfScreen+startingOffset;
@@ -143,9 +143,9 @@ public class ActionInput : MonoBehaviour {
         _animator.Play("Press");
 
     }
-    public void SetActive(MoveType moveType){
+    public void SetActive(Move move){
         _isNeeded = true;
-        _moveType = moveType;
+        _move = move;
     }
     public void Hide(){
         _isNeeded = false;
@@ -166,12 +166,12 @@ public class ActionInput : MonoBehaviour {
         if(wasMissed){
             //TODO assume 100 accuarcy for miss
             _accuracy += 100.0f;
-            _delegate.GemMissed(_moveType);
+            _delegate.GemMissed(_move.GetPrimaryType());
             return;
         }
         //TODO calculate accuracy
         //pretend has perfect accuracy
-        _delegate.GemCleared(_moveType);
+        _delegate.GemCleared(_move.GetPrimaryType());
     }
     public bool GetIsNeeded(){
         return _isNeeded;

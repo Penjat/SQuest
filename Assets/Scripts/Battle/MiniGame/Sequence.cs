@@ -15,6 +15,9 @@ public class Sequence  {
     public MoveType GetMoveType(){
         return _move.GetPrimaryType();
     }
+    public Move GetMove(){
+        return _move;
+    }
     public void AddNote(Note note){
         _noteList.Add(note);
     }
