@@ -47,6 +47,14 @@ public class MiniGameManager : MonoBehaviour, TextTyperDelegate, ActionInputDele
 
         ShowText(battleText);
     }
+    public void StopGame(){
+        //Called if player dies
+        _timer = 0.0;
+        _gameState = GameState.Waiting;
+        foreach(ActionInput actionInput in _actionInputs){
+            actionInput.Clear();
+        }
+    }
     private void ShowText(string battleText){
         _gameState = GameState.TypingText;
         _descriptionLabel.StartTyping(this, battleText, 0.04f, 2.0f);
@@ -87,12 +95,12 @@ public class MiniGameManager : MonoBehaviour, TextTyperDelegate, ActionInputDele
     //------------ActionInputDelegate--------------
     public void GemCleared(MoveType moveType){
         //TODO fix for missed
-        _delegate.GemCleared(moveType, 33.0f);
+        _delegate.GemCleared(moveType, 0.0f);
         _backgroundManager.ShowImage(moveType);
     }
     public void GemMissed(MoveType moveType){
         //TODO fix for missed
-        _delegate.GemCleared(moveType, 33.0f);
+        _delegate.GemCleared(moveType, 100.0f);
     }
 }
 

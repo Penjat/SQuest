@@ -34,7 +34,7 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
     }
 
     public void SetUp(BattleManagerDelegate battleDelegate){
-        
+
         Debug.Log("setting up for battle");
         _delegate = battleDelegate;
         _turnManager = new TurnManager(this);
@@ -65,6 +65,10 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
 
     public void CloseCategory(){
         _moveMenu.Hide();
+    }
+    public void PlayerDeath(){
+        _miniGameManager.StopGame();
+        _battleMenuManager.ShowLoseScreen();
     }
 
 

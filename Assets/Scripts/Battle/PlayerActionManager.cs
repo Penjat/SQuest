@@ -93,7 +93,7 @@ public class PlayerActionManager : StatusBarDelegate {
             //hand jobs dont do dmg to player
             return;
         }
-        PlayerTakeDmg(1);
+        PlayerTakeDmg(10);
     }
     public IEnemy[] GetTargetsFor(Move move){
         return _actions[move];

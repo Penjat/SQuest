@@ -39,5 +39,6 @@ public class MainManager : MonoBehaviour, BattleManagerDelegate, PlayerDelegate 
     //----------------Player Delegate methods--------------------
     public void HealthIsZero(){
         Debug.Log("player health is zero, should do something");
+        _battleManager.PlayerDeath();
     }
 }
