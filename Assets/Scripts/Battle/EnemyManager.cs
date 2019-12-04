@@ -24,6 +24,14 @@ public class EnemyManager : MonoBehaviour, EnemyDelegate {
         CreateEnemy();
         CreateEnemy();
     }
+    public void TakeTurn(){
+        //cycle through the enemies and see how they should act
+        foreach(IEnemy enemy in _enemies){
+            Debug.Log("taking my turn");
+            _delegate.DmgPlayer(2);
+        }
+        _delegate.EndEnemyTurn();
+    }
 
     public void ClearEnemies(){
         if(_enemies != null){
@@ -131,4 +139,6 @@ public interface EnemyManagerDelegate {
     void DoneBattle();
     void OverEnemy(IEnemy enemy);
     void ExitEnemy();
+    void DmgPlayer(int dmg);
+    void EndEnemyTurn();
 }

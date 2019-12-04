@@ -110,7 +110,8 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
         _playerActionManager.UseMoves();
         _enemyManager.ResolveDMG();
         //TODO wait some time
-        _turnManager.EndEnemyTurn();
+        _enemyManager.TakeTurn();
+        //_turnManager.EndEnemyTurn();
     }
     public void CancelSecetMove(){
         _playerActionManager.CancelSelected();
@@ -156,6 +157,12 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
     public void ExitEnemy(){
         _infoLabelManager.ExitEnemy();
         _enemyManager.ClearTargets();
+    }
+    public void DmgPlayer(int dmg){
+        _playerActionManager.PlayerTakeDmg(dmg);
+    }
+    public void EndEnemyTurn(){
+        _turnManager.EndEnemyTurn();
     }
     //-------------Choose Move Menu Delegate---------------
     public void MoveSelected(Move move){
