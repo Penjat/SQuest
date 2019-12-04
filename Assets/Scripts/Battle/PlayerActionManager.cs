@@ -78,12 +78,23 @@ public class PlayerActionManager : StatusBarDelegate {
         foreach(KeyValuePair<Move, IEnemy[]> action in _actions){
             IEnemy[] enemies = action.Value;
             Move move = action.Key;
-            //float result = _actionResults[move];
-            int dmg = move.GetDmg();
+            int dmg = CalcDmg(_actionResults,move);
             foreach(IEnemy enemy in enemies){
                 enemy.DoDmg(dmg);
             }
         }
+    }
+    private int CalcDmg(IDictionary<Move,float> results, Move move){
+        //trys to find the results for the given move
+        if(results.ContainsKey(move)){
+            float percent = results[move];
+            return move.GetDmg(percent);
+        }
+        //if cant find the move for some reason
+        //just return full dmg
+        Debug.Log("WARNING could not find key");
+        return move.GetDmg();
+
     }
     public void PlayerTakeDmg(int dmg){
         _player.TakeDmg(dmg);

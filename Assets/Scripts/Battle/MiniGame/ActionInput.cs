@@ -30,6 +30,7 @@ public class ActionInput : MonoBehaviour {
     private float _travelTime = 6.0f;
 
     private float _accuracy;
+    private float _gemAccuracy;
 
     void Update(){
         if(_isMoving && _isNeeded){
@@ -178,9 +179,17 @@ public class ActionInput : MonoBehaviour {
     }
     public void ShowAccuracy(){
         if(_isNeeded){
-            float gemAccuracy = Mathf.Round(100.0f - (_accuracy / (float)_gems.Count));
-            _gemScore.ShowScore(gemAccuracy);
+            _gemAccuracy = 100.0f - (_accuracy / (float)_gems.Count);
+            _gemScore.ShowScore(Mathf.Round(_gemAccuracy));
         }
+    }
+    public float GetAccuracy(){
+        //100 is perfect
+        //0 is failed all
+        return _gemAccuracy;
+    }
+    public Move GetMove(){
+        return _move;
     }
 }
 

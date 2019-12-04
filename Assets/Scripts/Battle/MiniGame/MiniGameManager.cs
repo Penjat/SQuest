@@ -106,8 +106,7 @@ public class MiniGameManager : MonoBehaviour, TextTyperDelegate, ActionInputDele
         //cycle through the action inputs and calculate the results
         foreach(ActionInput actionInput in _actionInputs){
             if(actionInput.GetIsNeeded()){
-                //TODO fix this
-                //results.Add()
+                results.Add(actionInput.GetMove(), actionInput.GetAccuracy());
             }
         }
         _delegate.MiniGameFinished(results);

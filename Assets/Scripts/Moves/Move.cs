@@ -39,7 +39,11 @@ public abstract class Move {
     public virtual bool IsAreaFX(){
         return _areaAffect;
     }
-    public virtual int GetDmg(){
-        return _dmg;
+    public virtual int GetDmg(float percent=100.0f){
+        if(percent >= 99.5){
+            return _dmg;
+        }
+        float floatDmg = (float)_dmg;
+        return (int) (floatDmg * percent / 100.0f);
     }
 }
