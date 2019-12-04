@@ -95,7 +95,6 @@ public class StatusBar : MonoBehaviour {
         _topBar.localScale = new Vector2(ratio,1.0f);
     }
     private void DoneFilling(){
-        Debug.Log("Done");
         _isChanging = false;
         _curValue = _toValue;
 
