@@ -93,7 +93,10 @@ public class PlayerActionManager : StatusBarDelegate {
             //hand jobs dont do dmg to player
             return;
         }
-        PlayerTakeDmg(10);
+        //TODO calculate this properly
+        if(accuracy >99.0f){
+            PlayerTakeDmg(4);
+        }
     }
     public IEnemy[] GetTargetsFor(Move move){
         return _actions[move];
