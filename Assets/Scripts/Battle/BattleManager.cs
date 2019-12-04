@@ -108,6 +108,7 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
         //TODO take the turn
         //_turnManager.EndEnemyTurn();
         _playerActionManager.UseMoves();
+        _enemyManager.ResolveDMG();
         //TODO wait some time
         _turnManager.EndEnemyTurn();
     }

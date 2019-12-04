@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate {
 
     public Image _button;
     public DMGLabel _dmgLabel;
+    private int _dmgToDo;
 
     private float _curClimax = 0.0f;
     private float _maxClimax = 8.0f;
@@ -67,6 +68,17 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate {
         _explodeEffect.Play();
         _animator.Play("Climax");
         _isDead = true;
+    }
+    public void AddToDmg(int dmg){
+        _dmgToDo += dmg;
+    }
+    public void ResolveDMG(){
+        //adds all the dmg done that round together
+        if(_dmgToDo == 0){
+            return;
+        }
+        DoDmg(_dmgToDo);
+        _dmgToDo = 0;
     }
     public void DoDmg(float dmg){
         Debug.Log("doing dmg --------------------------");

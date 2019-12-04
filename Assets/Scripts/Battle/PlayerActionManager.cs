@@ -80,7 +80,7 @@ public class PlayerActionManager : StatusBarDelegate {
             Move move = action.Key;
             int dmg = CalcDmg(_actionResults,move);
             foreach(IEnemy enemy in enemies){
-                enemy.DoDmg(dmg);
+                enemy.AddToDmg(dmg);
             }
         }
     }

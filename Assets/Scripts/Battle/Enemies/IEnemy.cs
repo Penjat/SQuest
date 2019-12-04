@@ -11,4 +11,6 @@ public interface IEnemy {
     void SetTargeted(bool b);
     void SetDelay(double delay);
     void SetState(SelectState state);
+    void ResolveDMG();
+    void AddToDmg(int dmg);
 }

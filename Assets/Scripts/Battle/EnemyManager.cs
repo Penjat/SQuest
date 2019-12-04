@@ -119,6 +119,11 @@ public class EnemyManager : MonoBehaviour, EnemyDelegate {
     public IEnemy[] GetEnemiesAsArray(){
         return _enemies.ToArray();
     }
+    public void ResolveDMG(){
+        foreach(IEnemy enemy in _enemies){
+            enemy.ResolveDMG();
+        }
+    }
 }
 
 public interface EnemyManagerDelegate {
