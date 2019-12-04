@@ -11,6 +11,9 @@ public class BattleTextFactory {
     }
 
     public string GetText(Player player, IDictionary<Move,IEnemy[]> actions){
+        if(actions.Count == 0){
+            return "you stand there and do nothing...";
+        }
         string battleText = "";
         int i=0;
         foreach(KeyValuePair<Move,IEnemy[]> action in actions){
