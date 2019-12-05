@@ -135,6 +135,7 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate {
     }
     public void TakeTurn(){
         Debug.Log("taking my turn");
+        _animator.SetTrigger("Attack");
         StartCoroutine(WaitFor(2.0f));
     }
     public IEnumerator WaitFor(float seconds){
