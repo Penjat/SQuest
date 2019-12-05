@@ -13,19 +13,14 @@ public class Player {
     public Player(PlayerDelegate playerDelegate){
         _delegate = playerDelegate;
         _moves = new List<Move>();
-        // AddMove(new Move("Hand Job", new HashSet<MoveType>{MoveType.Hand}, 2));
-        // AddMove(new Move("Blowjob", new HashSet<MoveType>{MoveType.Mouth}, 6));
-        // AddMove(new Move("Kiss", new HashSet<MoveType>{MoveType.Mouth}, 1));
-        // AddMove(new Move("Blowjob +Hands", new HashSet<MoveType>{MoveType.Mouth, MoveType.Hand}, 5));
-        // AddMove(new Move("Doggy Style", new HashSet<MoveType>{MoveType.Ass, MoveType.Hand}, 6));
-        // AddMove(new Move("Flash Tits", new HashSet<MoveType>{MoveType.Breasts}, 1, true));
-        AddMove(new Blowjob());
-        AddMove(new HandJob());
-        AddMove(new FlashTits());
 
     }
     public void AddMove(Move move){
         _moves.Add(move);
+    }
+    public void ClearMoves(){
+        //removes all the player's moves
+        _moves.Clear();
     }
 
     public List<Move> GetMoves(){
