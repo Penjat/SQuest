@@ -133,6 +133,14 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate {
         }
         _animator.Play("Idle");
     }
+    public void TakeTurn(){
+        Debug.Log("taking my turn");
+        StartCoroutine(WaitFor(2.0f));
+    }
+    public IEnumerator WaitFor(float seconds){
+        yield return new WaitForSeconds(seconds);
+        _delegate.EnemyDoneTurn();
+    }
     //--------------StatusBarDelegate---------------
     public void DoneFilling(){
         CheckClimax();
@@ -144,4 +152,5 @@ public interface EnemyDelegate {
     void RemoveEnemy(IEnemy enemy);
     void PointerOver(IEnemy enemy, bool b);
     void PointerExit();
+    void EnemyDoneTurn();
 }

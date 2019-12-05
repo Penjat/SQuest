@@ -13,4 +13,5 @@ public interface IEnemy {
     void SetState(SelectState state);
     void ResolveDMG();
     void AddToDmg(int dmg);
+    void TakeTurn();
 }

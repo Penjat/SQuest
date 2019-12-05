@@ -12,6 +12,7 @@ public class EnemyManager : MonoBehaviour, EnemyDelegate {
     public RectTransform _enemyContainer;
 
     private const double DELAY_TIME = 0.5;
+    private int _curEnemyIndex = 0;
 
     public void SetUp(EnemyManagerDelegate enemyManagerDelegate){
         _delegate = enemyManagerDelegate;
@@ -25,12 +26,23 @@ public class EnemyManager : MonoBehaviour, EnemyDelegate {
         CreateEnemy();
     }
     public void TakeTurn(){
-        //cycle through the enemies and see how they should act
-        foreach(IEnemy enemy in _enemies){
-            Debug.Log("taking my turn");
-            _delegate.DmgPlayer(2);
+        //start with the first enemy
+        _curEnemyIndex = 0;
+        CurEnemyTurn();
+    }
+    private void CurEnemyTurn(){
+        //check if enemies left to take turns
+        if(_curEnemyIndex >= _enemies.Count){
+            _delegate.EndEnemyTurn();
+            return;
         }
-        _delegate.EndEnemyTurn();
+        IEnemy enemy = _enemies[_curEnemyIndex];
+        enemy.TakeTurn();
+    }
+
+    public void NextEnemyTurn(){
+        _curEnemyIndex++;
+        CurEnemyTurn();
     }
 
     public void ClearEnemies(){
@@ -84,6 +96,9 @@ public class EnemyManager : MonoBehaviour, EnemyDelegate {
     }
 
     //---------------Enemy Delegate Methods--------------
+    public void EnemyDoneTurn(){
+        NextEnemyTurn();
+    }
     public void EnemyPressed(IEnemy enemy){
         Debug.Log("an enemy was pressed.");
         _delegate.EnemyPressed(enemy);
