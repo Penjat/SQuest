@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate {
     private bool _willAppear;
     private double _delayTime = 0.0;
     private bool _isDead = false;
-    private bool _wasTargeted;
+    private IDictionary<Move,float> _usedMoves = new Dictionary<Move,float>();
 
     void Update(){
         if(_willAppear){
@@ -137,7 +137,7 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate {
     public void TakeTurn(){
         Debug.Log("taking my turn");
         //Dont attack if was targeted last turn
-        if(_wasTargeted){
+        if(_usedMoves.Count > 0){
             DoneTurn();
             return;
         }
@@ -150,11 +150,11 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate {
         DoneTurn();
     }
     private void DoneTurn(){
-        _wasTargeted = false;
+        _usedMoves.Clear();
         _delegate.EnemyDoneTurn();
     }
-    public void WasTargeted(){
-        _wasTargeted = true;
+    public void UseMove(Move move, float result){
+        _usedMoves.Add(move,result);
     }
     //--------------StatusBarDelegate---------------
     public void DoneFilling(){

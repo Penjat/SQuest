@@ -14,5 +14,5 @@ public interface IEnemy {
     void ResolveDMG();
     void AddToDmg(int dmg);
     void TakeTurn();
-    void WasTargeted();
+    void UseMove(Move move, float result);
 }
