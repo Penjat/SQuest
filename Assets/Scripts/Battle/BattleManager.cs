@@ -27,7 +27,7 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
         //Find the main manager
         SubManagerDelegate subDelegate = GameObject.Find("MainManager").GetComponent<SubManagerDelegate>();
         SetUp(subDelegate);
-        Battle battle = new Battle();
+        Battle battle = _delegate.GetBattle();
         StartBattle(battle);
     }
     void Update(){

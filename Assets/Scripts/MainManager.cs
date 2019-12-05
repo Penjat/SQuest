@@ -7,6 +7,7 @@ public class MainManager : MonoBehaviour, SubManagerDelegate, PlayerDelegate {
 
     private MainManagerDelegate _subManager;
     private Player _player;
+    private Battle _curBattle;
 
     void Start() {
         Debug.Log("Starting game");
@@ -37,7 +38,11 @@ public class MainManager : MonoBehaviour, SubManagerDelegate, PlayerDelegate {
         // _menuManager.NavigateTo(MenuManager.BATTLE);
         //Battle battle = new Battle();
         // _battleManager.StartBattle(battle);
+        _curBattle = new Battle();
         SceneManager.LoadScene("Battle");
+    }
+    public Battle GetBattle(){
+        return _curBattle;
     }
     //----------------Player Delegate methods--------------------
     public void HealthIsZero(){
@@ -61,4 +66,5 @@ public interface SubManagerDelegate{
     Player GetPlayer();
     void StartBattle();
     void SetSubManager(MainManagerDelegate subManager);
+    Battle GetBattle();
 }
