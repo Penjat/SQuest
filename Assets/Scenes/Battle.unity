@@ -1239,6 +1239,7 @@ GameObject:
   - component: {fileID: 419477427}
   - component: {fileID: 419477428}
   - component: {fileID: 419477429}
+  - component: {fileID: 419477430}
   m_Layer: 5
   m_Name: Menu Battle
   m_TagString: Untagged
@@ -1319,8 +1320,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ecc70d7d42344b0af1d473f4950707, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _impPrefab: {fileID: 4467983372739670613, guid: efd58319845c541d18456f43801c4654,
-    type: 3}
   _enemyContainer: {fileID: 84593408}
 --- !u!114 &419477429
 MonoBehaviour:
@@ -1336,6 +1335,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _menuWinBattle: {fileID: 939919012}
   _menuLoseBattle: {fileID: 1294238340}
+--- !u!114 &419477430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 419477424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40e9c6182589441d7875141226313468, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _impPrefab: {fileID: 4467983372739670613, guid: efd58319845c541d18456f43801c4654,
+    type: 3}
 --- !u!1001 &439920037
 PrefabInstance:
   m_ObjectHideFlags: 0

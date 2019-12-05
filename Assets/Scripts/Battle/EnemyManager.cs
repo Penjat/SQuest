@@ -5,10 +5,9 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour, EnemyDelegate {
 
     private EnemyManagerDelegate _delegate;
+    public IEnemyFactory _enemyFactory;
     private List<IEnemy> _enemies;
 
-    //TODO move this to Enemy Factory
-    public GameObject _impPrefab;
     public RectTransform _enemyContainer;
 
     private const double DELAY_TIME = 0.5;
@@ -16,6 +15,7 @@ public class EnemyManager : MonoBehaviour, EnemyDelegate {
 
     public void SetUp(EnemyManagerDelegate enemyManagerDelegate){
         _delegate = enemyManagerDelegate;
+        _enemyFactory = GetComponent<IEnemyFactory>();
     }
     public void StartBattle(Battle battle){
         ClearEnemies();
@@ -23,7 +23,7 @@ public class EnemyManager : MonoBehaviour, EnemyDelegate {
     }
     private void CreateEnemies(Battle battle){
         foreach(string enemyName in battle.GetEnemies()){
-            CreateEnemy();
+            CreateEnemy(enemyName);
         }
     }
     public void TakeTurn(){
@@ -56,8 +56,9 @@ public class EnemyManager : MonoBehaviour, EnemyDelegate {
         _enemies = new List<IEnemy>();
     }
 
-    public void CreateEnemy(){
-        GameObject g = Instantiate(_impPrefab);
+    public void CreateEnemy(string enemyName){
+        GameObject prefab = _enemyFactory.GetPrefab(enemyName);
+        GameObject g = Instantiate(prefab);
         g.transform.SetParent(_enemyContainer.transform);
 
         //set button's text
