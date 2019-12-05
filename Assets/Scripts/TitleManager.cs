@@ -21,7 +21,7 @@ public class TitleManager : MonoBehaviour{
         switch(battleNum){
             case 0:
             //add the enemy data to battle
-            enemyNames = new string[]{"imp","imp"};
+            enemyNames = new string[]{"Goblin"};
             battle = new Battle(enemyNames);
 
             //set up the player's moves
@@ -33,7 +33,7 @@ public class TitleManager : MonoBehaviour{
 
             case 1:
             //add the enemy data to battle
-            enemyNames = new string[]{"imp","imp","imp"};
+            enemyNames = new string[]{"Imp","Imp","Imp"};
             battle = new Battle(enemyNames);
 
             //set up the player's moves

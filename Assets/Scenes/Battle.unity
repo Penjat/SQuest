@@ -1349,6 +1349,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _impPrefab: {fileID: 4467983372739670613, guid: efd58319845c541d18456f43801c4654,
     type: 3}
+  _goblinPrefab: {fileID: 4467983372739670613, guid: 2ca094e5bdcd84d4d9cdf478bf108063,
+    type: 3}
 --- !u!1001 &439920037
 PrefabInstance:
   m_ObjectHideFlags: 0
