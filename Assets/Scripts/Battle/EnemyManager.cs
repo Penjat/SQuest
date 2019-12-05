@@ -19,11 +19,12 @@ public class EnemyManager : MonoBehaviour, EnemyDelegate {
     }
     public void StartBattle(Battle battle){
         ClearEnemies();
-
-        //TODO create based on battle
-        CreateEnemy();
-        CreateEnemy();
-        CreateEnemy();
+        CreateEnemies(battle);
+    }
+    private void CreateEnemies(Battle battle){
+        foreach(string enemyName in battle.GetEnemies()){
+            CreateEnemy();
+        }
     }
     public void TakeTurn(){
         //start with the first enemy
