@@ -81,6 +81,7 @@ public class PlayerActionManager : StatusBarDelegate {
             int dmg = CalcDmg(_actionResults,move);
             foreach(IEnemy enemy in enemies){
                 enemy.AddToDmg(dmg);
+                enemy.WasTargeted();
             }
         }
     }

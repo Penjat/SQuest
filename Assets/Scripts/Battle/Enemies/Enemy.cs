@@ -29,6 +29,7 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate {
     private bool _willAppear;
     private double _delayTime = 0.0;
     private bool _isDead = false;
+    private bool _wasTargeted;
 
     void Update(){
         if(_willAppear){
@@ -135,12 +136,25 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate {
     }
     public void TakeTurn(){
         Debug.Log("taking my turn");
+        //Dont attack if was targeted last turn
+        if(_wasTargeted){
+            DoneTurn();
+            return;
+        }
+        _delegate.AttackPlayer(2);
         _animator.SetTrigger("Attack");
         StartCoroutine(WaitFor(2.0f));
     }
     public IEnumerator WaitFor(float seconds){
         yield return new WaitForSeconds(seconds);
+        DoneTurn();
+    }
+    private void DoneTurn(){
+        _wasTargeted = false;
         _delegate.EnemyDoneTurn();
+    }
+    public void WasTargeted(){
+        _wasTargeted = true;
     }
     //--------------StatusBarDelegate---------------
     public void DoneFilling(){
@@ -154,4 +168,5 @@ public interface EnemyDelegate {
     void PointerOver(IEnemy enemy, bool b);
     void PointerExit();
     void EnemyDoneTurn();
+    void AttackPlayer(int dmg);
 }

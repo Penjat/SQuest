@@ -147,6 +147,9 @@ public class EnemyManager : MonoBehaviour, EnemyDelegate {
             enemy.ResolveDMG();
         }
     }
+    public void AttackPlayer(int dmg){
+        _delegate.DmgPlayer(dmg);
+    }
 }
 
 public interface EnemyManagerDelegate {
