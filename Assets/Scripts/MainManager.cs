@@ -34,11 +34,11 @@ public class MainManager : MonoBehaviour, SubManagerDelegate, PlayerDelegate {
     public void SetSubManager(MainManagerDelegate subManager){
         _subManager = subManager;
     }
-    public void StartBattle() {
+    public void StartBattle(Battle battle) {
         // _menuManager.NavigateTo(MenuManager.BATTLE);
         //Battle battle = new Battle();
         // _battleManager.StartBattle(battle);
-        _curBattle = new Battle();
+        _curBattle = battle;
         SceneManager.LoadScene("Battle");
     }
     public Battle GetBattle(){
@@ -64,7 +64,7 @@ public interface SubManagerDelegate{
     //TODO pass in data about battle results
     void ExitBattle();
     Player GetPlayer();
-    void StartBattle();
+    void StartBattle(Battle battle);
     void SetSubManager(MainManagerDelegate subManager);
     Battle GetBattle();
 }
