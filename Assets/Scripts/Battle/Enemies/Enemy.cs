@@ -9,11 +9,11 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
 
     private int _dmgToDo;
 
-    private float _curClimax = 0.0f;
-    private float _maxClimax = 8.0f;
+    protected float _curClimax = 0.0f;
+    protected float _maxClimax = 8.0f;
 
-    private float _curArousal = 0.0f;
-    private float _maxArousal = 5.0f;
+    protected float _curArousal = 0.0f;
+    protected float _maxArousal = 5.0f;
 
     private SelectState _state;
 
@@ -23,21 +23,6 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
 
     public void SetDelay(double delay){
         _card.SetDelay((float)delay);
-    }
-    public void SetUp(EnemyDelegate enemyDelegate){
-        _delegate = enemyDelegate;
-        _card = GetComponentInChildren<ICard>();
-        _card.SetCardDelegate(this);
-        _card.SetName(GetName());
-
-        //set up the climax bar
-        _card.SetUpClimax(this,_maxClimax);
-        _card.SetClimax(0.0f);
-        
-        //set up the arousal bar
-        _card.SetUpArousal(this,_maxArousal);
-        _card.SetArousal(_curArousal);
-        _state = SelectState.Norm;
     }
 
     public void ClearSelf(){
@@ -107,7 +92,21 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
     public virtual string GetName(){
         return "GENERIC";
     }
+    public virtual void SetUp(EnemyDelegate enemyDelegate){
+        _delegate = enemyDelegate;
+        _card = GetComponentInChildren<ICard>();
+        _card.SetCardDelegate(this);
+        _card.SetName(GetName());
 
+        //set up the climax bar
+        _card.SetUpClimax(this,_maxClimax);
+        _card.SetClimax(_curClimax);
+
+        //set up the arousal bar
+        _card.SetUpArousal(this,_maxArousal);
+        _card.SetArousal(_curArousal);
+        _state = SelectState.Norm;
+    }
     //--------------ICardDelegate------------------
     public void MouseEnter(){
         if(_isDead){
