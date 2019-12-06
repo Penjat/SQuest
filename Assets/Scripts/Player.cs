@@ -8,7 +8,10 @@ public class Player {
     private List<Move> _moves;
 
     private int _maxHealth = 100;
-    private int _curHealth = 44;
+    private int _curHealth = 100;
+
+    private int _maxClimax = 100;
+    private int _curClimax = 0;
 
     public Player(PlayerDelegate playerDelegate){
         _delegate = playerDelegate;
@@ -39,6 +42,13 @@ public class Player {
     public int GetCurHealth(){
         return _curHealth;
     }
+    public int GetMaxClimax(){
+        return _maxClimax;
+    }
+    public int GetCurClimax(){
+        return _curClimax;
+    }
+
 }
 
 public interface PlayerDelegate{
