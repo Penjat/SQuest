@@ -13,6 +13,7 @@ public class StatusBar : MonoBehaviour {
 
     public RectTransform _topBar;
     public RectTransform _bottomBar;
+    public Text _fillLabel;
 
     private FillDir _fillDir;
 
@@ -93,6 +94,7 @@ public class StatusBar : MonoBehaviour {
             ratio = 1;
         }
         _topBar.localScale = new Vector2(ratio,1.0f);
+        _fillLabel.text = Mathf.Round(_curValue).ToString() + "/" + _maxValue.ToString(); 
     }
     private void DoneFilling(){
         _isChanging = false;

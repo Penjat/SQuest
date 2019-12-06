@@ -35,6 +35,10 @@ public class Card : MonoBehaviour, ICard {
         _climaxBar.SetUp(statusBarDelegate, max, FILL_RATE);
     }
     public void SetClimax(float climax, bool animated=false){
+        if(animated){
+            _climaxBar.SetValueAnimated(climax);
+            return;
+        }
         _climaxBar.SetValue(climax);
     }
     public void Climax(){
