@@ -1349,7 +1349,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _impPrefab: {fileID: 2173555759296617102, guid: efd58319845c541d18456f43801c4654,
     type: 3}
-  _goblinPrefab: {fileID: 2173555759296617102, guid: efd58319845c541d18456f43801c4654,
+  _goblinPrefab: {fileID: 3701984478476466447, guid: 2ca094e5bdcd84d4d9cdf478bf108063,
+    type: 3}
+  _trollPrefab: {fileID: 8317864349983893756, guid: 5ecb2566266874f13a1597fb265a43c0,
+    type: 3}
+  _ogrePrefab: {fileID: 2552466966350472226, guid: 62e7961aaa2464adb818b03c97d6b7a7,
+    type: 3}
+  _frogPrefab: {fileID: 7899575895633411421, guid: ad7b41e50acc349858fc80030eff810e,
+    type: 3}
+  _centarPrefab: {fileID: 5704389162614711883, guid: b15d45258f6c74ee08f16a2ffae2e3c5,
+    type: 3}
+  _harpyPrefab: {fileID: 2795634282129581374, guid: e6fb42653a6014022b4bb18f624ce066,
     type: 3}
 --- !u!1001 &439920037
 PrefabInstance:

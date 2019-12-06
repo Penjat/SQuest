@@ -33,7 +33,7 @@ public class TitleManager : MonoBehaviour{
 
             case 1:
             //add the enemy data to battle
-            enemyNames = new string[]{"Imp","Imp","Imp"};
+            enemyNames = new string[]{"Imp","Harpy","Troll"};
             battle = new Battle(enemyNames);
 
             //set up the player's moves
