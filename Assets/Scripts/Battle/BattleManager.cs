@@ -51,7 +51,9 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
         _categoryManager.SetUp(this);
 
         StatusBar playerHealthBar = GameObject.Find("Player Health").GetComponent<StatusBar>();
-        _playerActionManager = new PlayerActionManager(_delegate.GetPlayer(), playerHealthBar);
+        StatusBar playerClimaxBar = GameObject.Find("Player Climax").GetComponent<StatusBar>();
+
+        _playerActionManager = new PlayerActionManager(_delegate.GetPlayer(), playerHealthBar, playerClimaxBar);
         _moveMenu.SetUp(this);
         _infoLabelManager.SetUp(_playerActionManager);
         _battleTextFactory = new BattleTextFactory();

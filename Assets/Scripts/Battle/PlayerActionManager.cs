@@ -15,13 +15,18 @@ public class PlayerActionManager : StatusBarDelegate {
     //TODO posibly have IEnemy[] for multiple targets
 
     private StatusBar _playerHealthBar;
+    private StatusBar _playerClimaxBar;
     private Player _player;
 
-    public PlayerActionManager(Player player, StatusBar playerHealthBar){
+    public PlayerActionManager(Player player, StatusBar playerHealthBar, StatusBar playerClimaxBar){
         _player = player;
         _playerHealthBar = playerHealthBar;
         _playerHealthBar.SetUp(this,_player.GetMaxHealth(),50.0f);
         _playerHealthBar.SetValue(_player.GetCurHealth());
+
+        _playerClimaxBar = playerClimaxBar;
+        _playerClimaxBar.SetUp(this,_player.GetMaxClimax(),50.0f);
+        _playerClimaxBar.SetValue(_player.GetCurClimax());
     }
     public void SelectMove(Move move){
         _curMove = move;
