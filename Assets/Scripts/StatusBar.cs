@@ -7,6 +7,10 @@ enum FillDir{
     UP,DOWN
 };
 
+public enum DisplayType{
+    NONE, NUMBERS, PERCENT
+};
+
 public class StatusBar : MonoBehaviour {
 
     StatusBarDelegate _delegate;
@@ -16,6 +20,8 @@ public class StatusBar : MonoBehaviour {
     public Text _fillLabel;
 
     private FillDir _fillDir;
+
+    public DisplayType _displayType;
 
     float _maxValue;
     float _curValue = 0.0f;
@@ -94,7 +100,30 @@ public class StatusBar : MonoBehaviour {
             ratio = 1;
         }
         _topBar.localScale = new Vector2(ratio,1.0f);
-        _fillLabel.text = Mathf.Round(_curValue).ToString() + "/" + _maxValue.ToString(); 
+        ConfigLabel();
+    }
+    private void ConfigLabel(){
+        //Configures the labels text depending on what type of status bar it is 
+        switch(_displayType){
+            case DisplayType.NONE:
+            _fillLabel.text = "";
+            return;
+
+            case DisplayType.NUMBERS:
+            _fillLabel.text = Mathf.Round(_curValue).ToString() + "/" + _maxValue.ToString();
+            return;
+
+            case DisplayType.PERCENT:
+            float ratio = _curValue/_maxValue;
+
+            //don't go past 100%
+            if(ratio > 1){
+                ratio = 1;
+            }
+            _fillLabel.text = Mathf.Round(ratio*100).ToString() + "%";
+            return;
+
+        }
     }
     private void DoneFilling(){
         _isChanging = false;
