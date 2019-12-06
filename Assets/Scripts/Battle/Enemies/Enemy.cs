@@ -12,6 +12,9 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
     private float _curClimax = 0.0f;
     private float _maxClimax = 8.0f;
 
+    private float _curArousal = 0.0f;
+    private float _maxArousal = 5.0f;
+
     private SelectState _state;
 
     private bool _isDead = false;
@@ -26,8 +29,14 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
         _card = GetComponentInChildren<ICard>();
         _card.SetCardDelegate(this);
         _card.SetName(GetName());
+
+        //set up the climax bar
         _card.SetUpClimax(this,_maxClimax);
         _card.SetClimax(0.0f);
+        
+        //set up the arousal bar
+        _card.SetUpArousal(this,_maxArousal);
+        _card.SetArousal(_curArousal);
         _state = SelectState.Norm;
     }
 

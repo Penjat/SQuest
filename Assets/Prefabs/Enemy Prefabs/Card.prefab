@@ -464,6 +464,7 @@ MonoBehaviour:
   _explodeEffect: {fileID: 7343688251755250430}
   _nameLabel: {fileID: 1816009402329636819}
   _climaxBar: {fileID: 6785284274825008206}
+  _arousalBar: {fileID: 5624284554112833714}
   _overColor: {r: 1, g: 0.72629344, b: 0, a: 1}
   _normColor: {r: 0.7169812, g: 0.7169812, b: 0.7169812, a: 1}
   _animator: {fileID: 1376139075410700911}
@@ -1013,7 +1014,7 @@ PrefabInstance:
     - target: {fileID: 1053055876593836968, guid: 112d331fc2cb242a090de24299c674f9,
         type: 3}
       propertyPath: m_Name
-      value: Percent Bar (1)
+      value: Arousal Bar
       objectReference: {fileID: 0}
     - target: {fileID: 1053055876593836970, guid: 112d331fc2cb242a090de24299c674f9,
         type: 3}
@@ -1133,6 +1134,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 4652303890805422872}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5624284554112833714 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1053055876593836970, guid: 112d331fc2cb242a090de24299c674f9,
+    type: 3}
+  m_PrefabInstance: {fileID: 4652303890805422872}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eac6774bfaa344eea8a116eb66823c55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5816144539009578980
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1143,7 +1156,7 @@ PrefabInstance:
     - target: {fileID: 1053055876593836968, guid: 112d331fc2cb242a090de24299c674f9,
         type: 3}
       propertyPath: m_Name
-      value: Percent Bar
+      value: Climax Bar
       objectReference: {fileID: 0}
     - target: {fileID: 1053055876593836970, guid: 112d331fc2cb242a090de24299c674f9,
         type: 3}

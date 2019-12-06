@@ -18,6 +18,7 @@ public class Card : MonoBehaviour, ICard {
     public UIParticleSystem _explodeEffect;
     public Text _nameLabel;
     public StatusBar _climaxBar;
+    public StatusBar _arousalBar;
     public Color _overColor;
     public Color _normColor;
     public Animator _animator;
@@ -41,6 +42,17 @@ public class Card : MonoBehaviour, ICard {
         }
         _climaxBar.SetValue(climax);
     }
+    public void SetUpArousal(StatusBarDelegate statusBarDelegate, float max){
+        _arousalBar.SetUp(statusBarDelegate, max, FILL_RATE);
+    }
+    public void SetArousal(float arousal, bool animated=false){
+        if(animated){
+            _arousalBar.SetValueAnimated(arousal);
+            return;
+        }
+        _arousalBar.SetValue(arousal);
+    }
+
     public void Climax(){
         _explodeEffect.Play();
         _animator.Play("Climax");
@@ -105,12 +117,15 @@ public interface ICard {
     void SetName(string name);
     void SetUpClimax(StatusBarDelegate statusBarDelegate, float max);
     void SetClimax(float climax, bool animated=false);
+    void SetUpArousal(StatusBarDelegate statusBarDelegate, float max);
+    void SetArousal(float arousal, bool animated=false);
     void SetState(SelectState selectState);
     void Attack();
     void ShowDmg(int dmg);
     void SetCardDelegate(ICardDelegate cardDelegate);
     void SetTargeted(bool b);
     void SetDelay(float delay);
+
 }
 public interface ICardDelegate{
     void MouseEnter();
