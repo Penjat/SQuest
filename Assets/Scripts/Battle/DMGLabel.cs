@@ -7,8 +7,8 @@ public class DMGLabel : MonoBehaviour {
     public Text _dmgLabel;
     public Animator _animator;
 
-    public void ShowDmg(float f){
-        _dmgLabel.text = f.ToString();
+    public void ShowDmg(int i){
+        _dmgLabel.text = i.ToString();
         _animator.SetTrigger("Show");
     }
 }
