@@ -158,7 +158,8 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
             }
             //check if the enemy is already being targeted
             if(enemy.GetTargets().Count > 0){
-                _infoLabelManager.OverEnemy(enemy);
+                _infoLabelManager.BlockedEnemy(enemy);
+                return;
             }
             _infoLabelManager.OverEnemy(enemy);
             enemy.SetState(SelectState.Targeted);

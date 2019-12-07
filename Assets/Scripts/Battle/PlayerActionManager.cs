@@ -29,10 +29,12 @@ public class PlayerActionManager : StatusBarDelegate {
         _playerClimaxBar.SetValue(_player.GetCurClimax());
     }
     public void SelectMove(Move move){
+        //selected a move from a category
         _curMove = move;
         Debug.Log("selected Move " + move.GetName());
     }
     public void SelectTargets(IEnemy[] targets){
+        //sets the move to be used on the seleceted enemy
         //TODO check if valid target
         if(_curMove == null){
             return;
@@ -43,7 +45,10 @@ public class PlayerActionManager : StatusBarDelegate {
         _curMove = null;
     }
     public void UsedMoveOn(IEnemy[] targets){
-        //TODO fix to pass in array
+        //TODO change for area fx
+        foreach(IEnemy enemy in targets){
+            enemy.TargetWith(_curMove);
+        }
         _actions.Add(_curMove, targets);
         AddToUsedParts(_curMove);
         _curMove = null;
@@ -51,14 +56,22 @@ public class PlayerActionManager : StatusBarDelegate {
     public void CancelMoveType(MoveType moveType){
         foreach(KeyValuePair<Move,IEnemy[]> action in _actions){
             Move move = action.Key;
+            IEnemy[] targets = action.Value;
             if(move.GetPartsUsed().Contains(moveType)){
                 _actions.Remove(move);
+                UnTargetAll(targets, move);
                 RemoveFromUsedParts(move.GetPartsUsed());
                 Debug.Log("removing move " + move.GetName());
                 return;
                 //doesn't cycle through everymove
                 //This should be fine as there will only be on move using each body type
             }
+        }
+    }
+    private void UnTargetAll(IEnemy[] targets, Move move){
+        //untargets all the enemies from the move
+        foreach(IEnemy enemy in targets){
+            enemy.UnTarget(move);
         }
     }
     public void AddToUsedParts(Move move){

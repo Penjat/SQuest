@@ -22,7 +22,9 @@ public class InfoLabelManager : MonoBehaviour{
 
     }
     public void BlockedEnemy(IEnemy enemy){
-        ShowBlockedEnemy(enemy);
+        if(_playerActionManager.IsSelectingTarget()){
+            ShowBlockedEnemy(enemy);
+        }
     }
     public void OverEnemy(IEnemy enemy){
         //TODO check if can target
