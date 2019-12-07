@@ -94,7 +94,7 @@ public class Card : MonoBehaviour, ICard {
         _animator.speed = 1.0f;
     }
     public void Attack(){
-        _animator.Play("Attack");
+        _animator.Play("GenericAttack");
     }
     public void SetCardDelegate(ICardDelegate cardDelegate){
         _delegate = cardDelegate;
