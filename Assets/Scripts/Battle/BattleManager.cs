@@ -171,6 +171,10 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
 
     }
     public void OverEnemy(IEnemy enemy){
+        //only works if is the player's turn
+        if(_turnManager.GetStage() != TurnStage.PlayerTurn){
+            return;
+        }
 
         //TODO check if is area effect
         if(_playerActionManager.IsSelectingTarget()){
