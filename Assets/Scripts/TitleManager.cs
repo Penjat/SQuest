@@ -38,6 +38,8 @@ public class TitleManager : MonoBehaviour{
 
             //set up the player's moves
             player.AddMove(new Blowjob());
+            player.AddMove(new HandJob());
+            player.AddMove(new FlashTits());
 
             _delegate.StartBattle(battle);
             break;
