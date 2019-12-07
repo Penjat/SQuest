@@ -122,6 +122,9 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
     }
 
     //--------------Enemy Manager Delegate----------------
+    public void ShowMsg(string msg){
+        _infoLabelManager.ShowMsg(msg);
+    }
     public void EnemyPressed(IEnemy enemy){
         //make sure it is the player's turn
         //make sure we are selecting a target

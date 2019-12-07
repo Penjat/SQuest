@@ -155,6 +155,7 @@ public class EnemyManager : MonoBehaviour, EnemyDelegate {
     public void EnemyMsg(string msg){
         //the enemy wants to display a msg
         Debug.Log("the enemy wants to send a msg: " + msg);
+        _delegate.ShowMsg(msg);
     }
 }
 
@@ -165,4 +166,5 @@ public interface EnemyManagerDelegate {
     void ExitEnemy();
     void DmgPlayer(int dmg);
     void EndEnemyTurn();
+    void ShowMsg(string msg);
 }

@@ -73,6 +73,8 @@ public class InfoLabelManager : MonoBehaviour{
         string moveName = _playerActionManager.GetCurMove().GetName().ColorFor(Entity.MOVE);
         string instructions = "\ndouble click to cancel".ColorFor(Entity.INSTRUCTIONS);
         _infoLabel.text = "use " + moveName + " on..." + instructions;
-
+    }
+    public void ShowMsg(string msg){
+        _infoLabel.text = msg;
     }
 }
