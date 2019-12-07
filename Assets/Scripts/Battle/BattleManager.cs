@@ -152,7 +152,9 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
             if(_playerActionManager.GetCurMove().IsAreaFX()){
                 Debug.Log("this is an area affect move");
                 _enemyManager.AreaAffect();
+                return;
             }
+            //check if the enemy is already being targeted
             enemy.SetState(SelectState.Targeted);
         }
     }
