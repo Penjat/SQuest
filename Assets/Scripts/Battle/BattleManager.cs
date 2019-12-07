@@ -109,6 +109,7 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
         _categoryManager.CheckCategories(used);
         _infoLabelManager.CheckState();
         _battleStateLabel.text = "Player's Turn";
+        Debug.Log("for realz " + _battleStateLabel.text);
     }
     public void StartPlayerAction(){
         //start the mini game
@@ -131,9 +132,10 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
         //_turnManager.EndEnemyTurn();
 
         //TODO wait some time
+        _battleStateLabel.text = "Enemy Turn";
         _enemyManager.TakeTurn();
         //_turnManager.EndEnemyTurn();
-        _battleStateLabel.text = "Enemy Turn";
+
     }
     public void CancelSecetMove(){
         _playerActionManager.CancelSelected();
@@ -196,6 +198,7 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
         _playerActionManager.PlayerTakeDmg(dmg);
     }
     public void EndEnemyTurn(){
+        Debug.Log("Ending Enemy Turn.");
         _turnManager.EndEnemyTurn();
     }
     //-------------Choose Move Menu Delegate---------------
