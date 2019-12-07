@@ -33,6 +33,9 @@ public class EnemyFactory : MonoBehaviour, IEnemyFactory {
 
             case "Frog":
             return _frogPrefab;
+
+            case "Troll":
+            return _trollPrefab;
         }
         //default to imp
         return _impPrefab;
