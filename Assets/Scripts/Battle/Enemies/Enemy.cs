@@ -94,6 +94,7 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
     private void DoneTurn(){
         Debug.Log("End Turn");
         _usedMoves.Clear();
+        _targetedBy.Clear();
         _delegate.EnemyDoneTurn();
     }
     public void UseMove(Move move, float result){
