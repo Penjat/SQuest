@@ -134,6 +134,9 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
     public void ClearTargets(){
         _targetedBy.Clear();
     }
+    public HashSet<Move> GetTargets(){
+        return _targetedBy;
+    }
 
     //--------------StatusBarDelegate---------------
     public void DoneFilling(){
@@ -151,7 +154,4 @@ public interface EnemyDelegate {
     void PointerExit();
     void EnemyDoneTurn();
     void AttackPlayer(int dmg);
-    void TargetWith(Move move);
-    void UnTarget(Move move);
-    void UnTarget(Move move);
 }

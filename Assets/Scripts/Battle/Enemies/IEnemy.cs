@@ -15,4 +15,8 @@ public interface IEnemy {
     void AddToDmg(int dmg);
     void TakeTurn();
     void UseMove(Move move, float result);
+    HashSet<Move> GetTargets();
+    void TargetWith(Move move);
+    void UnTarget(Move move);
+    void ClearTargets();
 }
