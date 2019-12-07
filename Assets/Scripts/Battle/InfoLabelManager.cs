@@ -21,6 +21,9 @@ public class InfoLabelManager : MonoBehaviour{
     public void OverCategory(){
 
     }
+    public void BlockedEnemy(IEnemy enemy){
+        ShowBlockedEnemy(enemy);
+    }
     public void OverEnemy(IEnemy enemy){
         //TODO check if can target
         if(_playerActionManager.IsSelectingTarget()){
@@ -56,6 +59,12 @@ public class InfoLabelManager : MonoBehaviour{
         string moveName = _playerActionManager.GetCurMove().GetName().ColorFor(Entity.MOVE);
         string enemyName = enemy.GetName().ColorFor(Entity.ENEMY);
         _infoLabel.text = "use " + moveName + " on " + enemyName;
+    }
+    public void ShowBlockedEnemy(IEnemy enemy){
+        //string moveName = _playerActionManager.GetCurMove().GetName().ColorFor(Entity.MOVE);
+        //TODO get targeted move
+        string enemyName = enemy.GetName().ColorFor(Entity.ENEMY);
+        _infoLabel.text = enemyName + " is already targeted.";
     }
     public void ShowMoveNoTarget(){
         //a move has been selected, but is not over an enemy
