@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
 
     private bool _isDead = false;
     private IDictionary<Move,float> _usedMoves = new Dictionary<Move,float>();
-
+    private HashSet<Move> _targetedBy = new HashSet<Move>();
 
     public void SetDelay(double delay){
         _card.SetDelay((float)delay);
@@ -125,6 +125,15 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
     public void WasPressed(){
         _delegate.EnemyPressed(this);
     }
+    public void TargetWith(Move move){
+        _targetedBy.Add(move);
+    }
+    public void UnTarget(Move move){
+        _targetedBy.Remove(move);
+    }
+    public void ClearTargets(){
+        _targetedBy.Clear();
+    }
 
     //--------------StatusBarDelegate---------------
     public void DoneFilling(){
@@ -142,4 +151,7 @@ public interface EnemyDelegate {
     void PointerExit();
     void EnemyDoneTurn();
     void AttackPlayer(int dmg);
+    void TargetWith(Move move);
+    void UnTarget(Move move);
+    void UnTarget(Move move);
 }
