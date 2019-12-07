@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using StringMethods;
 
 public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
 
@@ -73,8 +74,9 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
             DoneTurn();
             return;
         }
+        //TODO make an attack method
         _delegate.AttackPlayer(2);
-        _delegate.EnemyMsg("The Imp slaps you");
+        _delegate.EnemyMsg("The " + "Imp".ColorFor(Entity.ENEMY) + " slaps you");
         _card.Attack();
         StartCoroutine(WaitFor(2.0f));
     }
