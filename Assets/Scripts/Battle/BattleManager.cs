@@ -146,15 +146,21 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
 
     }
     public void OverEnemy(IEnemy enemy){
-        _infoLabelManager.OverEnemy(enemy);
+
         //TODO check if is area effect
         if(_playerActionManager.IsSelectingTarget()){
             if(_playerActionManager.GetCurMove().IsAreaFX()){
                 Debug.Log("this is an area affect move");
                 _enemyManager.AreaAffect();
+                //TODO change to area effect text
+                _infoLabelManager.OverEnemy(enemy);
                 return;
             }
             //check if the enemy is already being targeted
+            if(enemy.GetTargets().Count > 0){
+                _infoLabelManager.OverEnemy(enemy);
+            }
+            _infoLabelManager.OverEnemy(enemy);
             enemy.SetState(SelectState.Targeted);
         }
     }
