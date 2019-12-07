@@ -148,11 +148,22 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
         _infoLabelManager.ShowMsg(msg);
     }
     public void EnemyPressed(IEnemy enemy){
+
         //make sure it is the player's turn
+        bool isTurn = _turnManager.GetStage() == TurnStage.PlayerTurn;
+
         //make sure we are selecting a target
-        if(_turnManager.GetStage() != TurnStage.PlayerTurn || !_playerActionManager.IsSelectingTarget()){
+        bool selectingTarget = _playerActionManager.IsSelectingTarget();
+
+        //make sure we can target the enemy with this move
+        bool canTarget = enemy.CanTarget(_playerActionManager.GetCurMove());
+
+        //return if any are not true
+        if( !isTurn || !selectingTarget || !canTarget ){
             return;
         }
+
+        //Check if it is an area affect move an sould target everyone
         if(_playerActionManager.GetCurMove().IsAreaFX()){
             _playerActionManager.SelectTargets(_enemyManager.GetEnemiesAsArray());
         }else{
@@ -185,8 +196,8 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
                 _infoLabelManager.OverEnemy(enemy);
                 return;
             }
-            //check if the enemy is already being targeted
-            if(enemy.GetTargets().Count > 0){
+            //check if the enemy can be targeted by the current move
+            if(!enemy.CanTarget(_playerActionManager.GetCurMove())){
                 _infoLabelManager.BlockedEnemy(enemy);
                 return;
             }

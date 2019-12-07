@@ -149,6 +149,10 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
     public HashSet<Move> GetTargets(){
         return _targetedBy;
     }
+    public bool CanTarget(Move move){
+        //TODO make this better
+        return _targetedBy.Count <= 0;
+    }
 
     //--------------StatusBarDelegate---------------
     public void DoneFilling(){

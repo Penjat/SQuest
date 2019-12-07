@@ -19,4 +19,5 @@ public interface IEnemy {
     void TargetWith(Move move);
     void UnTarget(Move move);
     void ClearTargets();
+    bool CanTarget(Move move);
 }
