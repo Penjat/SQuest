@@ -31,6 +31,10 @@ public class TurnManager {
                 _stage = TurnStage.ResolvePlayerActions;
                 _delegate.ResolvePlayerActions();
                 return;
+            case TurnStage.ResolvePlayerActions:
+                _stage = TurnStage.EnemyTurn;
+                _delegate.StartEnemyTurn();
+                return;
         }
     }
     public void StartBattle(){
@@ -42,7 +46,7 @@ public class TurnManager {
     public void EndPlayerTurn(){
         //called when player presses ready
         Debug.Log("Ending player turn");
-        _delegate.WaitBeforeTurn(1.0f);
+        _delegate.WaitBeforeTurn(0.8f);
     }
     public void EndPlayerAction(){
         //called after mini game
@@ -50,6 +54,10 @@ public class TurnManager {
         _delegate.WaitBeforeTurn(0.5f);
         //_stage = TurnStage.EnemyTurn;
         //_delegate.StartEnemyTurn();
+    }
+    public void EndResolveActions(){
+        Debug.Log("Ending resolving actions");
+        _delegate.WaitBeforeTurn(1.2f);
     }
     public void EndEnemyTurn(){
         //called after AI takes turn

@@ -107,6 +107,7 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
         _playerActionManager.ClearUsedParts();
         IDictionary<MoveType,Move> used = _playerActionManager.GetUsedParts();
         _categoryManager.CheckCategories(used);
+        _infoLabelManager.CheckState();
         _battleStateLabel.text = "Player's Turn";
     }
     public void StartPlayerAction(){
@@ -120,7 +121,8 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
         Debug.Log("Resolving Actions");
         _playerActionManager.UseMoves();
         _enemyManager.ResolveDMG();
-        _battleStateLabel.text = "resolving actions";
+        _battleStateLabel.text = "resolving actions...";
+        _turnManager.EndResolveActions();
     }
     public void StartEnemyTurn(){
         //start the enemies turn
