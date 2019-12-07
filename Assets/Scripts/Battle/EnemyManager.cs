@@ -152,6 +152,10 @@ public class EnemyManager : MonoBehaviour, EnemyDelegate {
     public void AttackPlayer(int dmg){
         _delegate.DmgPlayer(dmg);
     }
+    public void EnemyMsg(string msg){
+        //the enemy wants to display a msg
+        Debug.Log("the enemy wants to send a msg: " + msg);
+    }
 }
 
 public interface EnemyManagerDelegate {

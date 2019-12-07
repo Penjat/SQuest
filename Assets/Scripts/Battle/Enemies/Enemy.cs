@@ -74,6 +74,7 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
             return;
         }
         _delegate.AttackPlayer(2);
+        _delegate.EnemyMsg("The Imp slaps you");
         _card.Attack();
         StartCoroutine(WaitFor(2.0f));
     }
@@ -154,4 +155,5 @@ public interface EnemyDelegate {
     void PointerExit();
     void EnemyDoneTurn();
     void AttackPlayer(int dmg);
+    void EnemyMsg(string msg);
 }
