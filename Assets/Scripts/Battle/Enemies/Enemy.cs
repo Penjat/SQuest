@@ -1,4 +1,5 @@
-﻿using System.Collections;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using StringMethods;
@@ -74,15 +75,22 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
             DoneTurn();
             return;
         }
+        _delegate.EnemyMsg("The " + "Imp".ColorFor(Entity.ENEMY) + " is mad you ignored it...");
         //TODO make an attack method
+
+        Action attack = Attack;
+        StartCoroutine(WaitFor(1.0f, attack) );
+    }
+    public IEnumerator WaitFor(float seconds,Action func){
+        yield return new WaitForSeconds(seconds);
+        func();
+    }
+    private void Attack(){
         _delegate.AttackPlayer(2);
         _delegate.EnemyMsg("The " + "Imp".ColorFor(Entity.ENEMY) + " slaps you");
         _card.Attack();
-        StartCoroutine(WaitFor(2.0f));
-    }
-    public IEnumerator WaitFor(float seconds){
-        yield return new WaitForSeconds(seconds);
-        DoneTurn();
+        Action doneTurn = DoneTurn;
+        StartCoroutine(WaitFor(2.0f, doneTurn) );
     }
     private void DoneTurn(){
         _usedMoves.Clear();
