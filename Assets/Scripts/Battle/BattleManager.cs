@@ -40,6 +40,13 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
             _lastPress = click;
         }
     }
+    public void WaitBeforeTurn(float seconds){
+        StartCoroutine(WaitTurn(seconds));
+    }
+    private IEnumerator WaitTurn(float seconds){
+        yield return new WaitForSeconds(seconds);
+        _turnManager.NextTurnEvent();
+    }
 
     public void SetUp(SubManagerDelegate battleDelegate){
 
@@ -66,6 +73,7 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
         _miniGameManager.Hide();
         _turnManager.StartBattle();
         _infoLabelManager.CheckState();
+        _battleStateLabel.text = "Ememies Appear!";
     }
     public void TakeTurn(){
         //triggered when the player is ready to take their turn
@@ -73,6 +81,7 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
         _turnManager.EndPlayerTurn();
         _playerActionManager.CancelSelected();
         _infoLabelManager.EndTurn();
+        _battleStateLabel.text = "ending turn...";
     }
 
     public void CloseCategory(){
@@ -98,23 +107,31 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
         _playerActionManager.ClearUsedParts();
         IDictionary<MoveType,Move> used = _playerActionManager.GetUsedParts();
         _categoryManager.CheckCategories(used);
+        _battleStateLabel.text = "Player's Turn";
     }
     public void StartPlayerAction(){
         //start the mini game
         Debug.Log("Start player action");
         string textToType = _battleTextFactory.GetText(_delegate.GetPlayer(), _playerActionManager.GetActions());
         _miniGameManager.StartGame(this,_playerActionManager.GetActions(),textToType);
+        _battleStateLabel.text = "";
+    }
+    public void ResolvePlayerActions(){
+        Debug.Log("Resolving Actions");
+        _playerActionManager.UseMoves();
+        _enemyManager.ResolveDMG();
+        _battleStateLabel.text = "resolving actions";
     }
     public void StartEnemyTurn(){
         //start the enemies turn
         Debug.Log("Start enemy turn");
         //TODO take the turn
         //_turnManager.EndEnemyTurn();
-        _playerActionManager.UseMoves();
-        _enemyManager.ResolveDMG();
+
         //TODO wait some time
         _enemyManager.TakeTurn();
         //_turnManager.EndEnemyTurn();
+        _battleStateLabel.text = "Enemy Turn";
     }
     public void CancelSecetMove(){
         _playerActionManager.CancelSelected();
