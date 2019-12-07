@@ -1,4 +1,5 @@
-﻿using System.Collections;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -31,18 +32,21 @@ public class EnemyManager : MonoBehaviour, EnemyDelegate {
         _curEnemyIndex = 0;
         CurEnemyTurn();
     }
-    private void CurEnemyTurn(){
+    public void CurEnemyTurn(){
+        Debug.Log("cur enemy turn.");
         //check if enemies left to take turns
         if(_curEnemyIndex >= _enemies.Count){
+            Debug.Log("No more enemies.");
             _delegate.EndEnemyTurn();
             return;
         }
         IEnemy enemy = _enemies[_curEnemyIndex];
         enemy.TakeTurn();
     }
-
     public void NextEnemyTurn(){
+        Debug.Log("next enemy turn");
         _curEnemyIndex++;
+        _delegate.ShowMsg("");
         CurEnemyTurn();
     }
 

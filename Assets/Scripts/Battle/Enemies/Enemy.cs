@@ -89,10 +89,10 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
         _delegate.AttackPlayer(2);
         _delegate.EnemyMsg("The " + "Imp".ColorFor(Entity.ENEMY) + " slaps you");
         _card.Attack();
-        Action doneTurn = DoneTurn;
-        StartCoroutine(WaitFor(2.0f, doneTurn) );
+        StartCoroutine(WaitFor(2.0f, DoneTurn) );
     }
     private void DoneTurn(){
+        Debug.Log("End Turn");
         _usedMoves.Clear();
         _delegate.EnemyDoneTurn();
     }
