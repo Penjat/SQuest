@@ -46,7 +46,7 @@ public class TurnManager {
     public void EndPlayerTurn(){
         //called when player presses ready
         Debug.Log("Ending player turn");
-        _delegate.WaitBeforeTurn(0.8f);
+        _delegate.WaitBeforeTurn(0.3f);
     }
     public void EndPlayerAction(){
         //called after mini game
