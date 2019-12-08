@@ -6,8 +6,6 @@ public class TitleManager : MonoBehaviour{
 
     SubManagerDelegate _delegate;
 
-    public GameObject _warningMSG;
-
     void Start() {
         //Find the main manager
         _delegate = GameObject.Find("MainManager").GetComponent<SubManagerDelegate>();
@@ -49,5 +47,5 @@ public class TitleManager : MonoBehaviour{
 
     }
 
-    
+
 }
