@@ -6,6 +6,8 @@ public class TitleManager : MonoBehaviour{
 
     SubManagerDelegate _delegate;
 
+    public GameObject _warningMSG;
+
     void Start() {
         //Find the main manager
         _delegate = GameObject.Find("MainManager").GetComponent<SubManagerDelegate>();
@@ -45,5 +47,15 @@ public class TitleManager : MonoBehaviour{
             break;
         }
 
+    }
+
+    public void ExitWarningLabel(bool goToGame){
+        //true = agreed to view adult Content
+        //false = did not agree, should close program
+        if(goToGame){
+            _warningMSG.SetActive(false);
+            return;
+        }
+        //TODO exit the app
     }
 }
