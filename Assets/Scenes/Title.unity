@@ -438,6 +438,7 @@ GameObject:
   m_Component:
   - component: {fileID: 238107487}
   - component: {fileID: 238107488}
+  - component: {fileID: 238107489}
   m_Layer: 5
   m_Name: Warning MSG
   m_TagString: Untagged
@@ -484,6 +485,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &238107489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 238107486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed9d1befae0134343ad8427a8fe8fc2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &297122900
 GameObject:
   m_ObjectHideFlags: 0
@@ -1364,8 +1377,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 710820343}
-        m_MethodName: ExitWarningLabel
+      - m_Target: {fileID: 238107489}
+        m_MethodName: Exit
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

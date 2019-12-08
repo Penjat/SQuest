@@ -49,13 +49,5 @@ public class TitleManager : MonoBehaviour{
 
     }
 
-    public void ExitWarningLabel(bool goToGame){
-        //true = agreed to view adult Content
-        //false = did not agree, should close program
-        if(goToGame){
-            _warningMSG.SetActive(false);
-            return;
-        }
-        //TODO exit the app
-    }
+    
 }
