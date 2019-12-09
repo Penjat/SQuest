@@ -44,8 +44,5 @@ public class TitleManager : MonoBehaviour{
             _delegate.StartBattle(battle);
             break;
         }
-
     }
-
-
 }
