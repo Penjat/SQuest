@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ButtonOption {
+    ABOUT, STORY, CONTENT, DEVELOPMENT, MAILING, FEEBBACK, PATREON, DISCORD
+};
+
 public class TitleManager : MonoBehaviour{
 
     SubManagerDelegate _delegate;
@@ -44,5 +48,8 @@ public class TitleManager : MonoBehaviour{
             _delegate.StartBattle(battle);
             break;
         }
+    }
+    public void PressedButton(){
+
     }
 }
