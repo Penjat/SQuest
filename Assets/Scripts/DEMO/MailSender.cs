@@ -8,15 +8,25 @@ using System.Security.Cryptography.X509Certificates;
 
 public class MailSender : MonoBehaviour {
     public static void SendEmail(){
+        //keep the email and password data private
+        TextAsset emailData = Resources.Load("HiddenData/EmailData") as TextAsset;
+        if(emailData == null){
+            Debug.Log("the Anxiomancer Says: you do not have the appropriate credentials to access this function.");
+            return;
+        }
+        Debug.Log("Data found, sending email");
+        string password = emailData.ToString();
+
         MailMessage mail = new MailMessage();
+
         mail.From = new MailAddress("mixolyvia@gmail.com");
         mail.To.Add("spencer_symington@hotmail.com");
-        mail.Subject = "the Path of the Brave";
+        mail.Subject = "checking";
         mail.Body = "Hello there, you have just signed up for the Path of the Brave a sissy's journey mailing list.";
         // you can use others too.
         SmtpClient smtpServer = new SmtpClient("smtp.gmail.com");
         smtpServer.Port = 587;
-        smtpServer.Credentials = new System.Net.NetworkCredential("mixolyvia@gmail.com", "Boobmass00") as ICredentialsByHost;
+        smtpServer.Credentials = new System.Net.NetworkCredential("mixolyvia@gmail.com", password) as ICredentialsByHost;
         smtpServer.EnableSsl = true;
         ServicePointManager.ServerCertificateValidationCallback =
         delegate(object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
