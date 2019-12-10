@@ -19,8 +19,8 @@ public class ContactButton : MonoBehaviour {
 
     public void MouseOver(){
         // _animator.SetBool("Hover",true);
-        _buttonLabel.color = _overColor;
-        _iconImage.color = Color.white;
+        _buttonLabel.color = Color.white;
+        _iconImage.color = _overColor;
     }
     public void MouseExit(){
         // _animator.SetBool("Hover",false);

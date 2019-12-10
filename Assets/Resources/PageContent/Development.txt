@@ -1,1 +1,7 @@
-development and what is new, coming soon
+This is a general plan of what development will be like and what values will drive this project.  
+
+Stage 1:
+Releasing a playable demo version of the battle system and start getting feedback.  
+
+Chapters:
+On thing I have found frustrating with these type of games is having to repeat content.  By releasing in chapters, I am hoping to make something more modular, where player's can carry on from where they left off.
