@@ -70,4 +70,21 @@ public class TitleManager : MonoBehaviour{
         _contentPage.SetText(contentText.ToString());
         _contentPage.Appear();
     }
+    public void PressedFeedback(){
+        //TODO open a page with a short survey
+
+    }
+    public void PressedMailing(){
+        //TODO open a box to ask for an email address
+
+    }
+    public void PressedPatreon(){
+        //TODO change to patreon link
+        Application.OpenURL("https://discordapp.com/channels/653338630219235377/653338630219235380");
+    }
+    public void PressedDiscord(){
+        Application.OpenURL("https://discordapp.com/channels/653338630219235377/653338630219235380");
+    }
+
+
 }
