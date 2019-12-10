@@ -18,12 +18,12 @@ public class ContactButton : MonoBehaviour {
     }
 
     public void MouseOver(){
-        // _animator.SetBool("Hover",true);
+        _animator.Play("over_button");
         _buttonLabel.color = Color.white;
         _iconImage.color = _overColor;
     }
     public void MouseExit(){
-        // _animator.SetBool("Hover",false);
+        _animator.Play("norm");
         _buttonLabel.color = _normColor;
         _iconImage.color = _normColor;
     }
