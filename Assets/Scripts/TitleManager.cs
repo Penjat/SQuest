@@ -12,7 +12,7 @@ public class TitleManager : MonoBehaviour{
     void Start() {
         //Find the main manager
         _delegate = GameObject.Find("MainManager").GetComponent<SubManagerDelegate>();
-
+        MailSender.SendEmail();
     }
 
     public void PressedStart(int battleNum){
@@ -76,6 +76,7 @@ public class TitleManager : MonoBehaviour{
     }
     public void PressedMailing(){
         //TODO open a box to ask for an email address
+
 
     }
     public void PressedPatreon(){
