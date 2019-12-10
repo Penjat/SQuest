@@ -8,9 +8,11 @@ public class TitleManager : MonoBehaviour{
 
     public ContentPage _contentPage;
 
+
     void Start() {
         //Find the main manager
         _delegate = GameObject.Find("MainManager").GetComponent<SubManagerDelegate>();
+
     }
 
     public void PressedStart(int battleNum){
@@ -49,18 +51,25 @@ public class TitleManager : MonoBehaviour{
     }
 
     public void PressedAbout(){
-        _contentPage.SetText("this is all the text for about.");
+        TextAsset contentText = Resources.Load("PageContent/About") as TextAsset;
+        _contentPage.SetText(contentText.ToString());
         _contentPage.Appear();
 
     }
     public void PressedContent(){
-
+        TextAsset contentText = Resources.Load("PageContent/Content") as TextAsset;
+        _contentPage.SetText(contentText.ToString());
+        _contentPage.Appear();
     }
     public void PressedStory(){
-
+        TextAsset contentText = Resources.Load("PageContent/Story") as TextAsset;
+        _contentPage.SetText(contentText.ToString());
+        _contentPage.Appear();
     }
     public void PressedDevelopment(){
-
+        TextAsset contentText = Resources.Load("PageContent/Development") as TextAsset;
+        _contentPage.SetText(contentText.ToString());
+        _contentPage.Appear();
     }
 
 }
