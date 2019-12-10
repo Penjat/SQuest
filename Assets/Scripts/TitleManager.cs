@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ButtonOption {
-    ABOUT, STORY, CONTENT, DEVELOPMENT, MAILING, FEEBBACK, PATREON, DISCORD
-};
-
 public class TitleManager : MonoBehaviour{
 
     SubManagerDelegate _delegate;
+
+    public ContentPage _contentPage;
 
     void Start() {
         //Find the main manager
@@ -49,7 +47,20 @@ public class TitleManager : MonoBehaviour{
             break;
         }
     }
-    public void PressedButton(){
+
+    public void PressedAbout(){
+        _contentPage.SetText("this is all the text for about.");
+        _contentPage.Appear();
 
     }
+    public void PressedContent(){
+
+    }
+    public void PressedStory(){
+
+    }
+    public void PressedDevelopment(){
+
+    }
+
 }

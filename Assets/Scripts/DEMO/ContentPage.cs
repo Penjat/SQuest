@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ContentPage : MonoBehaviour {
-    
+
     public Text _displayText;
 
     public void Appear(){
@@ -15,7 +15,8 @@ public class ContentPage : MonoBehaviour {
         //TODO do with animation
         gameObject.SetActive(false);
     }
-    public void SetText(string text){
+    public void SetText(string contentText){
         //sets the rich text to be displayed
+        _displayText.text = contentText;
     }
 }
