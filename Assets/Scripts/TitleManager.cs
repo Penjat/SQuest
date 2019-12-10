@@ -54,7 +54,6 @@ public class TitleManager : MonoBehaviour{
         TextAsset contentText = Resources.Load("PageContent/About") as TextAsset;
         _contentPage.SetText(contentText.ToString());
         _contentPage.Appear();
-
     }
     public void PressedContent(){
         TextAsset contentText = Resources.Load("PageContent/Content") as TextAsset;
@@ -71,5 +70,4 @@ public class TitleManager : MonoBehaviour{
         _contentPage.SetText(contentText.ToString());
         _contentPage.Appear();
     }
-
 }
