@@ -16,13 +16,14 @@ public class MailSender : MonoBehaviour {
         }
         Debug.Log("Data found, sending email");
         string password = emailData.ToString();
+        TextAsset emailBody = Resources.Load("PageContent/EmailBody") as TextAsset;
 
         MailMessage mail = new MailMessage();
 
         mail.From = new MailAddress("mixolyvia@gmail.com");
         mail.To.Add("spencer_symington@hotmail.com");
         mail.Subject = "checking";
-        mail.Body = "Hello there, you have just signed up for the Path of the Brave a sissy's journey mailing list.";
+        mail.Body = emailBody.ToString();
         // you can use others too.
         SmtpClient smtpServer = new SmtpClient("smtp.gmail.com");
         smtpServer.Port = 587;
