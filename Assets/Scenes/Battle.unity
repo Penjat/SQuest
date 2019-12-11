@@ -1448,6 +1448,8 @@ MonoBehaviour:
     type: 3}
   _harpyPrefab: {fileID: 2795634282129581374, guid: e6fb42653a6014022b4bb18f624ce066,
     type: 3}
+  _dickSnakePrefab: {fileID: 8317864349983893756, guid: a767d36800663435f84f4f6f20a64f3b,
+    type: 3}
 --- !u!1001 &439920037
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1975,7 +1977,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 1.3367e-41, y: 1.05e-43, z: -0.0000076294, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0

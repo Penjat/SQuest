@@ -11,7 +11,7 @@ public class DemoBattleFactory {
         switch(battleNum){
             case 0:
             //add the enemy data to battle
-            enemyNames = new string[]{"Goblin"};
+            enemyNames = new string[]{"DickSnake"};
             battle = new Battle(enemyNames);
 
             //set up the player's moves
