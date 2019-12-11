@@ -14,6 +14,7 @@ public class EnemyFactory : MonoBehaviour, IEnemyFactory {
     public GameObject _harpyPrefab;
     public GameObject _dickSnakePrefab;
     public GameObject _niceGuyPrefab;
+    public GameObject _demonPrefab;
     //-----------------------------
 
     public GameObject GetPrefab(string enemyName){
@@ -44,6 +45,9 @@ public class EnemyFactory : MonoBehaviour, IEnemyFactory {
 
             case "NiceGuy":
             return _niceGuyPrefab;
+
+            case "Demon":
+            return _demonPrefab;
         }
         //default to imp
         return _impPrefab;

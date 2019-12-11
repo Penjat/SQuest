@@ -1452,6 +1452,8 @@ MonoBehaviour:
     type: 3}
   _niceGuyPrefab: {fileID: 8317864349983893756, guid: 04b8f0669da5e45308dbe3cfd2589f5e,
     type: 3}
+  _demonPrefab: {fileID: 8317864349983893756, guid: 527aea74affeb4169912dd24a7efba05,
+    type: 3}
 --- !u!1001 &439920037
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1979,7 +1981,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.3367e-41, y: 1.05e-43, z: -0.0000076294, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 7.1e-44, z: 5.455e-42, w: 1.05e-43}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
