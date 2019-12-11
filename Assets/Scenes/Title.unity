@@ -1041,7 +1041,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &464627209
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6774,6 +6774,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _displayText: {fileID: 1569837324}
+  _scrollView: {fileID: 0}
+  _survey: {fileID: 0}
+  _mailing: {fileID: 0}
 --- !u!95 &2064096957
 Animator:
   serializedVersion: 3

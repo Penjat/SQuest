@@ -1450,6 +1450,8 @@ MonoBehaviour:
     type: 3}
   _dickSnakePrefab: {fileID: 8317864349983893756, guid: a767d36800663435f84f4f6f20a64f3b,
     type: 3}
+  _niceGuyPrefab: {fileID: 8317864349983893756, guid: 04b8f0669da5e45308dbe3cfd2589f5e,
+    type: 3}
 --- !u!1001 &439920037
 PrefabInstance:
   m_ObjectHideFlags: 0
