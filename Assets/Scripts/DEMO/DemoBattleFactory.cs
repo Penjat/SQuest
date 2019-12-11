@@ -9,66 +9,75 @@ public class DemoBattleFactory {
         string[] enemyNames;
 
         switch(battleNum){
+
+            //------------Battle 1---(snake w/ no moves)
             case 0:
             //add the enemy data to battle
             enemyNames = new string[]{"DickSnake"};
             battle = new Battle(enemyNames);
 
+            //TODO add sword attack
             //set up the player's moves
-            player.AddMove(new HandJob());
+            // player.AddMove(new HandJob());
 
             return battle;
 
+            //------------Battle 2---(Imp w/ handjob)
             case 1:
             //add the enemy data to battle
-            enemyNames = new string[]{"Frog","Harpy","Frog"};
+            enemyNames = new string[]{"Imp"};
             battle = new Battle(enemyNames);
 
             //set up the player's moves
-            player.AddMove(new Blowjob());
             player.AddMove(new HandJob());
-            player.AddMove(new FlashTits());
 
             return battle;
 
+            //------------Battle 3---(Troll)
             case 2:
             //add the enemy data to battle
             enemyNames = new string[]{"Harpy"};
             battle = new Battle(enemyNames);
 
             //set up the player's moves
-            player.AddMove(new Blowjob());
             player.AddMove(new HandJob());
             player.AddMove(new FlashTits());
+            //TODO add move for shake ass
 
             return battle;
 
+            //------------Battle 4---(Imp and troll)
             case 3:
             //add the enemy data to battle
-            enemyNames = new string[]{"Imp","Harpy","Troll"};
+            enemyNames = new string[]{"Imp","Troll"};
             battle = new Battle(enemyNames);
 
             //set up the player's moves
             player.AddMove(new Blowjob());
             player.AddMove(new HandJob());
             player.AddMove(new FlashTits());
+            //TODO add move for shake ass
 
             return battle;
 
+            //------------Battle 5---(Nice Guy)
             case 4:
             //add the enemy data to battle
+            //TODO change to nice guy
             enemyNames = new string[]{"Imp","Harpy","Troll"};
             battle = new Battle(enemyNames);
 
             //set up the player's moves
-            player.AddMove(new Blowjob());
-            player.AddMove(new HandJob());
-            player.AddMove(new FlashTits());
+            // player.AddMove(new Blowjob());
+            // player.AddMove(new HandJob());
+            // player.AddMove(new FlashTits());
 
             return battle;
 
+            //------------Battle 6---(Demons)
             case 5:
             //add the enemy data to battle
+            //TODO add in demons
             enemyNames = new string[]{"Imp","Harpy"};
             battle = new Battle(enemyNames);
 
