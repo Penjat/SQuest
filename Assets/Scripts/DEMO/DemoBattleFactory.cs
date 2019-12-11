@@ -36,7 +36,7 @@ public class DemoBattleFactory {
             //------------Battle 3---(Troll)
             case 2:
             //add the enemy data to battle
-            enemyNames = new string[]{"Harpy"};
+            enemyNames = new string[]{"Troll"};
             battle = new Battle(enemyNames);
 
             //set up the player's moves
@@ -64,7 +64,7 @@ public class DemoBattleFactory {
             case 4:
             //add the enemy data to battle
             //TODO change to nice guy
-            enemyNames = new string[]{"Imp","Harpy","Troll"};
+            enemyNames = new string[]{"NiceGuy"};
             battle = new Battle(enemyNames);
 
             //set up the player's moves
@@ -78,7 +78,7 @@ public class DemoBattleFactory {
             case 5:
             //add the enemy data to battle
             //TODO add in demons
-            enemyNames = new string[]{"Imp","Harpy"};
+            enemyNames = new string[]{"Demon","Demon"};
             battle = new Battle(enemyNames);
 
             //set up the player's moves
