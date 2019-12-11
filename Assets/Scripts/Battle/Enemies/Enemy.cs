@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
     protected EnemyDelegate _delegate;
     protected ICard _card;
 
-    private int _dmgToDo;
+    protected int _dmgToDo;
 
     protected float _curClimax = 0.0f;
     protected float _maxClimax = 8.0f;
@@ -17,11 +17,11 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
     protected float _curArousal = 0.0f;
     protected float _maxArousal = 5.0f;
 
-    private SelectState _state;
+    protected SelectState _state;
 
-    private bool _isDead = false;
-    private IDictionary<Move,float> _usedMoves = new Dictionary<Move,float>();
-    private HashSet<Move> _targetedBy = new HashSet<Move>();
+    protected bool _isDead = false;
+    protected IDictionary<Move,float> _usedMoves = new Dictionary<Move,float>();
+    protected HashSet<Move> _targetedBy = new HashSet<Move>();
 
     public void SetDelay(double delay){
         _card.SetDelay((float)delay);
@@ -68,30 +68,13 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
         _card.SetState(state);
     }
 
-    public void TakeTurn(){
-        Debug.Log("taking my turn");
-        //Dont attack if was targeted last turn
-        if(_usedMoves.Count > 0){
-            DoneTurn();
-            return;
-        }
-        _delegate.EnemyMsg("The " + "Imp".ColorFor(Entity.ENEMY) + " is mad you ignored it...");
-        //TODO make an attack method
 
-        Action attack = Attack;
-        StartCoroutine(WaitFor(1.0f, attack) );
-    }
     public IEnumerator WaitFor(float seconds,Action func){
         yield return new WaitForSeconds(seconds);
         func();
     }
-    private void Attack(){
-        _delegate.AttackPlayer(2);
-        _delegate.EnemyMsg("The " + "Imp".ColorFor(Entity.ENEMY) + " slaps you");
-        _card.Attack();
-        StartCoroutine(WaitFor(2.0f, DoneTurn) );
-    }
-    private void DoneTurn(){
+
+    protected void DoneTurn(){
         Debug.Log("End Turn");
         _usedMoves.Clear();
         _targetedBy.Clear();
@@ -103,6 +86,25 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
     //---------Virtual METHODS
     public virtual string GetName(){
         return "GENERIC";
+    }
+    public virtual void TakeTurn(){
+        Debug.Log("taking my turn");
+        //Dont attack if was targeted last turn
+        if(_usedMoves.Count > 0){
+            DoneTurn();
+            return;
+        }
+        _delegate.EnemyMsg("The " + GetName().ColorFor(Entity.ENEMY) + " is mad you ignored it...");
+        //TODO make an attack method
+
+        Action attack = Attack;
+        StartCoroutine(WaitFor(1.0f, attack) );
+    }
+    protected virtual void Attack(){
+        _delegate.AttackPlayer(2);
+        _delegate.EnemyMsg("The " + "Imp".ColorFor(Entity.ENEMY) + " slaps you");
+        _card.Attack();
+        StartCoroutine(WaitFor(2.0f, DoneTurn) );
     }
     public virtual void SetUp(EnemyDelegate enemyDelegate){
         _delegate = enemyDelegate;
