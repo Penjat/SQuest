@@ -16,37 +16,11 @@ public class TitleManager : MonoBehaviour{
 
     public void PressedStart(int battleNum){
 
-        string[] enemyNames;
-        Battle battle;
+        //Get the player and clear their moves
         Player player = _delegate.GetPlayer();
         player.ClearMoves();
-
-        switch(battleNum){
-            case 0:
-            //add the enemy data to battle
-            enemyNames = new string[]{"Goblin"};
-            battle = new Battle(enemyNames);
-
-            //set up the player's moves
-            player.AddMove(new HandJob());
-
-            //start the battle
-            _delegate.StartBattle(battle);
-            break;
-
-            case 1:
-            //add the enemy data to battle
-            enemyNames = new string[]{"Imp","Harpy","Troll"};
-            battle = new Battle(enemyNames);
-
-            //set up the player's moves
-            player.AddMove(new Blowjob());
-            player.AddMove(new HandJob());
-            player.AddMove(new FlashTits());
-
-            _delegate.StartBattle(battle);
-            break;
-        }
+        Battle battle = DemoBattleFactory.GetDemoBattle(player,battleNum);
+        _delegate.StartBattle(battle);
     }
 
     public void PressedAbout(){
