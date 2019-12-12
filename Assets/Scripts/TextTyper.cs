@@ -28,16 +28,13 @@ public class TextTyper : MonoBehaviour {
                 _index++;
                 if(_index < _toType.Length){
                     //add the next char
-                    _typed += _toType[_index];
-                    _timer += _rate;
-                    _textBox.text = _typed;
+                    AddNextChar();
                 }else if(_index == _toType.Length){
                     //if is the last char, wait a little
                     _timer += _waitTime;
                 }else{
                     //tell the delegte we are done typing
-                    _delegate.DoneTyping();
-                    _isTyping = false;
+                    DoneTyping();
                 }
             }
         }
@@ -55,6 +52,18 @@ public class TextTyper : MonoBehaviour {
     }
     public void SetText(string s){
         _textBox.text = s;
+    }
+    private void DoneTyping(){
+        _isTyping = false;
+        //in case no delegate
+        if(_delegate != null){
+            _delegate.DoneTyping();
+        }
+    }
+    private void AddNextChar(){
+        _typed += _toType[_index];
+        _timer += _rate;
+        _textBox.text = _typed;
     }
 }
 
