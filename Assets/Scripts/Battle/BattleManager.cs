@@ -22,7 +22,7 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
     public ChooseMoveMenu _moveMenu;
     public Text _battleStateLabel;
 
-    
+
 
     private double _lastPress = 0.0f;
 

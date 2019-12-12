@@ -38,7 +38,6 @@ public class TextTyper : MonoBehaviour {
                 }
             }
         }
-
     }
     public void StartTyping(TextTyperDelegate textTyperDelegate, string toType, float rate, float waitTime){
         _delegate = textTyperDelegate;
