@@ -75,6 +75,7 @@ public class InfoLabelManager : MonoBehaviour{
         _infoLabel.SetText("use " + moveName + " on..." + instructions);
     }
     public void ShowMsg(string msg){
-        _infoLabel.SetText(msg);
+        //_infoLabel.SetText(msg);
+        _infoLabel.StartTyping(null,msg, 0.04f, 2.0f);
     }
 }
