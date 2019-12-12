@@ -53,6 +53,9 @@ public class TextTyper : MonoBehaviour {
         _rate = rate;
         _waitTime = waitTime;
     }
+    public void SetText(string s){
+        _textBox.text = s;
+    }
 }
 
 public interface TextTyperDelegate{
