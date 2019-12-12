@@ -1233,7 +1233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50a3bb45fbfb94585b673a955893d6c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _infoLabel: {fileID: 936894885}
+  _infoLabel: {fileID: 936894887}
 --- !u!1 &383950912
 GameObject:
   m_ObjectHideFlags: 0
@@ -1981,7 +1981,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 9.45e-42, y: 1.05e-43, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 8.825e-42, y: 1.05e-43, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
