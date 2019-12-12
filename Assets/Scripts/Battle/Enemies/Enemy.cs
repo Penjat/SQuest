@@ -156,6 +156,12 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
     }
     public void UnTarget(Move move){
         _targetedBy.Remove(move);
+        //cycle through the parts targeted
+        foreach(TargetType targetType in move.GetPartsTargeted()){
+            //Find the first BodyTarget of this type that is available
+            BodyTarget bodyTarget = _bodyTargets.First(x => !x.IsAvailable() && x.GetTargetType() == targetType);
+            bodyTarget.SetIsAvailble(true);
+        }
     }
     public void ClearTargets(){
         _targetedBy.Clear();
