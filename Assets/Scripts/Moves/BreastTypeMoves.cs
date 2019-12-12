@@ -9,5 +9,6 @@ public class FlashTits : Move {
         _areaAffect = true;
         _primaryType = MoveType.Breasts;
         _partsUsed = new HashSet<MoveType>{MoveType.Breasts};
+        _partsTargeted = new HashSet<TargetType>{TargetType.Penis};
     }
 }

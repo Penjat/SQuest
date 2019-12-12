@@ -8,6 +8,7 @@ public abstract class Move {
     protected string _name;
     protected MoveType _primaryType;
     protected HashSet<MoveType> _partsUsed;
+    protected HashSet<TargetType> _partsTargeted;
     protected bool _areaAffect;
     protected int _dmg;
 
@@ -33,8 +34,11 @@ public abstract class Move {
     public virtual MoveType GetPrimaryType(){
         return _primaryType;
     }
-    public virtual HashSet<MoveType> GetPartsUsed(){
+    public HashSet<MoveType> GetPartsUsed(){
         return _partsUsed;
+    }
+    public HashSet<TargetType> GetPartsTargeted(){
+        return _partsTargeted;
     }
     public virtual bool IsAreaFX(){
         return _areaAffect;

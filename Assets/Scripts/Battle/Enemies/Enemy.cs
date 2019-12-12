@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,6 +23,7 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
     protected bool _isDead = false;
     protected IDictionary<Move,float> _usedMoves = new Dictionary<Move,float>();
     protected HashSet<Move> _targetedBy = new HashSet<Move>();
+    protected HashSet<BodyTarget> _bodyTargets = new HashSet<BodyTarget>();
 
     public void SetDelay(double delay){
         _card.SetDelay((float)delay);
@@ -148,12 +150,17 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
     public void ClearTargets(){
         _targetedBy.Clear();
     }
-    public HashSet<Move> GetTargets(){
-        return _targetedBy;
-    }
     public bool CanTarget(Move move){
-        //TODO make this better
-        return _targetedBy.Count <= 0;
+        //check if this enemy has the targets available for this move
+        HashSet<TargetType> moveTargets = move.GetPartsTargeted();
+        HashSet<TargetType> availableTargets = new HashSet<TargetType>(_bodyTargets.Select(x => x.GetTargetType()));
+        //TODO map for available
+        foreach(TargetType targetType in moveTargets){
+            if(!availableTargets.Contains(targetType)){
+                return false;
+            }
+        }
+        return true;
     }
 
     //--------------StatusBarDelegate---------------
