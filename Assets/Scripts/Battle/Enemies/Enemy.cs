@@ -83,6 +83,7 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
         _delegate.EnemyDoneTurn();
     }
     public void UseMove(Move move, float result){
+        //after the mini game, add the move so its effects can be relized later
         _usedMoves.Add(move,result);
     }
     //---------Virtual METHODS
@@ -142,7 +143,16 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
         _delegate.EnemyPressed(this);
     }
     public void TargetWith(Move move){
+        //When the player commits to targeting enemy
         _targetedBy.Add(move);
+
+        //cycle through the parts targeted
+        foreach(TargetType targetType in move.GetPartsTargeted()){
+            //Find the first BodyTarget of this type that is available
+            BodyTarget bodyTarget = _bodyTargets.First(x => x.IsAvailable() && x.GetTargetType() == targetType);
+            bodyTarget.SetIsAvailble(false);
+        }
+
     }
     public void UnTarget(Move move){
         _targetedBy.Remove(move);

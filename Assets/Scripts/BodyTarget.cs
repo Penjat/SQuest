@@ -6,7 +6,7 @@ using UnityEngine;
 public class BodyTarget {
 
     private TargetType _targetType;
-    private bool _isAvailable = false;
+    private bool _isAvailable = true;
 
     public BodyTarget(TargetType targetType){
         _targetType = targetType;
@@ -16,6 +16,9 @@ public class BodyTarget {
     }
     public bool IsAvailable(){
         return _isAvailable;
+    }
+    public void SetIsAvailble(bool isAvailable){
+        _isAvailable = isAvailable;
     }
 }
 
