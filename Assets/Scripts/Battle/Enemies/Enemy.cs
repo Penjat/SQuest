@@ -153,8 +153,11 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
     public bool CanTarget(Move move){
         //check if this enemy has the targets available for this move
         HashSet<TargetType> moveTargets = move.GetPartsTargeted();
-        HashSet<TargetType> availableTargets = new HashSet<TargetType>(_bodyTargets.Select(x => x.GetTargetType()));
-        //TODO map for available
+
+        //get a HashSet of all the availableTargets
+        HashSet<TargetType> availableTargets = new HashSet<TargetType>(_bodyTargets.Where(x => x.IsAvailable()).Select(x => x.GetTargetType()));
+
+
         foreach(TargetType targetType in moveTargets){
             if(!availableTargets.Contains(targetType)){
                 return false;

@@ -30,6 +30,7 @@ public class DemoBattleFactory {
 
             //set up the player's moves
             player.AddMove(new HandJob());
+            player.AddMove(new Blowjob());
 
             return battle;
 

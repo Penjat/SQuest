@@ -6,11 +6,16 @@ using UnityEngine;
 public class BodyTarget {
 
     private TargetType _targetType;
+    private bool _isAvailable = false;
+
     public BodyTarget(TargetType targetType){
         _targetType = targetType;
     }
     public TargetType GetTargetType(){
         return _targetType;
+    }
+    public bool IsAvailable(){
+        return _isAvailable;
     }
 }
 
