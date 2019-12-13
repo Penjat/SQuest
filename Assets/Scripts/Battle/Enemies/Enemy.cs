@@ -70,7 +70,6 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
         _card.SetState(state);
     }
 
-
     public IEnumerator WaitFor(float seconds,Action func){
         yield return new WaitForSeconds(seconds);
         func();

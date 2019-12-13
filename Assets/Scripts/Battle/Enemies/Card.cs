@@ -41,6 +41,8 @@ public class Card : MonoBehaviour, ICard {
         //TODO add BodyTargetDisplay to array
         GameObject g = Instantiate(_bodyTargetPrefab);
         g.transform.SetParent(_bodyTargetContainer.transform);
+        IBodyTargetDisplay targetDisplay = g.GetComponent<IBodyTargetDisplay>();
+        bodyTarget.SetDisplay(targetDisplay);
     }
 
     public void SetName(string name){
@@ -84,10 +86,12 @@ public class Card : MonoBehaviour, ICard {
     }
     public void SetState(SelectState state){
         switch(state){
+
             case SelectState.Norm:
             _button.color = _normColor;
             SetTargeted(false);
             break;
+            
             case SelectState.Targeted:
             _button.color = _normColor;
             SetTargeted(true);
