@@ -195,7 +195,7 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
             return TargetResult.NotMatch;
         };
         //check if this enemy has the targets available for this move
-        HashSet<TargetType> moveTargets = move.GetPartsTargeted();
+        List<TargetType> moveTargets = move.GetPartsTargeted();
 
         //get a hashset of all the targets regaurdless of if they are available
         HashSet<TargetType> allTargets = new HashSet<TargetType>(_bodyTargets.Select(x => x.GetTargetType()));

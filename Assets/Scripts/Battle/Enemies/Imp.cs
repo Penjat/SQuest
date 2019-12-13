@@ -7,7 +7,7 @@ public class Imp : Enemy {
         _maxArousal = 4.0f;
         _curArousal = 4.0f;
         _maxClimax = 8.0f;
-        _bodyTargets = new HashSet<BodyTarget>{new BodyTarget(TargetType.Penis)};
+        _bodyTargets = new HashSet<BodyTarget>{new BodyTarget(TargetType.Penis),new BodyTarget(TargetType.Penis)};
 
         //set stats before base setup
         base.SetUp(enemyDelegate);
