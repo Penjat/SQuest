@@ -25,6 +25,7 @@ public class BodyTarget {
     public void SetDisplay(IBodyTargetDisplay targetDisplay){
         //used initail to link the Image
         _targetDisplay = targetDisplay;
+        _targetDisplay.SetUp(_targetType);//TODO later pass in more info
     }
     public void StartFlashing(){
         _targetDisplay.SetState(BodyTargetState.Flashing);
@@ -47,4 +48,5 @@ public enum BodyTargetState {
 
 public interface IBodyTargetDisplay{
     void SetState(BodyTargetState state);
+    void SetUp(TargetType targetType);
 }

@@ -88,9 +88,7 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
         Debug.Log("End Turn");
         _usedMoves.Clear();
         _targetedBy.Clear();
-        ResetBodyTargets();
         _delegate.EnemyDoneTurn();
-
     }
     public void UseMove(Move move, float result){
         //after the mini game, add the move so its effects can be relized later
@@ -102,6 +100,7 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
     }
     public virtual void TakeTurn(){
         Debug.Log("taking my turn");
+        ResetBodyTargets();
         //Dont attack if was targeted last turn
         if(_usedMoves.Count > 0){
             DoneTurn();
@@ -186,6 +185,7 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
     private void ResetBodyTargets(){
         foreach(BodyTarget bodyTarget in _bodyTargets){
             bodyTarget.SetIsAvailble(true);
+            bodyTarget.StopFlashing();
         }
     }
     public bool CanTarget(Move move){
