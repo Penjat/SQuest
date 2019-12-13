@@ -61,7 +61,9 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
             Destroy();
         }
     }
-
+    public void TargetWithMove(Move move){
+        SetState(SelectState.Targeted);
+    }
     public void SetState(SelectState state){
         if(_isDead){
             return;

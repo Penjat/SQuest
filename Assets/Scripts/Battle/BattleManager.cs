@@ -204,7 +204,8 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
                 return;
             }
             _infoLabelManager.OverEnemy(enemy);
-            enemy.SetState(SelectState.Targeted);
+            enemy.TargetWithMove(_playerActionManager.GetCurMove());
+            //enemy.SetState(SelectState.Targeted);
         }
     }
     public void ExitEnemy(){
