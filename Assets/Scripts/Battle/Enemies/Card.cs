@@ -91,7 +91,7 @@ public class Card : MonoBehaviour, ICard {
             _button.color = _normColor;
             SetTargeted(false);
             break;
-            
+
             case SelectState.Targeted:
             _button.color = _normColor;
             SetTargeted(true);

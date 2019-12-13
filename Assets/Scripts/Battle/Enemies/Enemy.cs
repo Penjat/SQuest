@@ -63,6 +63,13 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
     }
     public void TargetWithMove(Move move){
         SetState(SelectState.Targeted);
+        ShowPartsFlashing(move);
+    }
+    private void ShowPartsFlashing(Move move){
+        foreach(TargetType targetType in move.GetPartsTargeted()){
+            BodyTarget bodyTarget = _bodyTargets.First(x => x.GetTargetType() == targetType);
+            bodyTarget.StartFlashing();
+        }
     }
     public void SetState(SelectState state){
         if(_isDead){
@@ -141,7 +148,13 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
             return;
         }
         SetState(SelectState.Norm);
+        StopFlashingParts();
         _delegate.PointerExit();
+    }
+    public void StopFlashingParts(){
+        foreach(BodyTarget bodyTarget in _bodyTargets){
+            bodyTarget.StopFlashing();
+        }
     }
     public void WasPressed(){
         _delegate.EnemyPressed(this);

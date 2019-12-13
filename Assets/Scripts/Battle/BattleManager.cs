@@ -22,8 +22,6 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
     public ChooseMoveMenu _moveMenu;
     public Text _battleStateLabel;
 
-
-
     private double _lastPress = 0.0f;
 
     void Start(){
@@ -175,6 +173,7 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
         _categoryManager.CheckCategories(_playerActionManager.GetUsedParts());
         _infoLabelManager.MoveSelected();
         enemy.SetState(SelectState.Over);
+        enemy.StopFlashingParts();
         _enemyManager.ClearTargets();
     }
     public void DoneBattle(){

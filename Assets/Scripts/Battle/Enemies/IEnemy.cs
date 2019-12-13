@@ -20,4 +20,5 @@ public interface IEnemy {
     void ClearTargets();
     bool CanTarget(Move move);
     void TargetWithMove(Move move);
+    void StopFlashingParts();
 }

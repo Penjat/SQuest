@@ -10,10 +10,11 @@ public class BodyTargetDisplay : MonoBehaviour, IBodyTargetDisplay {
             _animator.Play("BodyPartNorm");
             break;
             case BodyTargetState.Flashing:
+            Debug.Log("flashing");
             _animator.Play("BodyPartFlashing");
             break;
-            case BodyTargetState.Targeted:
-            _animator.Play("BodyPartTargeted");
+            case BodyTargetState.Used:
+            _animator.Play("BodyPartUsed");
             break;
         }
     }
