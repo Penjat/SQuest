@@ -175,6 +175,9 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
         }
     }
     public bool CanTarget(Move move){
+        if(move == null ){
+            return false;
+        };
         //check if this enemy has the targets available for this move
         HashSet<TargetType> moveTargets = move.GetPartsTargeted();
 
