@@ -214,9 +214,6 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
                 _infoLabelManager.MoveNotMatch(enemy,_playerActionManager.GetCurMove());
                 break;
             }
-
-
-            //enemy.SetState(SelectState.Targeted);
         }
     }
     public void ExitEnemy(){
