@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
 
     protected bool _isDead = false;
     protected IDictionary<Move,float> _usedMoves = new Dictionary<Move,float>();
-    protected HashSet<Move> _targetedBy = new HashSet<Move>();
+    protected IDictionary<Move,BodyTarget[]> _targetedBy = new Dictionary<Move,BodyTarget[]>();
     protected HashSet<BodyTarget> _bodyTargets = new HashSet<BodyTarget>();
 
     public void SetDelay(double delay){
@@ -160,15 +160,17 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
     }
     public void TargetWith(Move move){
         //When the player commits to targeting enemy
-        _targetedBy.Add(move);
+
+        List<BodyTarget> partsTargeted = new List<BodyTarget>();
 
         //cycle through the parts targeted
         foreach(TargetType targetType in move.GetPartsTargeted()){
             //Find the first BodyTarget of this type that is available
             BodyTarget bodyTarget = _bodyTargets.First(x => x.IsAvailable() && x.GetTargetType() == targetType);
             bodyTarget.SetIsAvailble(false);
+            partsTargeted.Add(bodyTarget);
         }
-
+        _targetedBy.Add(move,partsTargeted.ToArray());
     }
     public void UnTarget(Move move){
         _targetedBy.Remove(move);
@@ -216,8 +218,20 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
     public void DoneFilling(){
         CheckClimax();
     }
-    public void SetTargeted(bool b){
+    public void SetTargeted(bool b, Move selectedMove=null){
         _card.SetTargeted(b);
+        if(b){
+            StopFlashingParts();
+            return;
+        }
+        //just in case
+        if(selectedMove == null){
+            return;
+        }
+        BodyTarget[] bodyTargets = _targetedBy[selectedMove];
+        foreach(BodyTarget bodyTarget in bodyTargets){
+            bodyTarget.StartFlashing();
+        }
     }
 }
 

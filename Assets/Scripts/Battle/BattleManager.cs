@@ -250,7 +250,7 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
     }
     public void ShowTargets(Move selectedMove){
         IEnemy[] targeted = _playerActionManager.GetTargetsFor(selectedMove);
-        _enemyManager.SetTargeted(targeted);
+        _enemyManager.SetTargeted(targeted, selectedMove);
         _infoLabelManager.ShowTargetsForMove(selectedMove);
     }
     public void HideTargets(){

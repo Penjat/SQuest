@@ -8,7 +8,7 @@ public interface IEnemy {
     string GetName();
     void Destroy();
     void DoDmg(float dmg);
-    void SetTargeted(bool b);
+    void SetTargeted(bool b, Move selectedMove=null);
     void SetDelay(double delay);
     void SetState(SelectState state);
     void ResolveDMG();
