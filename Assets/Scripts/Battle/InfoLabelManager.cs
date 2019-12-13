@@ -26,6 +26,11 @@ public class InfoLabelManager : MonoBehaviour{
             ShowBlockedEnemy(enemy);
         }
     }
+    public void MoveNotMatch(IEnemy enemy, Move move){
+        if(_playerActionManager.IsSelectingTarget()){
+            ShowMoveNotMatch(enemy, move);
+        }
+    }
     public void OverEnemy(IEnemy enemy){
         //TODO check if can target
         if(_playerActionManager.IsSelectingTarget()){
@@ -67,6 +72,13 @@ public class InfoLabelManager : MonoBehaviour{
         //TODO get targeted move
         string enemyName = enemy.GetName().ColorFor(Entity.ENEMY);
         _infoLabel.SetText(enemyName + " is already targeted.");
+    }
+    public void ShowMoveNotMatch(IEnemy enemy, Move move){
+        //string moveName = _playerActionManager.GetCurMove().GetName().ColorFor(Entity.MOVE);
+        //TODO get targeted move
+        string enemyName = enemy.GetName().ColorFor(Entity.ENEMY);
+        //TODO fix this text
+        _infoLabel.SetText("mot a match");
     }
     public void ShowMoveNoTarget(){
         //a move has been selected, but is not over an enemy

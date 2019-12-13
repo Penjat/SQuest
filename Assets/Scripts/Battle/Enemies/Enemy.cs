@@ -188,23 +188,28 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
             bodyTarget.StopFlashing();
         }
     }
-    public bool CanTarget(Move move){
+    public TargetResult CanTarget(Move move){
         if(move == null ){
-            return false;
+            return TargetResult.NotMatch;
         };
         //check if this enemy has the targets available for this move
         HashSet<TargetType> moveTargets = move.GetPartsTargeted();
 
+        //get a hashset of all the targets regaurdless of if they are available
+        HashSet<TargetType> allTargets = new HashSet<TargetType>(_bodyTargets.Select(x => x.GetTargetType()));
         //get a HashSet of all the availableTargets
         HashSet<TargetType> availableTargets = new HashSet<TargetType>(_bodyTargets.Where(x => x.IsAvailable()).Select(x => x.GetTargetType()));
 
 
         foreach(TargetType targetType in moveTargets){
+            if(!allTargets.Contains(targetType)){
+                return TargetResult.NotMatch;
+            }
             if(!availableTargets.Contains(targetType)){
-                return false;
+                return TargetResult.AlreadyTargeted;
             }
         }
-        return true;
+        return TargetResult.Available;
     }
 
     //--------------StatusBarDelegate---------------
@@ -215,6 +220,10 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
         _card.SetTargeted(b);
     }
 }
+
+public enum TargetResult{
+    Available, AlreadyTargeted, NotMatch
+};
 
 public interface EnemyDelegate {
     void EnemyPressed(IEnemy enemy);

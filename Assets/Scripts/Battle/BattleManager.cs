@@ -156,7 +156,7 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
         bool selectingTarget = _playerActionManager.IsSelectingTarget();
 
         //make sure we can target the enemy with this move
-        bool canTarget = enemy.CanTarget(_playerActionManager.GetCurMove());
+        bool canTarget = enemy.CanTarget(_playerActionManager.GetCurMove()) == TargetResult.Available;
 
         //return if any are not true
         if( !isTurn || !selectingTarget || !canTarget ){
@@ -198,12 +198,24 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
                 return;
             }
             //check if the enemy can be targeted by the current move
-            if(!enemy.CanTarget(_playerActionManager.GetCurMove())){
+            TargetResult targetResult = enemy.CanTarget(_playerActionManager.GetCurMove());
+
+            switch(targetResult){
+                case TargetResult.Available:
+                _infoLabelManager.OverEnemy(enemy);
+                enemy.TargetWithMove(_playerActionManager.GetCurMove());
+                break;
+
+                case TargetResult.AlreadyTargeted:
                 _infoLabelManager.BlockedEnemy(enemy);
-                return;
+                break;
+
+                case TargetResult.NotMatch:
+                _infoLabelManager.MoveNotMatch(enemy,_playerActionManager.GetCurMove());
+                break;
             }
-            _infoLabelManager.OverEnemy(enemy);
-            enemy.TargetWithMove(_playerActionManager.GetCurMove());
+
+
             //enemy.SetState(SelectState.Targeted);
         }
     }
