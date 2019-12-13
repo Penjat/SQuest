@@ -66,8 +66,12 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
         ShowPartsFlashing(move);
     }
     private void ShowPartsFlashing(Move move){
+
+        //create a new list so parts can be removed and not targeted twice
+        List<BodyTarget> targets = new List<BodyTarget>(_bodyTargets);
         foreach(TargetType targetType in move.GetPartsTargeted()){
-            BodyTarget bodyTarget = _bodyTargets.First(x => x.GetTargetType() == targetType);
+            BodyTarget bodyTarget = targets.First(x => x.GetTargetType() == targetType);
+            targets.Remove(bodyTarget);
             bodyTarget.StartFlashing();
         }
     }

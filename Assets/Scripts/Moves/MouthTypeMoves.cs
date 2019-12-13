@@ -10,7 +10,7 @@ public class Blowjob : Move {
         _areaAffect = false;
         _primaryType = MoveType.Mouth;
         _partsUsed = new HashSet<MoveType>{MoveType.Mouth};
-        _partsTargeted = new List<TargetType>{TargetType.Penis};
+        _partsTargeted = new List<TargetType>{TargetType.Penis,TargetType.Penis};
     }
     public override string GetText(Player player, IEnemy[] targetedEnemies){
         //TODO check if has happened before
