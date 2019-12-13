@@ -200,17 +200,26 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
         //get a hashset of all the targets regaurdless of if they are available
         HashSet<TargetType> allTargets = new HashSet<TargetType>(_bodyTargets.Select(x => x.GetTargetType()));
         //get a HashSet of all the availableTargets
-        HashSet<TargetType> availableTargets = new HashSet<TargetType>(_bodyTargets.Where(x => x.IsAvailable()).Select(x => x.GetTargetType()));
+        List<TargetType> availableTargets = new List<TargetType>(_bodyTargets.Where(x => x.IsAvailable()).Select(x => x.GetTargetType()));
 
-
+        //TODO refactor to work with multiple of same targetType
         foreach(TargetType targetType in moveTargets){
+
+            //if the enemy doesn't have this part,
             if(!allTargets.Contains(targetType)){
+                //return not match
                 return TargetResult.NotMatch;
             }
-            if(!availableTargets.Contains(targetType)){
+            //if the enemy DOES have this part available,
+            if(availableTargets.Contains(targetType)){
+                //remove it from the available list so it isn't counted twice
+                availableTargets.Remove(targetType);
+            }else{
+                //if not, it must be already targeted
                 return TargetResult.AlreadyTargeted;
             }
         }
+        //if we have not returned yet, the move is a match
         return TargetResult.Available;
     }
 
