@@ -116,6 +116,7 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
         _card = GetComponentInChildren<ICard>();
         _card.SetCardDelegate(this);
         _card.SetName(GetName());
+        _card.SetUpBodyTargets(_bodyTargets);
 
         //set up the climax bar
         _card.SetUpClimax(this,_maxClimax);

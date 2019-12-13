@@ -1,5 +1,106 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1607227911480289413
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2696987147108858481}
+  - component: {fileID: 411515864654826316}
+  - component: {fileID: 7919714051659313670}
+  - component: {fileID: 2225569829936970040}
+  m_Layer: 5
+  m_Name: Body Target Container
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2696987147108858481
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607227911480289413}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8693628766979153125}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -1, y: 10.5}
+  m_SizeDelta: {x: -44.1, y: -344.4}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &411515864654826316
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607227911480289413}
+  m_CullTransparentMesh: 0
+--- !u!114 &7919714051659313670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607227911480289413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 0
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2225569829936970040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607227911480289413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 1
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
 --- !u!1 &1658935326473309779
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,6 +253,7 @@ RectTransform:
   - {fileID: 277795567539231433}
   - {fileID: 5039848338941760494}
   - {fileID: 2332888881992302178}
+  - {fileID: 2696987147108858481}
   m_Father: {fileID: 7475005810751523043}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -215,7 +317,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1506372590680551353
 RectTransform:
   m_ObjectHideFlags: 0
@@ -461,6 +563,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af26db2aadbe94c6dba93243b2d6be06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _bodyTargetContainer: {fileID: 2225569829936970040}
   _explodeEffect: {fileID: 7343688251755250430}
   _nameLabel: {fileID: 1816009402329636819}
   _climaxBar: {fileID: 6785284274825008206}
@@ -470,6 +573,8 @@ MonoBehaviour:
   _animator: {fileID: 1376139075410700911}
   _button: {fileID: 5719928511719319120}
   _dmgLabel: {fileID: 942429231545500355}
+  _bodyTargetPrefab: {fileID: 8407914815635665764, guid: 1221703c9dae2467ba50f4d5cc7c3802,
+    type: 3}
 --- !u!1 &5223886532730817275
 GameObject:
   m_ObjectHideFlags: 0
@@ -1016,11 +1121,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Arousal Bar
       objectReference: {fileID: 0}
-    - target: {fileID: 1053055876593836970, guid: 112d331fc2cb242a090de24299c674f9,
-        type: 3}
-      propertyPath: _displayType
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 1053055876593836969, guid: 112d331fc2cb242a090de24299c674f9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1126,6 +1226,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1053055876593836970, guid: 112d331fc2cb242a090de24299c674f9,
+        type: 3}
+      propertyPath: _displayType
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 112d331fc2cb242a090de24299c674f9, type: 3}
 --- !u!224 &5624284554112833713 stripped
@@ -1157,11 +1262,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Climax Bar
-      objectReference: {fileID: 0}
-    - target: {fileID: 1053055876593836970, guid: 112d331fc2cb242a090de24299c674f9,
-        type: 3}
-      propertyPath: _displayType
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1053055876593836969, guid: 112d331fc2cb242a090de24299c674f9,
         type: 3}
@@ -1267,6 +1367,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1053055876593836970, guid: 112d331fc2cb242a090de24299c674f9,
+        type: 3}
+      propertyPath: _displayType
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1053055877220336397, guid: 112d331fc2cb242a090de24299c674f9,
         type: 3}

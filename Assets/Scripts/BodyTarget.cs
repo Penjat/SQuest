@@ -25,3 +25,7 @@ public class BodyTarget {
 public enum TargetType {
     Penis, Vagina
 };
+
+public interface IBodyTargetDisplay{
+
+}

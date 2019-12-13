@@ -13,6 +13,8 @@ public class Card : MonoBehaviour, ICard {
 
     private ICardDelegate _delegate;
 
+    public HorizontalLayoutGroup _bodyTargetContainer;
+
     private const float FILL_RATE = 2.0f;
 
     public UIParticleSystem _explodeEffect;
@@ -25,8 +27,20 @@ public class Card : MonoBehaviour, ICard {
     public Image _button;
     public DMGLabel _dmgLabel;
 
+    public GameObject _bodyTargetPrefab;
+
     void Start(){
         _button.color = _normColor;
+    }
+    public void SetUpBodyTargets(HashSet<BodyTarget> bodyTargets){
+        foreach(BodyTarget bodyTarget in bodyTargets){
+            CreateBodyTarget(bodyTarget);
+        }
+    }
+    private void CreateBodyTarget(BodyTarget bodyTarget){
+        //TODO add BodyTargetDisplay to array
+        GameObject g = Instantiate(_bodyTargetPrefab);
+        g.transform.SetParent(_bodyTargetContainer.transform);
     }
 
     public void SetName(string name){
@@ -125,7 +139,7 @@ public interface ICard {
     void SetCardDelegate(ICardDelegate cardDelegate);
     void SetTargeted(bool b);
     void SetDelay(float delay);
-
+    void SetUpBodyTargets(HashSet<BodyTarget> bodyTargets);
 }
 public interface ICardDelegate{
     void MouseEnter();
