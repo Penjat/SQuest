@@ -21,7 +21,7 @@ public class DickSnake : Enemy {
             return;
         }
         _delegate.EnemyMsg("The " + GetName().ColorFor(Entity.ENEMY) + " begins jerking itself off...");
-        _dmgToDo = 2;
+        _dmgToDo = new Dmg(2,0);
          Action done = DoneTurn;
          StartCoroutine(WaitFor(1.0f, done) );
     }

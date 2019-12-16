@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
     protected EnemyDelegate _delegate;
     protected ICard _card;
 
-    protected int _dmgToDo;
+    protected Dmg _dmgToDo;
 
     protected float _curClimax = 0.0f;
     protected float _maxClimax = 8.0f;
@@ -39,16 +39,16 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
         _card.Climax();
         _isDead = true;
     }
-    public void AddToDmg(int dmg){
-        _dmgToDo += dmg;
+    public void AddToDmg(Dmg dmg){
+        _dmgToDo = _dmgToDo.AddTo(dmg);
     }
     public void ResolveDMG(){
         //adds all the dmg done that round together
-        if(_dmgToDo == 0){
+        if(_dmgToDo._climax == 0){
             return;
         }
-        DoDmg(_dmgToDo);
-        _dmgToDo = 0;
+        DoDmg(_dmgToDo._climax);
+        _dmgToDo = Dmg.Zero();
     }
     public void DoDmg(float dmg){
         Debug.Log("doing dmg --------------------------");

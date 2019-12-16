@@ -12,7 +12,7 @@ public interface IEnemy {
     void SetDelay(double delay);
     void SetState(SelectState state);
     void ResolveDMG();
-    void AddToDmg(int dmg);
+    void AddToDmg(Dmg dmg);
     void TakeTurn();
     void UseMove(Move move, float result);
     void TargetWith(Move move);

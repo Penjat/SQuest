@@ -97,7 +97,8 @@ public class PlayerActionManager : StatusBarDelegate {
             IEnemy[] enemies = action.Value;
             Move move = action.Key;
             float percent = FindPercent(_actionResults,move);
-            int dmg = move.GetDmg(percent);
+            //TODO fix for Percent
+            Dmg dmg = move.GetDmg();
             foreach(IEnemy enemy in enemies){
                 enemy.AddToDmg(dmg);
                 enemy.UseMove(move, percent);
