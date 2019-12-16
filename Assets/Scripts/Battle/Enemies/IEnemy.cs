@@ -7,7 +7,7 @@ public interface IEnemy {
     void ClearSelf();
     string GetName();
     void Destroy();
-    void DoDmg(float dmg);
+    void DoDmg(Dmg dmg);
     void SetTargeted(bool b, Move selectedMove=null);
     void SetDelay(double delay);
     void SetState(SelectState state);

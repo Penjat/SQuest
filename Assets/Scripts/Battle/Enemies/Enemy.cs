@@ -47,14 +47,17 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
         if(_dmgToDo._climax == 0){
             return;
         }
-        DoDmg(_dmgToDo._climax);
+        DoDmg(_dmgToDo);
         _dmgToDo = Dmg.Zero();
     }
-    public void DoDmg(float dmg){
+    public void DoDmg(Dmg dmg){
         Debug.Log("doing dmg --------------------------");
-        _curClimax += dmg;
+        _curClimax += dmg._climax;
+        _curArousal += dmg._arousal;
         _card.SetClimax(_curClimax, true);
-        _card.ShowDmg((int)dmg);
+        _card.SetArousal(_curArousal, true);
+        _card.ShowDmg((int)dmg._climax);
+        //TODO show arousal pop-up
     }
     public void CheckClimax(){
         if(_curClimax >= _maxClimax){
