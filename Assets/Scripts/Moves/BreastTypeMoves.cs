@@ -5,7 +5,7 @@ using UnityEngine;
 public class FlashTits : Move {
     public FlashTits(){
         _name = "Flash Tits";
-        _dmg = 1;
+        _dmg = new Dmg();
         _areaAffect = true;
         _primaryType = MoveType.Breasts;
         _partsUsed = new HashSet<MoveType>{MoveType.Breasts};
