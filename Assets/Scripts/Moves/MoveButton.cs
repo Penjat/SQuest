@@ -31,8 +31,8 @@ public class MoveButton : MonoBehaviour {
         _buttonLabel.text = move.GetName();
         _move = move;
         //_partIndicator.SetUp(_move.GetPartsUsed());
-        _climaxLabel.text = move.GetDmg()._climax.ToString();
-        _arousalLabel.text = move.GetDmg()._arousal.ToString();
+        _climaxLabel.text = move.GetDmg().GetClimax().ToString();
+        _arousalLabel.text = move.GetDmg().GetClimax().ToString();
         ConfigurePartsUsed(move.GetPartsUsed());
         ConfigurePartsTargeted(move.GetPartsTargeted());
     }

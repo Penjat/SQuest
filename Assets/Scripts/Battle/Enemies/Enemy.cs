@@ -55,15 +55,15 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
     }
     public void DoDmg(Dmg dmg){
         Debug.Log("doing dmg --------------------------");
-        _curClimax += dmg._climax;
-        _curArousal += dmg._arousal;
+        _curClimax += dmg.GetClimax();
+        _curArousal += dmg.GetArousal();
         _card.SetClimax(_curClimax, true);
         _card.SetArousal(_curArousal, true);
-        if(dmg._climax != 0){
-            _card.ShowDmg(dmg._climax, DmgType.Climax);
+        if(dmg.GetClimax() != 0){
+            _card.ShowDmg(dmg.GetClimax(), DmgType.Climax);
         }
-        if(dmg._arousal != 0){
-            _card.ShowDmg(dmg._arousal, DmgType.Arousal);
+        if(dmg.GetArousal() != 0){
+            _card.ShowDmg(dmg.GetArousal(), DmgType.Arousal);
         }
     }
     public void CheckClimax(){
