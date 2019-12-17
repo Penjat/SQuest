@@ -29,6 +29,8 @@ public class Card : MonoBehaviour, ICard {
 
     public GameObject _bodyTargetPrefab;
 
+    private List<int> _dmgList = new List<int>();
+
     void Start(){
         _button.color = _normColor;
     }

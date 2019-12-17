@@ -12,11 +12,17 @@ public class MoveButton : MonoBehaviour {
     //public PartIndicator _partIndicator;
     public GridLayoutGroup _partsUsedIcons;
     public GridLayoutGroup _partsTargetedIcons;
-    public Text _dmgLabel;
+
+    public Text _climaxLabel;
+    public Text _arousalLabel;
 
     private bool _isLocked;
 
     public GameObject _iconPrefab;
+
+    //TODO put elsewhere
+    public Sprite[] _partsImages;
+    public Sprite[] _targetsImages;
 
     Move _move;
 
@@ -25,7 +31,8 @@ public class MoveButton : MonoBehaviour {
         _buttonLabel.text = move.GetName();
         _move = move;
         //_partIndicator.SetUp(_move.GetPartsUsed());
-        _dmgLabel.text = move.GetDmg().ToString();
+        _climaxLabel.text = move.GetDmg()._climax.ToString();
+        _arousalLabel.text = move.GetDmg()._arousal.ToString();
         ConfigurePartsUsed(move.GetPartsUsed());
         ConfigurePartsTargeted(move.GetPartsTargeted());
     }
@@ -53,6 +60,8 @@ public class MoveButton : MonoBehaviour {
         foreach(MoveType moveType in partsTargeted){
             GameObject g = Instantiate(_iconPrefab);
             g.transform.SetParent(_partsTargetedIcons.transform);
+            Image image = g.GetComponent<Image>();
+            image.sprite = _targetsImages[0];
         }
     }
 

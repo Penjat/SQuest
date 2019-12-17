@@ -55,7 +55,7 @@ public class ChooseMoveMenu : MonoBehaviour, MoveButtonDelegate {
 
         //find the button's position
         float buttonWidth = _buttonContainer.rect.width;
-        float buttonHeight = 80.0f;
+        float buttonHeight = 120.0f;
 
         float x1 = 0.0f;
         float y1 = -_moveButtons.Count*buttonHeight -buttonHeight;
