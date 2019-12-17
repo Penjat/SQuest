@@ -3,5 +3,5 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum Kink{
-    Sadist, Masocist, HumiliateTarget, HumilateOther, CumTarget, CumOther, Foot, Bonage
+    Sadist, Masocist, HumiliateTarget, HumilateOther, CumTarget, CumOther, Foot, Bondage
 };
