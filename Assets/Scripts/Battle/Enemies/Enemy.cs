@@ -80,7 +80,7 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
         //create a new list so parts can be removed and not targeted twice
         List<BodyTarget> targets = new List<BodyTarget>(_bodyTargets);
         foreach(TargetType targetType in move.GetPartsTargeted()){
-            BodyTarget bodyTarget = targets.First(x => x.GetTargetType() == targetType);
+            BodyTarget bodyTarget = targets.First(x => x.GetTargetType() == targetType && x.IsAvailable());
             targets.Remove(bodyTarget);
             bodyTarget.StartFlashing();
         }
