@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
     protected EnemyDelegate _delegate;
     protected ICard _card;
 
-    protected Dmg _dmgToDo;
+    // protected Dmg _dmgToDo;
 
     protected float _curClimax = 0.0f;
     protected float _maxClimax = 8.0f;
@@ -24,6 +24,8 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
     protected IDictionary<Move,float> _usedMoves = new Dictionary<Move,float>();
     protected IDictionary<Move,BodyTarget[]> _targetedBy = new Dictionary<Move,BodyTarget[]>();
     protected HashSet<BodyTarget> _bodyTargets = new HashSet<BodyTarget>();
+
+    protected List<Dmg> _dmgToDo = new List<Dmg>();
 
     public void SetDelay(double delay){
         _card.SetDelay((float)delay);
@@ -40,15 +42,16 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
         _isDead = true;
     }
     public void AddToDmg(Dmg dmg){
-        _dmgToDo = _dmgToDo.AddTo(dmg);
+        _dmgToDo.Add(dmg);
     }
     public void ResolveDMG(){
         //adds all the dmg done that round together
-        if(_dmgToDo._climax == 0){
+        if(_dmgToDo.Count == 0){
             return;
         }
-        DoDmg(_dmgToDo);
-        _dmgToDo = Dmg.Zero();
+        foreach(Dmg dmg in _dmgToDo){
+            DoDmg(dmg);
+        }
     }
     public void DoDmg(Dmg dmg){
         Debug.Log("doing dmg --------------------------");

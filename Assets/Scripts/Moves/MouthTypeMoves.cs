@@ -6,11 +6,11 @@ using StringMethods;
 public class Blowjob : Move {
     public Blowjob(){
         _name = "Blowjob";
-        _dmg = new Dmg();
+        _dmg = new Dmg(2,0);
         _areaAffect = false;
         _primaryType = MoveType.Mouth;
         _partsUsed = new HashSet<MoveType>{MoveType.Mouth};
-        _partsTargeted = new List<TargetType>{TargetType.Penis,TargetType.Penis};
+        _partsTargeted = new List<TargetType>{TargetType.Penis};
     }
     public override string GetText(Player player, IEnemy[] targetedEnemies){
         //TODO check if has happened before

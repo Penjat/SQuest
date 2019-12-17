@@ -76,7 +76,27 @@ public class Card : MonoBehaviour, ICard {
         _animator.Play("Climax");
     }
     public void ShowDmg(int dmg){
+        //TODO pass in color or icons
+        if(_dmgList.Count > 0){
+            _dmgList.Add(dmg);
+            return;
+        }
+        _dmgList.Add(dmg);
         _dmgLabel.ShowDmg(dmg);
+        StartCoroutine(CheckNextDmg());
+    }
+    private void NextDmg(){
+        //remove the one we just showed
+        _dmgList.RemoveAt(0);
+        //check if still dmg left to show
+        if(_dmgList.Count > 0){
+            _dmgLabel.ShowDmg(_dmgList[0]);
+            StartCoroutine(CheckNextDmg());
+        }
+    }
+    private IEnumerator CheckNextDmg(){
+        yield return new WaitForSeconds(2.0f);
+        NextDmg();
     }
     public void SetTargeted(bool b){
         if(b){

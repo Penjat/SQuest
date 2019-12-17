@@ -5,7 +5,7 @@ using UnityEngine;
 public class HandJob : Move {
     public HandJob(){
         _name = "HandJob";
-        _dmg = new Dmg();
+        _dmg = new Dmg(2,0);
         _areaAffect = false;
         _primaryType = MoveType.Hand;
         _partsUsed = new HashSet<MoveType>{MoveType.Hand};
