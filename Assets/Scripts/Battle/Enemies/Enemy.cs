@@ -59,8 +59,12 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
         _curArousal += dmg._arousal;
         _card.SetClimax(_curClimax, true);
         _card.SetArousal(_curArousal, true);
-        _card.ShowDmg((int)dmg._climax);
-        //TODO show arousal pop-up
+        if(dmg._climax != 0){
+            _card.ShowDmg(dmg._climax, DmgType.Climax);
+        }
+        if(dmg._arousal != 0){
+            _card.ShowDmg(dmg._arousal, DmgType.Arousal);
+        }
     }
     public void CheckClimax(){
         if(_curClimax >= _maxClimax){

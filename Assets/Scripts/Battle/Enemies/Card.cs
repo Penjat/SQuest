@@ -29,7 +29,7 @@ public class Card : MonoBehaviour, ICard {
 
     public GameObject _bodyTargetPrefab;
 
-    private List<int> _dmgList = new List<int>();
+    private List<DmgWithType> _dmgList = new List<DmgWithType>();
 
     void Start(){
         _button.color = _normColor;
@@ -75,14 +75,15 @@ public class Card : MonoBehaviour, ICard {
         _explodeEffect.Play();
         _animator.Play("Climax");
     }
-    public void ShowDmg(int dmg){
+    public void ShowDmg(int dmg, DmgType dmgType=DmgType.Climax){
         //TODO pass in color or icons
+        DmgWithType newDmg = new DmgWithType(dmg, dmgType);
         if(_dmgList.Count > 0){
-            _dmgList.Add(dmg);
+            _dmgList.Add(newDmg);
             return;
         }
-        _dmgList.Add(dmg);
-        _dmgLabel.ShowDmg(dmg);
+        _dmgList.Add(newDmg);
+        _dmgLabel.ShowDmg(newDmg);
         StartCoroutine(CheckNextDmg());
     }
     private void NextDmg(){
@@ -161,7 +162,7 @@ public interface ICard {
     void SetArousal(float arousal, bool animated=false);
     void SetState(SelectState selectState);
     void Attack();
-    void ShowDmg(int dmg);
+    void ShowDmg(int dmg, DmgType dmgType);
     void SetCardDelegate(ICardDelegate cardDelegate);
     void SetTargeted(bool b);
     void SetDelay(float delay);
@@ -171,4 +172,12 @@ public interface ICardDelegate{
     void MouseEnter();
     void MouseExit();
     void WasPressed();
+}
+public struct DmgWithType{
+    public int _dmg;
+    public DmgType _dmgType;
+    public DmgWithType(int dmg, DmgType dmgType){
+        _dmg = dmg;
+        _dmgType = dmgType;
+    }
 }
