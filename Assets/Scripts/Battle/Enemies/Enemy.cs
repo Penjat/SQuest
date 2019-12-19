@@ -53,17 +53,28 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
             DoDmg(dmg);
         }
     }
+    private Dmg CheckForFetish(Dmg dmg){
+        //default to the regualar dmg
+        Dmg modDmg = dmg;
+        //checks the dmg to see if it matches fetish
+        // if(dmg.CheckForFetish(Fetish.Cum)){
+        //     modDmg = dmg.TimesBy(2.0f);
+        // }
+        return modDmg;
+    }
     public void DoDmg(Dmg dmg){
         Debug.Log("doing dmg --------------------------");
-        _curClimax += dmg.GetClimax();
-        _curArousal += dmg.GetArousal();
+        //TODO check fetishes and modify Dmg
+        Dmg modDmg = CheckForFetish(dmg);
+        _curClimax += modDmg.GetClimax();
+        _curArousal += modDmg.GetArousal();
         _card.SetClimax(_curClimax, true);
         _card.SetArousal(_curArousal, true);
         if(dmg.GetClimax() != 0){
-            _card.ShowDmg(dmg.GetClimax(), DmgType.Climax);
+            _card.ShowDmg(modDmg.GetClimax(), DmgType.Climax);
         }
         if(dmg.GetArousal() != 0){
-            _card.ShowDmg(dmg.GetArousal(), DmgType.Arousal);
+            _card.ShowDmg(modDmg.GetArousal(), DmgType.Arousal);
         }
     }
     public void CheckClimax(){
