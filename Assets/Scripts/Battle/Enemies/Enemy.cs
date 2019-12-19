@@ -53,13 +53,13 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
             DoDmg(dmg);
         }
     }
-    private Dmg CheckForFetish(Dmg dmg){
+    protected virtual Dmg CheckForFetish(Dmg dmg){
         //default to the regualar dmg
         Dmg modDmg = dmg;
         //checks the dmg to see if it matches fetish
-        // if(dmg.CheckForFetish(Fetish.Cum)){
-        //     modDmg = dmg.TimesBy(2.0f);
-        // }
+        if(dmg.CheckForFetish(Fetish.Cum)){
+            modDmg = dmg.TimesBy(2.0f);
+        }
         return modDmg;
     }
     public void DoDmg(Dmg dmg){
