@@ -54,6 +54,8 @@ public class MoveButton : MonoBehaviour {
         foreach(MoveType moveType in partsUsed){
             GameObject g = Instantiate(_iconPrefab);
             g.transform.SetParent(_partsUsedIcons.transform);
+            Image image = g.GetComponent<Image>();
+            image.sprite = _targetsImages[0];
         }
     }
     private void ConfigurePartsTargeted(List<TargetType> partsTargeted){
