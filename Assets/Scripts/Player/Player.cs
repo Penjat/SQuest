@@ -6,6 +6,7 @@ public class Player {
     PlayerDelegate _delegate;
 
     private List<Move> _moves;
+    private List<IBodyPart> _bodyParts;
 
     private int _maxHealth = 100;
     private int _curHealth = 100;
