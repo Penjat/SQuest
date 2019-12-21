@@ -105,8 +105,15 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
 
         //Reset all moves
         _playerActionManager.ClearUsedParts();
+
+        //check what body parts are available and unlock categories
         IDictionary<MoveType,Move> used = _playerActionManager.GetUsedParts();
         _categoryManager.CheckCategories(used);
+
+        //check what categories should be shown
+        HashSet<MoveType> availableTypes = new HashSet<MoveType>(_delegate.GetPlayer().GetMoves().Select(x => x.GetPrimaryType()));
+        _categoryManager.CheckAvailableCategories(availableTypes);
+
         _infoLabelManager.CheckState();
         _battleStateLabel.text = "Player's Turn";
         Debug.Log("for realz " + _battleStateLabel.text);

@@ -24,6 +24,12 @@ public class CategoryManager : MonoBehaviour, MoveCategoryDelegate {
             }
         }
     }
+    public void CheckAvailableCategories(HashSet<MoveType> avaibleMoveTypes){
+        foreach(MoveCategory moveCategory in _categories){
+            bool isAvailable =  avaibleMoveTypes.Contains(moveCategory._type);
+            moveCategory.SetAvailable(isAvailable);
+        }
+    }
     public void CancelMove(MoveType moveType){
         _delegate.CancelMove(moveType);
     }

@@ -54,6 +54,9 @@ public class MoveCategory : MonoBehaviour {
         Debug.Log("Mouse Exit");
         _delegate.HideTargets();
     }
+    public void SetAvailable(bool isAvailable){
+        gameObject.SetActive(isAvailable);
+    }
 
 }
 public interface MoveCategoryDelegate {
