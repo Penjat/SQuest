@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+//TODO remove
+using UnityEngine.SceneManagement;
 
 public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, ChooseMoveMenuDelegate, CategoryManagerDelegate, MiniGameDelegate, BattleMenuManagerDelegate, MainManagerDelegate {
 
@@ -26,7 +28,17 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
 
     void Start(){
         //Find the main manager
-        SubManagerDelegate subDelegate = GameObject.Find("MainManager").GetComponent<SubManagerDelegate>();
+        GameObject g = GameObject.Find("MainManager");
+        //TODO do this properly
+        //check if on correct scene
+        if(g == null){
+            SceneManager.LoadScene("Title");
+            return;
+        }
+        SubManagerDelegate subDelegate = g.GetComponent<SubManagerDelegate>();
+
+
+
         SetUp(subDelegate);
         Battle battle = _delegate.GetBattle();
         StartBattle(battle);
