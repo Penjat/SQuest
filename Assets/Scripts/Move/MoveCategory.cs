@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class MoveCategory : MonoBehaviour {
     MoveCategoryDelegate _delegate;
-    public MoveType _type;
+    private IBodyPart _bodyPart;
     private Move _selectedMove;
     private bool _isLocked = false;
 

@@ -40,7 +40,7 @@ public class BodyTarget {
 }
 
 public enum TargetType {
-    Penis, Vagina
+    None, Penis, Vagina
 };
 public enum BodyTargetState {
     Flashing, Available, Used
