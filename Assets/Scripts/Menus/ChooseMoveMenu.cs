@@ -26,7 +26,6 @@ public class ChooseMoveMenu : MonoBehaviour, MoveButtonDelegate {
         _moveButtons = new List<MoveButton>();
         int i = 0;
         foreach(Move move in moves){
-            Debug.Log("move name: " + move.GetName());
             bool isLoked = move.CheckLocked(partsUsed);
             CreateButton(move, i, isLoked);
         }
@@ -52,20 +51,6 @@ public class ChooseMoveMenu : MonoBehaviour, MoveButtonDelegate {
         //TODO store in an array
         MoveButton button = g.GetComponent(typeof(MoveButton)) as MoveButton;
         button.SetUp(this, move);
-
-        //find the button's position
-        float buttonWidth = _buttonContainer.rect.width;
-        float buttonHeight = 120.0f;
-
-        float x1 = 0.0f;
-        float y1 = -_moveButtons.Count*buttonHeight -buttonHeight;
-        float x2 = x1 + buttonWidth;
-        float y2 = y1 + buttonHeight;
-
-        //set the position
-        RectTransform rectTransform = g.GetComponent<RectTransform>();
-        rectTransform.offsetMin = new Vector2(x1,y1);
-        rectTransform.offsetMax = new Vector2(x2,y2);
         button.SetLocked(isLocked);
 
         _moveButtons.Add(button);

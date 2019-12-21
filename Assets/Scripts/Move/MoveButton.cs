@@ -10,8 +10,8 @@ public class MoveButton : MonoBehaviour {
     public Text _buttonLabel;
     public Button _button;
     //public PartIndicator _partIndicator;
-    public GridLayoutGroup _partsUsedIcons;
-    public GridLayoutGroup _partsTargetedIcons;
+    public GameObject _partsUsedIcons;
+    public GameObject _partsTargetedIcons;
 
     public Text _climaxLabel;
     public Text _arousalLabel;
@@ -55,16 +55,39 @@ public class MoveButton : MonoBehaviour {
             GameObject g = Instantiate(_iconPrefab);
             g.transform.SetParent(_partsUsedIcons.transform);
             Image image = g.GetComponent<Image>();
-            image.sprite = _targetsImages[0];
+            image.sprite = FindPartImage(moveType);
         }
     }
     private void ConfigurePartsTargeted(List<TargetType> partsTargeted){
-        foreach(MoveType moveType in partsTargeted){
+        foreach(TargetType targetType in partsTargeted){
             GameObject g = Instantiate(_iconPrefab);
             g.transform.SetParent(_partsTargetedIcons.transform);
             Image image = g.GetComponent<Image>();
-            image.sprite = _targetsImages[0];
+            image.sprite = FindPartImage(targetType);
+
         }
+    }
+    private Sprite FindPartImage(MoveType moveType){
+        switch(moveType){
+            case MoveType.Hand:
+            return _partsImages[0];
+            case MoveType.Mouth:
+            return _partsImages[1];
+            case MoveType.Ass:
+            return _partsImages[2];
+            case MoveType.Breasts:
+            return _partsImages[3];
+        }
+        return _partsImages[0];
+    }
+    private Sprite FindPartImage(TargetType targetType){
+        switch(targetType){
+            case TargetType.Penis:
+            return _targetsImages[0];
+            case TargetType.Vagina:
+            return _targetsImages[1];
+        }
+        return _targetsImages[0];
     }
 
 }
