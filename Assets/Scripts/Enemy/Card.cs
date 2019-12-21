@@ -43,7 +43,10 @@ public class Card : MonoBehaviour, ICard {
         //TODO add BodyTargetDisplay to array
         GameObject g = Instantiate(_bodyTargetPrefab);
         g.transform.SetParent(_bodyTargetContainer.transform);
-        IBodyTargetDisplay targetDisplay = g.GetComponent<IBodyTargetDisplay>();
+        IBodyTargetDisplay targetDisplay = g.GetComponent<BodyTargetDisplay>() as IBodyTargetDisplay;
+        if(targetDisplay == null){
+            print("----------target display  is null-----------");
+        }
         bodyTarget.SetDisplay(targetDisplay);
     }
 
