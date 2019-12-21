@@ -31,6 +31,11 @@ public class DemoBattleFactory {
             //set up the player's moves
             player.AddMove(new HandJob());
             player.AddMove(new Blowjob());
+            player.AddMove(new TittyFuck());
+            player.AddMove(new AssistedBJ());
+            player.AddMove(new DoggyStyle());
+            player.AddMove(new MissionaryAnal());
+            player.AddMove(new Scissor());
 
             return battle;
 

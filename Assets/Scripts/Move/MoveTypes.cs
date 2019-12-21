@@ -3,5 +3,5 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum MoveType {
-    Hand, Mouth, Ass, Breasts
+    Hand, Mouth, Ass, Breasts, Vagina, Feet
 };

@@ -48,6 +48,9 @@ public class Player {
     public int GetCurClimax(){
         return _curClimax;
     }
+    public string BreastDescription(){
+        return "C Cup Breasts";
+    }
 
 }
 
