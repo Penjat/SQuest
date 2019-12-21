@@ -51,7 +51,6 @@ public class Player {
     public string BreastDescription(){
         return "C Cup Breasts";
     }
-
 }
 
 public interface PlayerDelegate{
