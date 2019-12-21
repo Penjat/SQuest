@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.68700004, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 7.1, y: -0.59996}
+  m_AnchoredPosition: {x: 7.100006, y: -0.5999603}
   m_SizeDelta: {x: -14.2, y: -1.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8929420859214952697
@@ -213,8 +213,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.8377493}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1.27, y: 0}
-  m_SizeDelta: {x: 2.54, y: -0.000022888}
+  m_AnchoredPosition: {x: -1.2699966, y: -0.4}
+  m_SizeDelta: {x: 2.5, y: 0.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5848364951249326229
 CanvasRenderer:
@@ -246,7 +246,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 883ed1d5a48664bb2898a31057291822, type: 3}
-    m_FontSize: 10
+    m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -413,8 +413,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 216.8, y: -33.6}
-  m_SizeDelta: {x: 793.1, y: 160.6}
+  m_AnchoredPosition: {x: 224, y: -35.4}
+  m_SizeDelta: {x: 807.5, y: 164.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3141877700410941170
 CanvasRenderer:
@@ -764,8 +764,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.83745295}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.019996643, y: -0.000024319}
-  m_SizeDelta: {x: 0.039993286, y: -0.000061035}
+  m_AnchoredPosition: {x: 0.019996643, y: -5}
+  m_SizeDelta: {x: 0, y: 0.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4366583461596382969
 CanvasRenderer:
@@ -797,7 +797,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 883ed1d5a48664bb2898a31057291822, type: 3}
-    m_FontSize: 10
+    m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
