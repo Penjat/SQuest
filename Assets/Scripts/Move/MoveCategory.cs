@@ -15,14 +15,15 @@ public class MoveCategory : MonoBehaviour {
     public Animator _animator;
     public Text _moveNameLabel;
 
-    public void SetUp(MoveCategoryDelegate categoryDelegate){
+    public void SetUp(MoveCategoryDelegate categoryDelegate, IBodyPart bodyPart){
         _delegate = categoryDelegate;
+        _bodyPart = bodyPart;
     }
     public void WasPressed(){
         if(_isLocked){
             return;
         }
-        _delegate.CategoryPressed(_type);
+        _delegate.CategoryPressed(GetMoveType());
     }
     public void SetLocked(bool b){
         _isLocked = b;
@@ -39,7 +40,7 @@ public class MoveCategory : MonoBehaviour {
         _moveNameLabel.text = move.GetName();
     }
     public void PressedCancel(){
-        _delegate.CancelMove(_type);
+        _delegate.CancelMove(GetMoveType());
     }
 
     public void MouseEnter(){
@@ -56,6 +57,9 @@ public class MoveCategory : MonoBehaviour {
     }
     public void SetAvailable(bool isAvailable){
         gameObject.SetActive(isAvailable);
+    }
+    public MoveType GetMoveType(){
+        return _bodyPart.GetMoveType();
     }
 
 }

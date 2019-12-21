@@ -4,12 +4,20 @@ using UnityEngine;
 
 public class CategoryManager : MonoBehaviour, MoveCategoryDelegate {
     public CategoryManagerDelegate _delegate;
-    public MoveCategory[] _categories;
+    private List<MoveCategory> _categories = new List<MoveCategory>();
+    public GameObject _moveCategoryPrefab;
+    public Transform _catagoryContainer;
 
-    public void SetUp(CategoryManagerDelegate categoryManagerDelegate){
+    public void SetUp(CategoryManagerDelegate categoryManagerDelegate, List<IBodyPart> bodyParts){
         _delegate = categoryManagerDelegate;
-        foreach(MoveCategory m in _categories){
-            m.SetUp(this);
+
+        //create a button for every body part the player has
+        foreach(IBodyPart bodyPart in bodyParts){
+            GameObject g = Instantiate(_moveCategoryPrefab);
+            g.transform.SetParent(_catagoryContainer);
+            MoveCategory moveCategory = g.GetComponent<MoveCategory>();
+            _categories.Add(moveCategory);
+            moveCategory.SetUp(this, bodyPart);
         }
     }
     public void CategoryPressed(MoveType moveType){
@@ -17,16 +25,16 @@ public class CategoryManager : MonoBehaviour, MoveCategoryDelegate {
     }
     public void CheckCategories(IDictionary<MoveType,Move> usedParts){
         foreach(MoveCategory m in _categories){
-            bool isLocked = usedParts.ContainsKey(m._type);
+            bool isLocked = usedParts.ContainsKey(m.GetMoveType());
             m.SetLocked(isLocked);
             if(isLocked){
-                m.SetMove(usedParts[m._type]);
+                m.SetMove(usedParts[m.GetMoveType()]);
             }
         }
     }
     public void CheckAvailableCategories(HashSet<MoveType> avaibleMoveTypes){
         foreach(MoveCategory moveCategory in _categories){
-            bool isAvailable =  avaibleMoveTypes.Contains(moveCategory._type);
+            bool isAvailable =  avaibleMoveTypes.Contains(moveCategory.GetMoveType());
             moveCategory.SetAvailable(isAvailable);
         }
     }

@@ -6,7 +6,7 @@ public class Player {
     PlayerDelegate _delegate;
 
     private List<Move> _moves;
-    private List<IBodyPart> _bodyParts;
+    private List<IBodyPart> _bodyParts = new List<IBodyPart>();
 
     private int _maxHealth = 100;
     private int _curHealth = 100;
@@ -17,6 +17,9 @@ public class Player {
     public Player(PlayerDelegate playerDelegate){
         _delegate = playerDelegate;
         _moves = new List<Move>();
+
+        //TODO pass in elsewhere
+        _bodyParts.Add(new BodyPart(MoveType.Hand));
 
     }
     public void AddMove(Move move){
@@ -51,6 +54,9 @@ public class Player {
     }
     public string BreastDescription(){
         return "C Cup Breasts";
+    }
+    public List<IBodyPart> GetBodyParts(){
+        return _bodyParts;
     }
 }
 

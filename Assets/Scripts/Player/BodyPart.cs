@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BodyPart : IBodyPart {
-    private TargetType _targetType;
-    public BodyPart(TargetType targetType){
-        _targetType = targetType;
+    private MoveType _moveType;
+    public BodyPart(MoveType moveType){
+        _moveType = moveType;
     }
-    public TargetType GetType(){
-        return targetType;
+    public MoveType GetMoveType(){
+        return _moveType;
     }
 }
 
 public interface IBodyPart {
-    TargetType GetType();
+    MoveType GetMoveType();
 }
