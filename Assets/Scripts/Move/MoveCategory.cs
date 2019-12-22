@@ -45,14 +45,11 @@ public class MoveCategory : MonoBehaviour {
 
     public void MouseEnter(){
         if(_isLocked){
-            Debug.Log("Mouse Over: Should show targets");
             _delegate.ShowTargets(_selectedMove);
             return;
         }
-        Debug.Log("Mouse Over: Should highlight button");
     }
     public void MouseExit(){
-        Debug.Log("Mouse Exit");
         _delegate.HideTargets();
     }
     public void SetAvailable(bool isAvailable){
