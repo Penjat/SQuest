@@ -17,4 +17,10 @@ public class Blowjob : Move {
         string text = "you get down on your knees and begin sucking on the " + targetedEnemies[0].GetName()+"'s cock";
         return text;
     }
+    public override string GetName(IBodyPart bodyPart){
+        if(bodyPart.GetModifier() == BodyPartModifier.Cum){
+            return "Snow-Job";
+        }
+        return _name;
+    }
 }

@@ -26,9 +26,9 @@ public class MoveButton : MonoBehaviour {
 
     Move _move;
 
-    public void SetUp(MoveButtonDelegate moveButtonDelegate, Move move){
+    public void SetUp(MoveButtonDelegate moveButtonDelegate, Move move, IBodyPart bodyPart){
         _delegate = moveButtonDelegate;
-        _buttonLabel.text = move.GetName();
+        _buttonLabel.text = move.GetName(bodyPart);
         _move = move;
         //_partIndicator.SetUp(_move.GetPartsUsed());
         _climaxLabel.text = move.GetDmg().GetClimax().ToString();

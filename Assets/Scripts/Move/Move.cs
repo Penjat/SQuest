@@ -34,6 +34,9 @@ public abstract class Move {
     public virtual string GetName(){
         return _name;
     }
+    public virtual string GetName(IBodyPart bodyPart){
+        return _name;
+    }
     public virtual string GetText(Player player, IEnemy[] enemies){
         string text = "you use " + this.GetName() + " on the ";
         return text;

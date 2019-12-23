@@ -27,7 +27,7 @@ public class ChooseMoveMenu : MonoBehaviour, MoveButtonDelegate {
         int i = 0;
         foreach(Move move in moves){
             bool isLocked = move.CheckLocked(partsAvailable);
-            CreateButton(move, i, isLocked);
+            CreateButton(move, bodyPart, i, isLocked);
         }
     }
     public void Hide(){
@@ -43,14 +43,14 @@ public class ChooseMoveMenu : MonoBehaviour, MoveButtonDelegate {
         _moveButtons.Clear();
     }
 
-    public void CreateButton(Move move,int i, bool isLocked){
+    public void CreateButton(Move move, IBodyPart bodyPart, int i, bool isLocked){
         GameObject g = Instantiate(_moveButtonPrefab);
         g.transform.SetParent(_buttonContainer);
 
         //set button's text
         //TODO store in an array
         MoveButton button = g.GetComponent(typeof(MoveButton)) as MoveButton;
-        button.SetUp(this, move);
+        button.SetUp(this, move, bodyPart);
         button.SetLocked(isLocked);
 
         _moveButtons.Add(button);
