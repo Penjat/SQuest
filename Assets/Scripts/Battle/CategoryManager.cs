@@ -8,6 +8,15 @@ public class CategoryManager : MonoBehaviour, MoveCategoryDelegate {
     public GameObject _moveCategoryPrefab;
     public Transform _catagoryContainer;
 
+    public Sprite[] _categoryButtonSprites;
+    private int HAND = 0;
+    private int MOUTH = 1;
+    private int ASS = 2;
+    private int BREASTS = 3;
+    private int VAGINA = 4;
+    private int FEET = 5;
+
+
     public void SetUp(CategoryManagerDelegate categoryManagerDelegate, List<IBodyPart> bodyParts){
         _delegate = categoryManagerDelegate;
 
@@ -17,11 +26,12 @@ public class CategoryManager : MonoBehaviour, MoveCategoryDelegate {
             g.transform.SetParent(_catagoryContainer);
             MoveCategory moveCategory = g.GetComponent<MoveCategory>();
             _categories.Add(moveCategory);
-            moveCategory.SetUp(this, bodyPart);
+            Sprite sprite = GetSprite(bodyPart.GetMoveType());
+            moveCategory.SetUp(this, bodyPart, sprite);
         }
     }
-    public void CategoryPressed(MoveType moveType){
-        _delegate.OpenCategory(moveType);
+    public void CategoryPressed(IBodyPart bodyPart){
+        _delegate.OpenCategory(bodyPart);
     }
     public void CheckCategories(IDictionary<MoveType,Move> usedParts){
         foreach(MoveCategory m in _categories){
@@ -47,10 +57,27 @@ public class CategoryManager : MonoBehaviour, MoveCategoryDelegate {
     public void HideTargets(){
         _delegate.HideTargets();
     }
+    private Sprite GetSprite(MoveType moveType){
+        switch(moveType){
+            case MoveType.Hand:
+            return _categoryButtonSprites[HAND];
+            case MoveType.Mouth:
+            return _categoryButtonSprites[MOUTH];
+            case MoveType.Ass:
+            return _categoryButtonSprites[ASS];
+            case MoveType.Breasts:
+            return _categoryButtonSprites[BREASTS];
+            case MoveType.Vagina:
+            return _categoryButtonSprites[VAGINA];
+            case MoveType.Feet:
+            return _categoryButtonSprites[FEET];
+        }
+        return _categoryButtonSprites[HAND];
+    }
 }
 
 public interface CategoryManagerDelegate{
-    void OpenCategory(MoveType moveType);
+    void OpenCategory(IBodyPart bodyPart);
     void CancelMove(MoveType moveType);
     void ShowTargets(Move selectedMove);
     void HideTargets();

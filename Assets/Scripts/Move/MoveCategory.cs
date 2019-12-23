@@ -14,16 +14,18 @@ public class MoveCategory : MonoBehaviour {
     public GameObject _cancleButton;
     public Animator _animator;
     public Text _moveNameLabel;
+    public Image _image;
 
-    public void SetUp(MoveCategoryDelegate categoryDelegate, IBodyPart bodyPart){
+    public void SetUp(MoveCategoryDelegate categoryDelegate, IBodyPart bodyPart, Sprite sprite){
         _delegate = categoryDelegate;
         _bodyPart = bodyPart;
+        _image.sprite = sprite;
     }
     public void WasPressed(){
         if(_isLocked){
             return;
         }
-        _delegate.CategoryPressed(GetMoveType());
+        _delegate.CategoryPressed(_bodyPart);
     }
     public void SetLocked(bool b){
         _isLocked = b;
@@ -61,7 +63,7 @@ public class MoveCategory : MonoBehaviour {
 
 }
 public interface MoveCategoryDelegate {
-    void CategoryPressed(MoveType moveType);
+    void CategoryPressed(IBodyPart bodyPart);
     void CancelMove(MoveType moveType);
     void ShowTargets(Move selectedMove);
     void HideTargets();

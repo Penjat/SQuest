@@ -253,10 +253,10 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
     }
 
     //-------------Category Manager Delegate--------------
-    public void OpenCategory(MoveType moveType){
-        List<Move> moves = _delegate.GetPlayer().GetMoves().Where(x => x.GetPartsUsed().Contains(moveType)).ToList();
+    public void OpenCategory(IBodyPart bodyPart){
+        List<Move> moves = _delegate.GetPlayer().GetMoves().Where(x => x.GetPrimaryType() == bodyPart.GetMoveType()).ToList();
         IDictionary<MoveType,Move> partsUsed = _playerActionManager.GetUsedParts();
-        _moveMenu.Show(moves, partsUsed, moveType);
+        _moveMenu.Show(moves, partsUsed, bodyPart);
         _playerActionManager.CancelSelected();
     }
     public void CancelMove(MoveType moveType){
