@@ -18,7 +18,7 @@ public class ChooseMoveMenu : MonoBehaviour, MoveButtonDelegate {
         _delegate = menuDelegate;
     }
 
-    public void Show(List<Move> moves, IDictionary<MoveType,Move> partsUsed, IBodyPart bodyPart){
+    public void Show(List<Move> moves, List<MoveType> partsAvailable, IBodyPart bodyPart){
         _menuTitle.text = GetTitle(bodyPart.GetMoveType());
         gameObject.SetActive(true);
 
@@ -26,8 +26,8 @@ public class ChooseMoveMenu : MonoBehaviour, MoveButtonDelegate {
         _moveButtons = new List<MoveButton>();
         int i = 0;
         foreach(Move move in moves){
-            bool isLoked = move.CheckLocked(partsUsed);
-            CreateButton(move, i, isLoked);
+            bool isLocked = move.CheckLocked(partsAvailable);
+            CreateButton(move, i, isLocked);
         }
     }
     public void Hide(){

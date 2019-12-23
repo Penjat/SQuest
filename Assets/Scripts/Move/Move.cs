@@ -15,11 +15,14 @@ public abstract class Move {
     public Move(){
 
     }
-    public bool CheckLocked(IDictionary<MoveType,Move> partsBeingUsed){
-        //returns true if this move requires a part that is used already
+    public bool CheckLocked(List<MoveType> partsAvailable){
+        //returns true if it cannot find the parts it needs
         foreach(MoveType m in _partsUsed){
-            if(partsBeingUsed.ContainsKey(m)){
+            if(!partsAvailable.Contains(m)){
                 return true;
+            }else{
+                //remove it so is not counted twice
+                partsAvailable.Remove(m);
             }
         }
         return false;

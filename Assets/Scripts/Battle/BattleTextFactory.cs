@@ -10,14 +10,15 @@ public class BattleTextFactory {
 
     }
 
-    public string GetText(Player player, IDictionary<Move,IEnemy[]> actions){
+    public string GetText(Player player, IDictionary<PlayerAction,IEnemy[]> actions){
+
         if(actions.Count == 0){
             return "you stand there and do nothing...";
         }
         string battleText = "";
         int i=0;
-        foreach(KeyValuePair<Move,IEnemy[]> action in actions){
-            Move move = action.Key;
+        foreach(KeyValuePair<PlayerAction,IEnemy[]> action in actions){
+            Move move = action.Key.GetMove();
             IEnemy[] targetedEnemies = action.Value;
             battleText += move.GetText(player,targetedEnemies);
             if(i<actions.Count-1){

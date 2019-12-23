@@ -33,12 +33,15 @@ public class CategoryManager : MonoBehaviour, MoveCategoryDelegate {
     public void CategoryPressed(IBodyPart bodyPart){
         _delegate.OpenCategory(bodyPart);
     }
-    public void CheckCategories(IDictionary<MoveType,Move> usedParts){
-        foreach(MoveCategory m in _categories){
-            bool isLocked = usedParts.ContainsKey(m.GetMoveType());
-            m.SetLocked(isLocked);
+    public void CheckCategories(IDictionary<IBodyPart,Move> usedParts){
+        //called to see which categories should be locked/unlocked
+        foreach(MoveCategory moveCategory in _categories){
+            //for each category, check if the body part is in used parts
+            bool isLocked = usedParts.ContainsKey(moveCategory.GetBodyPart());
+            moveCategory.SetLocked(isLocked);
             if(isLocked){
-                m.SetMove(usedParts[m.GetMoveType()]);
+                //if it is locked make sure the move is set for it
+                moveCategory.SetMove(usedParts[moveCategory.GetBodyPart()]);
             }
         }
     }
@@ -48,11 +51,11 @@ public class CategoryManager : MonoBehaviour, MoveCategoryDelegate {
             moveCategory.SetAvailable(isAvailable);
         }
     }
-    public void CancelMove(MoveType moveType){
-        _delegate.CancelMove(moveType);
+    public void CancelMove(IBodyPart bodyPart){
+        _delegate.CancelMove(bodyPart);
     }
-    public void ShowTargets(Move selectedMove){
-        _delegate.ShowTargets(selectedMove);
+    public void ShowTargets(IBodyPart bodyPart, Move selectedMove){
+        _delegate.ShowTargets(bodyPart, selectedMove);
     }
     public void HideTargets(){
         _delegate.HideTargets();
@@ -78,7 +81,7 @@ public class CategoryManager : MonoBehaviour, MoveCategoryDelegate {
 
 public interface CategoryManagerDelegate{
     void OpenCategory(IBodyPart bodyPart);
-    void CancelMove(MoveType moveType);
-    void ShowTargets(Move selectedMove);
+    void CancelMove(IBodyPart bodyPart);
+    void ShowTargets(IBodyPart bodyPart, Move selectedMove);
     void HideTargets();
 }

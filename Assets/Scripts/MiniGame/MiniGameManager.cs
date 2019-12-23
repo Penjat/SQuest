@@ -45,7 +45,7 @@ public class MiniGameManager : MonoBehaviour, TextTyperDelegate, ActionInputDele
             }
         }
     }
-    public void StartGame(MiniGameDelegate miniGameDelegate, IDictionary<Move, IEnemy[]> actions, string battleText){
+    public void StartGame(MiniGameDelegate miniGameDelegate, IDictionary<PlayerAction, IEnemy[]> actions, string battleText){
         Debug.Log("starting mini game");
         //TODO pass in info
         _delegate = miniGameDelegate;

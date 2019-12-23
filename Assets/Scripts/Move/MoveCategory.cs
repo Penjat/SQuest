@@ -42,12 +42,12 @@ public class MoveCategory : MonoBehaviour {
         _moveNameLabel.text = move.GetName();
     }
     public void PressedCancel(){
-        _delegate.CancelMove(GetMoveType());
+        _delegate.CancelMove(_bodyPart);
     }
 
     public void MouseEnter(){
         if(_isLocked){
-            _delegate.ShowTargets(_selectedMove);
+            _delegate.ShowTargets(_bodyPart, _selectedMove);
             return;
         }
     }
@@ -60,11 +60,14 @@ public class MoveCategory : MonoBehaviour {
     public MoveType GetMoveType(){
         return _bodyPart.GetMoveType();
     }
+    public IBodyPart GetBodyPart(){
+        return _bodyPart;
+    }
 
 }
 public interface MoveCategoryDelegate {
     void CategoryPressed(IBodyPart bodyPart);
-    void CancelMove(MoveType moveType);
-    void ShowTargets(Move selectedMove);
+    void CancelMove(IBodyPart bodyPart);
+    void ShowTargets(IBodyPart bodyPart, Move selectedMove);
     void HideTargets();
 }

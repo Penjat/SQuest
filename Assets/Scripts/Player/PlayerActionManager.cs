@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 //-------
 //Manages the move the player will use this round
@@ -8,9 +9,9 @@ using UnityEngine;
 
 public class PlayerActionManager : StatusBarDelegate {
 
-    private Move _curMove;
-    private IDictionary<Move,IEnemy[]> _actions = new Dictionary<Move, IEnemy[]>();
-    private IDictionary<MoveType,Move> _usedParts = new Dictionary<MoveType, Move>();
+    private PlayerAction _curAction;
+    private IDictionary<PlayerAction,IEnemy[]> _actions = new Dictionary<PlayerAction, IEnemy[]>();
+    private IDictionary<IBodyPart,Move> _usedParts = new Dictionary<IBodyPart, Move>();
     private IDictionary<Move,float> _actionResults;
     //TODO posibly have IEnemy[] for multiple targets
 
@@ -30,43 +31,48 @@ public class PlayerActionManager : StatusBarDelegate {
     }
     public void SelectMove(Move move){
         //selected a move from a category
-        _curMove = move;
+
+        //create a collection of body parts for the move
+        List<IBodyPart> bodyParts = new List<IBodyPart>();
+        foreach(MoveType moveType in move.GetPartsUsed()){
+            //find the  body part that is not in used parts and matches the move type
+            IBodyPart bodyPart = _player.GetBodyParts().First(x => x.GetMoveType() == moveType && !_usedParts.ContainsKey(x));
+            bodyParts.Add(bodyPart);
+        }
+
+        _curAction = new PlayerAction(move, bodyParts.ToList());
         Debug.Log("selected Move " + move.GetName());
     }
     public void SelectTargets(IEnemy[] targets){
         //sets the move to be used on the seleceted enemy
         //TODO check if valid target
-        if(_curMove == null){
+        if(_curAction == null){
             return;
         }
         UsedMoveOn(targets);
     }
     public void CancelSelected(){
-        _curMove = null;
+        _curAction = null;
     }
     public void UsedMoveOn(IEnemy[] targets){
         //TODO change for area fx
         foreach(IEnemy enemy in targets){
-            enemy.TargetWith(_curMove);
+            enemy.TargetWith(_curAction.GetMove());
         }
-        _actions.Add(_curMove, targets);
-        AddToUsedParts(_curMove);
-        _curMove = null;
+        _actions.Add(_curAction, targets);
+        AddToUsedParts(_curAction.GetMove());
+        _curAction = null;
     }
-    public void CancelMoveType(MoveType moveType){
-        foreach(KeyValuePair<Move,IEnemy[]> action in _actions){
-            Move move = action.Key;
-            IEnemy[] targets = action.Value;
-            if(move.GetPartsUsed().Contains(moveType)){
-                _actions.Remove(move);
-                UnTargetAll(targets, move);
-                RemoveFromUsedParts(move.GetPartsUsed());
-                Debug.Log("removing move " + move.GetName());
-                return;
-                //doesn't cycle through everymove
-                //This should be fine as there will only be on move using each body type
-            }
-        }
+    public void CancelMoveType(IBodyPart bodyPart){
+        Move move = _usedParts[bodyPart];
+        PlayerAction action = _actions.Select(x => x.Key).First(x => x.GetParts().Contains(bodyPart));
+        IEnemy[] targets = _actions[action];
+
+        UnTargetAll(targets, move);
+        RemoveFromUsedParts(action);
+        _actions.Remove(action);
+        Debug.Log("removing move " + move.GetName());
+        return;
     }
     private void UnTargetAll(IEnemy[] targets, Move move){
         //untargets all the enemies from the move
@@ -76,16 +82,18 @@ public class PlayerActionManager : StatusBarDelegate {
     }
     public void AddToUsedParts(Move move){
 
-        foreach(MoveType m in move.GetPartsUsed()){
-            _usedParts.Add(m,move);
+        foreach(MoveType moveType in move.GetPartsUsed()){
+            //find the first available body part of the same type
+            IBodyPart bodyPart = _player.GetBodyParts().First(x => x.GetMoveType() == moveType && !_usedParts.ContainsKey(x));
+            _usedParts.Add(bodyPart,move);
         }
     }
-    public void RemoveFromUsedParts(HashSet<MoveType> parts){
-        foreach(MoveType m in parts){
-            _usedParts.Remove(m);
+    public void RemoveFromUsedParts(PlayerAction action){
+        foreach(IBodyPart bodyPart in action.GetParts()){
+            _usedParts.Remove(bodyPart);
         }
     }
-    public IDictionary<MoveType,Move> GetUsedParts(){
+    public IDictionary<IBodyPart,Move> GetUsedParts(){
         return _usedParts;
     }
     public void ClearUsedParts(){
@@ -93,9 +101,9 @@ public class PlayerActionManager : StatusBarDelegate {
         _actions.Clear();
     }
     public void UseMoves(){
-        foreach(KeyValuePair<Move, IEnemy[]> action in _actions){
+        foreach(KeyValuePair<PlayerAction, IEnemy[]> action in _actions){
             IEnemy[] enemies = action.Value;
-            Move move = action.Key;
+            Move move = action.Key.GetMove();
             float percent = FindPercent(_actionResults,move);
             //TODO fix for Percent
             Dmg dmg = move.GetDmg();
@@ -132,16 +140,17 @@ public class PlayerActionManager : StatusBarDelegate {
             PlayerTakeDmg(1);
         }
     }
-    public IEnemy[] GetTargetsFor(Move move){
-        return _actions[move];
+    public IEnemy[] GetTargetsFor(IBodyPart bodyPart){
+        PlayerAction action = _actions.First(x => x.Key.GetParts().Contains(bodyPart)).Key;
+        return _actions[action];
     }
     public bool IsSelectingTarget(){
-        return _curMove != null;
+        return _curAction != null;
     }
     public Move GetCurMove(){
-        return _curMove;
+        return _curAction.GetMove();
     }
-    public IDictionary<Move, IEnemy[]> GetActions(){
+    public IDictionary<PlayerAction, IEnemy[]> GetActions(){
         return _actions;
     }
     public void SetResults(IDictionary<Move,float> results){
