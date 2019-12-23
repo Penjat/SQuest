@@ -275,7 +275,7 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
     public void ShowTargets(IBodyPart bodyPart, Move selectedMove){
         IEnemy[] targeted = _playerActionManager.GetTargetsFor(bodyPart);
         _enemyManager.SetTargeted(targeted, selectedMove);
-        _infoLabelManager.ShowTargetsForMove(selectedMove);
+        _infoLabelManager.ShowTargetsForMove(bodyPart, selectedMove);
     }
     public void HideTargets(){
         _enemyManager.ClearTargets();

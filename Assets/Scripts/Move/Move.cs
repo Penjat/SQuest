@@ -17,14 +17,18 @@ public abstract class Move {
     }
     public bool CheckLocked(List<MoveType> partsAvailable){
         //returns true if it cannot find the parts it needs
+
+        //create a new list so as not to affect the old one
+        List<MoveType> available = new List<MoveType>(partsAvailable);
         foreach(MoveType m in _partsUsed){
-            if(!partsAvailable.Contains(m)){
+            if(!available.Contains(m)){
                 return true;
             }else{
                 //remove it so is not counted twice
-                partsAvailable.Remove(m);
+                available.Remove(m);
             }
         }
+        //all the parts were found
         return false;
     }
     public virtual string GetName(){

@@ -56,12 +56,12 @@ public class InfoLabelManager : MonoBehaviour{
     public void ShowBlank(){
         _infoLabel.SetText("");
     }
-    public void ShowTargetsForMove(Move move){
-        //TODO fix later
-        // IEnemy[] targeted = _playerActionManager.GetTargetsFor(move);
-        // string moveName = move.GetName().ColorFor(Entity.MOVE);
-        // string enemyName = targeted[0].GetName().ColorFor(Entity.ENEMY);
-        // _infoLabel.SetText("using " + moveName + " on " + enemyName);
+    public void ShowTargetsForMove(IBodyPart bodyPart, Move move){
+
+        IEnemy[] targeted = _playerActionManager.GetTargetsFor(bodyPart);
+        string moveName = move.GetName().ColorFor(Entity.MOVE);
+        string enemyName = targeted[0].GetName().ColorFor(Entity.ENEMY);
+        _infoLabel.SetText("using " + moveName + " on " + enemyName);
     }
     public void ShowTargetEnemy(IEnemy enemy){
         string moveName = _playerActionManager.GetCurMove().GetName().ColorFor(Entity.MOVE);
