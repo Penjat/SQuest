@@ -18,6 +18,7 @@ public class StatusBar : MonoBehaviour {
     public RectTransform _topBar;
     public RectTransform _bottomBar;
     public Text _fillLabel;
+    public int _refNumber;
 
     private FillDir _fillDir;
 
@@ -103,7 +104,7 @@ public class StatusBar : MonoBehaviour {
         ConfigLabel();
     }
     private void ConfigLabel(){
-        //Configures the labels text depending on what type of status bar it is 
+        //Configures the labels text depending on what type of status bar it is
         switch(_displayType){
             case DisplayType.NONE:
             _fillLabel.text = "";
@@ -131,12 +132,12 @@ public class StatusBar : MonoBehaviour {
 
         //optional Delegate
         if(_delegate != null){
-            _delegate.DoneFilling();
+            _delegate.DoneFilling(_refNumber);
         }
     }
 }
 
 public interface StatusBarDelegate{
     //TODO pass in int for orginization
-    void DoneFilling();
+    void DoneFilling(int refNumber);
 }

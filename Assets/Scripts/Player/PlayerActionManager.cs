@@ -157,7 +157,7 @@ public class PlayerActionManager : StatusBarDelegate {
         _actionResults = results;
     }
     //---------------StatusBar Delegate-----------------
-    public void DoneFilling(){
+    public void DoneFilling(int refNumber){
 
     }
 }

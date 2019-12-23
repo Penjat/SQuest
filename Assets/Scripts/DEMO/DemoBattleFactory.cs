@@ -25,7 +25,7 @@ public class DemoBattleFactory {
             //------------Battle 2---(Imp w/ handjob)
             case 1:
             //add the enemy data to battle
-            enemyNames = new string[]{"Imp"};
+            enemyNames = new string[]{"Imp","Imp"};
             battle = new Battle(enemyNames);
 
             //set up the player's moves

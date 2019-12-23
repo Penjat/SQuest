@@ -38,6 +38,7 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
     public void Destroy(){
         Destroy(gameObject,8.0f);
         _delegate.RemoveEnemy(this);
+        _delegate.Climax(this);
         _card.Climax();
         _isDead = true;
     }
@@ -249,8 +250,10 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
     }
 
     //--------------StatusBarDelegate---------------
-    public void DoneFilling(){
-        CheckClimax();
+    public void DoneFilling(int refNumber){
+        if(refNumber == 1){
+            CheckClimax();
+        }
     }
     public void SetTargeted(bool b, Move selectedMove=null){
         _card.SetTargeted(b);
@@ -281,4 +284,5 @@ public interface EnemyDelegate {
     void EnemyDoneTurn();
     void AttackPlayer(int dmg);
     void EnemyMsg(string msg);
+    void Climax(IEnemy enemy);
 }

@@ -63,6 +63,11 @@ public class MoveCategory : MonoBehaviour {
     public IBodyPart GetBodyPart(){
         return _bodyPart;
     }
+    public void ClimaxOn(){
+        //TODO pass in cum data
+        //TODO make it look different
+        _bodyPart.SetModifier(BodyPartModifier.Cum);
+    }
 
 }
 public interface MoveCategoryDelegate {

@@ -161,6 +161,9 @@ public class EnemyManager : MonoBehaviour, EnemyDelegate {
         Debug.Log("the enemy wants to send a msg: " + msg);
         _delegate.ShowMsg(msg);
     }
+    public void Climax(IEnemy enemy){
+        _delegate.EnemyClimax(enemy);
+    }
 }
 
 public interface EnemyManagerDelegate {
@@ -171,4 +174,5 @@ public interface EnemyManagerDelegate {
     void DmgPlayer(int dmg);
     void EndEnemyTurn();
     void ShowMsg(string msg);
+    void EnemyClimax(IEnemy enemy);
 }

@@ -6,7 +6,7 @@ using StringMethods;
 public class Blowjob : Move {
     public Blowjob(){
         _name = "Blowjob";
-        _dmg = new Dmg(2,0);
+        _dmg = new Dmg(12,0);
         _areaAffect = false;
         _primaryType = MoveType.Mouth;
         _partsUsed = new HashSet<MoveType>{MoveType.Mouth};

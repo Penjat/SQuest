@@ -1373,6 +1373,11 @@ PrefabInstance:
       propertyPath: _displayType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1053055876593836970, guid: 112d331fc2cb242a090de24299c674f9,
+        type: 3}
+      propertyPath: _refNumber
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1053055877220336397, guid: 112d331fc2cb242a090de24299c674f9,
         type: 3}
       propertyPath: m_AnchoredPosition.x

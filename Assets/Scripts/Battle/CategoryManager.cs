@@ -60,6 +60,11 @@ public class CategoryManager : MonoBehaviour, MoveCategoryDelegate {
     public void HideTargets(){
         _delegate.HideTargets();
     }
+    public void ClimaxOn(){
+        //TODO just random for now
+        int random = Random.Range(0,_categories.Count);
+        _categories[1].ClimaxOn();
+    }
     private Sprite GetSprite(MoveType moveType){
         switch(moveType){
             case MoveType.Hand:
