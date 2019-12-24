@@ -27,6 +27,8 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
 
     protected List<Dmg> _dmgToDo = new List<Dmg>();
 
+    protected int waitingForBars = 0;
+
     public void SetDelay(double delay){
         _card.SetDelay((float)delay);
     }
@@ -40,14 +42,21 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
         _delegate.RemoveEnemy(this);
         _delegate.Climax(this);
         _card.Climax();
+        WaitFor(2.0f,DoneResolving);
         _isDead = true;
     }
     public void AddToDmg(Dmg dmg){
         _dmgToDo.Add(dmg);
     }
+    private void DoneResolving(){
+        _delegate.DoneResolving(this);
+    }
     public void ResolveDMG(){
+        //keep track of which bars are still waiting for
+        waitingForBars = 2;
         //adds all the dmg done that round together
         if(_dmgToDo.Count == 0){
+            _delegate.DoneResolving(this);
             return;
         }
         foreach(Dmg dmg in _dmgToDo){
@@ -78,10 +87,8 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
             _card.ShowDmg(modDmg.GetArousal(), DmgType.Arousal);
         }
     }
-    public void CheckClimax(){
-        if(_curClimax >= _maxClimax){
-            Destroy();
-        }
+    public bool CheckClimax(){
+        return (_curClimax >= _maxClimax);
     }
     public void TargetWithMove(Move move){
         SetState(SelectState.Targeted);
@@ -115,6 +122,17 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
         _usedMoves.Clear();
         _targetedBy.Clear();
         _delegate.EnemyDoneTurn();
+    }
+    public virtual MoveType GetMoveTypeClimax(){
+        //returns the body part the enemy will climax on
+        //return null if was not targeted
+        //TODO fix this
+        if(_targetedBy.Count == 0 ){
+            return MoveType.Hand;
+        }
+        //Get a random move
+        int rand = UnityEngine.Random.Range(0,_targetedBy.Count);
+        return _targetedBy.ElementAt(rand).Key.GetPrimaryType();
     }
     public void UseMove(Move move, float result){
         //after the mini game, add the move so its effects can be relized later
@@ -251,8 +269,13 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
 
     //--------------StatusBarDelegate---------------
     public void DoneFilling(int refNumber){
-        if(refNumber == 1){
-            CheckClimax();
+        if(refNumber == 1 && CheckClimax()){
+            Destroy();
+            return;
+        }
+        waitingForBars--;
+        if(waitingForBars == 0){
+            DoneResolving();
         }
     }
     public void SetTargeted(bool b, Move selectedMove=null){
@@ -285,4 +308,5 @@ public interface EnemyDelegate {
     void AttackPlayer(int dmg);
     void EnemyMsg(string msg);
     void Climax(IEnemy enemy);
+    void DoneResolving(IEnemy enemy);
 }

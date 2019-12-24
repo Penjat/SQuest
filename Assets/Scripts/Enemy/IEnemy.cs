@@ -21,4 +21,5 @@ public interface IEnemy {
     void TargetWithMove(Move move);
     void StopFlashingParts();
     TargetResult CanTarget(Move move);
+    MoveType GetMoveTypeClimax();
 }

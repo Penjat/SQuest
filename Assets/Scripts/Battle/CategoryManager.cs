@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class CategoryManager : MonoBehaviour, MoveCategoryDelegate {
     public CategoryManagerDelegate _delegate;
@@ -63,7 +64,13 @@ public class CategoryManager : MonoBehaviour, MoveCategoryDelegate {
     public void ClimaxOn(IEnemy enemy){
         //TODO just random for now
         int random = Random.Range(0,_categories.Count);
-        _categories[1].ClimaxOn();
+        MoveType moveType = enemy.GetMoveTypeClimax();
+        MoveCategory category = _categories.First(x => x.GetBodyPart().GetMoveType() == moveType);
+        //just in case
+        if(category == null){
+            return;
+        }
+        category.ClimaxOn();
     }
     private Sprite GetSprite(MoveType moveType){
         switch(moveType){

@@ -7,7 +7,9 @@ public class EnemyManager : MonoBehaviour, EnemyDelegate {
 
     private EnemyManagerDelegate _delegate;
     public IEnemyFactory _enemyFactory;
+
     private List<IEnemy> _enemies;
+    private List<IEnemy> _waitingFor;
 
     public RectTransform _enemyContainer;
 
@@ -149,6 +151,8 @@ public class EnemyManager : MonoBehaviour, EnemyDelegate {
         return _enemies.ToArray();
     }
     public void ResolveDMG(){
+        //create a list of enemies we are waiting to finish resolving
+        _waitingFor = new List<IEnemy>(_enemies);
         foreach(IEnemy enemy in _enemies){
             enemy.ResolveDMG();
         }
@@ -164,6 +168,12 @@ public class EnemyManager : MonoBehaviour, EnemyDelegate {
     public void Climax(IEnemy enemy){
         _delegate.EnemyClimax(enemy);
     }
+    public void DoneResolving(IEnemy enemy){
+        _waitingFor.Remove(enemy);
+        if(_waitingFor.Count == 0){
+            _delegate.DoneResolvingEnemies();
+        }
+    }
 }
 
 public interface EnemyManagerDelegate {
@@ -175,4 +185,5 @@ public interface EnemyManagerDelegate {
     void EndEnemyTurn();
     void ShowMsg(string msg);
     void EnemyClimax(IEnemy enemy);
+    void DoneResolvingEnemies();
 }

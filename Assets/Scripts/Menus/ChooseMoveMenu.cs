@@ -19,7 +19,7 @@ public class ChooseMoveMenu : MonoBehaviour, MoveButtonDelegate {
     }
 
     public void Show(List<Move> moves, List<MoveType> partsAvailable, IBodyPart bodyPart){
-        _menuTitle.text = GetTitle(bodyPart.GetMoveType());
+        _menuTitle.text = GetTitle(bodyPart);
         gameObject.SetActive(true);
 
         Clear();
@@ -55,19 +55,34 @@ public class ChooseMoveMenu : MonoBehaviour, MoveButtonDelegate {
 
         _moveButtons.Add(button);
     }
-    private string GetTitle(MoveType moveType){
-        switch(moveType){
-            case MoveType.Hand:
-            return "Hand";
-            case MoveType.Mouth:
-            return "Mouth";
-            case MoveType.Breasts:
-            return "Breasts";
-            case MoveType.Ass:
-            return "Ass";
-            default:
-            return "Choose Move";
+    private string GetTitle(IBodyPart bodyPart){
+        string menuText = "";
+        //creck if creampied
+        if(bodyPart.GetModifier() == BodyPartModifier.Cum){
+            menuText += "Cum covered ";
         }
+        switch(bodyPart.GetMoveType()){
+            case MoveType.Hand:
+            menuText += "Hand";
+            break;
+
+            case MoveType.Mouth:
+            menuText += "Mouth";
+            break;
+
+            case MoveType.Breasts:
+            menuText += "Breasts";
+            break;
+
+            case MoveType.Ass:
+            menuText += "Ass";
+            break;
+
+            default:
+            menuText += "Choose Move";
+            break;
+        }
+        return menuText;
     }
     //--------------MoveButtonDelegate Methods---------------
     public void MoveButtonPressed(Move move){

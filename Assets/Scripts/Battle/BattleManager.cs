@@ -142,7 +142,7 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
         _playerActionManager.UseMoves();
         _enemyManager.ResolveDMG();
         _battleStateLabel.text = "resolving actions...";
-        _turnManager.EndResolveActions();
+        //_turnManager.EndResolveActions();
     }
     public void StartEnemyTurn(){
         //start the enemies turn
@@ -165,6 +165,9 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
     //--------------Enemy Manager Delegate----------------
     public void EnemyClimax(IEnemy enemy){
         _categoryManager.ClimaxOn(enemy);
+    }
+    public void DoneResolvingEnemies(){
+        _turnManager.EndResolveActions();
     }
     public void ShowMsg(string msg){
         _infoLabelManager.ShowMsg(msg);
