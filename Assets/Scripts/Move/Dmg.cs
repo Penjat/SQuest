@@ -11,7 +11,10 @@ public struct Dmg {
         _climax = climax;
         _arousal = arousal;
         _fetishes = new HashSet<Fetish>();
-        _fetishes.Add(Fetish.Cum);
+
+    }
+    public void AddFetish(Fetish fetish){
+        _fetishes.Add(fetish);
     }
 
     public Dmg AddTo(Dmg dmg){
@@ -36,5 +39,13 @@ public struct Dmg {
     }
     public bool CheckForFetish(Fetish fetish){
         return _fetishes.Contains(fetish);
+    }
+    public Dmg ApplyParts(List<IBodyPart> bodyParts){
+        foreach(IBodyPart bodyPart in bodyParts){
+            if(bodyPart.GetModifier() == BodyPartModifier.Cum){
+                this.AddFetish(Fetish.Cum);
+            }
+        }
+        return this;
     }
 }

@@ -29,12 +29,17 @@ public class PlayerActionManager : StatusBarDelegate {
         _playerClimaxBar.SetUp(this,_player.GetMaxClimax(),50.0f);
         _playerClimaxBar.SetValue(_player.GetCurClimax());
     }
-    public void SelectMove(Move move){
+    public void SelectMove(Move move, IBodyPart categoryBodyPart){
         //selected a move from a category
 
         //create a collection of body parts for the move
         List<IBodyPart> bodyParts = new List<IBodyPart>();
         foreach(MoveType moveType in move.GetPartsUsed()){
+            //make sure the body part we clicked on is used
+            if(moveType == move.GetPrimaryType() && !bodyParts.Contains(categoryBodyPart)){
+                bodyParts.Add(categoryBodyPart);
+                break;
+            }
             //find the  body part that is not in used parts and matches the move type
             IBodyPart bodyPart = _player.GetBodyParts().First(x => x.GetMoveType() == moveType && !_usedParts.ContainsKey(x));
             bodyParts.Add(bodyPart);
@@ -104,9 +109,11 @@ public class PlayerActionManager : StatusBarDelegate {
         foreach(KeyValuePair<PlayerAction, IEnemy[]> action in _actions){
             IEnemy[] enemies = action.Value;
             Move move = action.Key.GetMove();
+            List<IBodyPart> bodyParts = action.Key.GetParts();
             float percent = FindPercent(_actionResults,move);
             //TODO fix for Percent
             Dmg dmg = move.GetDmg();
+            dmg = dmg.ApplyParts(bodyParts);
             foreach(IEnemy enemy in enemies){
                 enemy.AddToDmg(dmg);
                 enemy.UseMove(move, percent);

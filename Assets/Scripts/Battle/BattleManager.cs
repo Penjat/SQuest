@@ -253,8 +253,8 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
         _turnManager.EndEnemyTurn();
     }
     //-------------Choose Move Menu Delegate---------------
-    public void MoveSelected(Move move){
-        _playerActionManager.SelectMove(move);
+    public void MoveSelected(Move move, IBodyPart bodyPart){
+        _playerActionManager.SelectMove(move, bodyPart);
         _infoLabelManager.MoveSelected();
     }
 

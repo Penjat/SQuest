@@ -13,6 +13,7 @@ public class ChooseMoveMenu : MonoBehaviour, MoveButtonDelegate {
     private List<MoveButton> _moveButtons;
 
     public Text _menuTitle;
+    private IBodyPart _bodyPart;
 
     public void SetUp(ChooseMoveMenuDelegate menuDelegate){
         _delegate = menuDelegate;
@@ -21,6 +22,7 @@ public class ChooseMoveMenu : MonoBehaviour, MoveButtonDelegate {
     public void Show(List<Move> moves, List<MoveType> partsAvailable, IBodyPart bodyPart){
         _menuTitle.text = GetTitle(bodyPart);
         gameObject.SetActive(true);
+        _bodyPart = bodyPart;
 
         Clear();
         _moveButtons = new List<MoveButton>();
@@ -87,11 +89,11 @@ public class ChooseMoveMenu : MonoBehaviour, MoveButtonDelegate {
     //--------------MoveButtonDelegate Methods---------------
     public void MoveButtonPressed(Move move){
         Debug.Log("a button was pressed");
-        _delegate.MoveSelected(move);
+        _delegate.MoveSelected(move, _bodyPart);
         Hide();
     }
 }
 
 public interface ChooseMoveMenuDelegate {
-    void MoveSelected(Move move);
+    void MoveSelected(Move move, IBodyPart bodyPart);
 }
