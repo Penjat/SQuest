@@ -11,7 +11,7 @@ public abstract class Move {
     protected List<TargetType> _partsTargeted;
     protected bool _areaAffect;
     protected Dmg _dmg;
-    protected bool _isSpecial;
+    protected bool _isSpecial = false;
 
     public Move(){
 
