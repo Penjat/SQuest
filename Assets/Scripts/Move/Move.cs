@@ -57,4 +57,8 @@ public abstract class Move {
             //TODO account for percent
             return _dmg;
     }
+    public virtual bool ShouldAppear(IBodyPart bodyPart){
+        //checks the primary body to see if the move should appear
+        return true;
+    }
 }

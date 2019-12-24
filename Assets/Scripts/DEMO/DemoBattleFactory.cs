@@ -36,6 +36,7 @@ public class DemoBattleFactory {
             player.AddMove(new DoggyStyle());
             player.AddMove(new MissionaryAnal());
             player.AddMove(new Scissor());
+            player.AddMove(new Swallow());
 
             return battle;
 

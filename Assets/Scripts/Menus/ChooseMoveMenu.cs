@@ -26,10 +26,11 @@ public class ChooseMoveMenu : MonoBehaviour, MoveButtonDelegate {
 
         Clear();
         _moveButtons = new List<MoveButton>();
-        int i = 0;
         foreach(Move move in moves){
-            bool isLocked = move.CheckLocked(partsAvailable);
-            CreateButton(move, bodyPart, i, isLocked);
+            if(move.ShouldAppear(bodyPart)){
+                bool isLocked = move.CheckLocked(partsAvailable);
+                CreateButton(move, bodyPart, isLocked);
+            }
         }
     }
     public void Hide(){
@@ -45,7 +46,7 @@ public class ChooseMoveMenu : MonoBehaviour, MoveButtonDelegate {
         _moveButtons.Clear();
     }
 
-    public void CreateButton(Move move, IBodyPart bodyPart, int i, bool isLocked){
+    public void CreateButton(Move move, IBodyPart bodyPart, bool isLocked){
         GameObject g = Instantiate(_moveButtonPrefab);
         g.transform.SetParent(_buttonContainer);
 
