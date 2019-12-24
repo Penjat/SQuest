@@ -42,7 +42,7 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
         _delegate.RemoveEnemy(this);
         _delegate.Climax(this);
         _card.Climax();
-        WaitFor(2.0f,DoneResolving);
+        StartCoroutine(WaitFor(2.0f,DoneResolving));
         _isDead = true;
     }
     public void AddToDmg(Dmg dmg){

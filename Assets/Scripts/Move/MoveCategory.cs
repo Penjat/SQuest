@@ -15,11 +15,13 @@ public class MoveCategory : MonoBehaviour {
     public Animator _animator;
     public Text _moveNameLabel;
     public Image _image;
+    public CategoryEffect _categoryEffect;
 
     public void SetUp(MoveCategoryDelegate categoryDelegate, IBodyPart bodyPart, Sprite sprite){
         _delegate = categoryDelegate;
         _bodyPart = bodyPart;
         _image.sprite = sprite;
+        _categoryEffect.Show(_bodyPart.GetModifier() == BodyPartModifier.Cum);
     }
     public void WasPressed(){
         if(_isLocked){
@@ -67,6 +69,7 @@ public class MoveCategory : MonoBehaviour {
         //TODO pass in cum data
         //TODO make it look different
         _bodyPart.SetModifier(BodyPartModifier.Cum);
+        _categoryEffect.Show(true);
     }
 
 }
