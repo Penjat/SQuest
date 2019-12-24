@@ -11,7 +11,7 @@ public class AssistedBJ : Move {
         _partsUsed = new HashSet<MoveType>{MoveType.Mouth,MoveType.Hand};
         _partsTargeted = new List<TargetType>{TargetType.Penis};
     }
-    public override string GetText(Player player, IEnemy[] targetedEnemies){
+    public override string GetText(Player player, ITarget[] targetedEnemies){
         string text = "you use your hands and mouth to pleasure the " + targetedEnemies[0].GetName();
         return text;
     }

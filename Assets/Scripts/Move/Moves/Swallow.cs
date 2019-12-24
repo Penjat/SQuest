@@ -12,7 +12,7 @@ public class Swallow : Move {
         _partsTargeted = new List<TargetType>{TargetType.Penis};
         _isSpecial = true;
     }
-    public override string GetText(Player player, IEnemy[] targetedEnemies){
+    public override string GetText(Player player, ITarget[] targetedEnemies){
         string text = "you and the " + targetedEnemies[0].GetName() + " begin scissoring your vaginas together";
         return text;
     }

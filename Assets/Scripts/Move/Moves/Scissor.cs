@@ -11,7 +11,7 @@ public class Scissor : Move {
         _partsUsed = new HashSet<MoveType>{MoveType.Vagina};
         _partsTargeted = new List<TargetType>{TargetType.Vagina};
     }
-    public override string GetText(Player player, IEnemy[] targetedEnemies){
+    public override string GetText(Player player, ITarget[] targetedEnemies){
         string text = "you and the " + targetedEnemies[0].GetName() + " begin scissoring your vaginas together";
         return text;
     }

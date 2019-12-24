@@ -11,7 +11,7 @@ public class HandJob : Move {
         _partsUsed = new HashSet<MoveType>{MoveType.Hand};
         _partsTargeted = new List<TargetType>{TargetType.Penis};
     }
-    public override string GetText(Player player, IEnemy[] targetedEnemies){
+    public override string GetText(Player player, ITarget[] targetedEnemies){
         string text = "you grab the " + targetedEnemies[0].GetName()+"'s hard cock and begin jerking";
         return text;
     }

@@ -10,7 +10,7 @@ using System.Linq;
 public class PlayerActionManager : StatusBarDelegate {
 
     private PlayerAction _curAction;
-    private IDictionary<PlayerAction,IEnemy[]> _actions = new Dictionary<PlayerAction, IEnemy[]>();
+    private IDictionary<PlayerAction,ITarget[]> _actions = new Dictionary<PlayerAction, ITarget[]>();
     private IDictionary<IBodyPart,Move> _usedParts = new Dictionary<IBodyPart, Move>();
     private IDictionary<Move,float> _actionResults;
     //TODO posibly have IEnemy[] for multiple targets
@@ -71,7 +71,7 @@ public class PlayerActionManager : StatusBarDelegate {
     public void CancelMoveType(IBodyPart bodyPart){
         Move move = _usedParts[bodyPart];
         PlayerAction action = _actions.Select(x => x.Key).First(x => x.GetParts().Contains(bodyPart));
-        IEnemy[] targets = _actions[action];
+        ITarget[] targets = _actions[action];
 
         UnTargetAll(targets, move);
         RemoveFromUsedParts(action);
@@ -79,10 +79,10 @@ public class PlayerActionManager : StatusBarDelegate {
         Debug.Log("removing move " + move.GetName());
         return;
     }
-    private void UnTargetAll(IEnemy[] targets, Move move){
+    private void UnTargetAll(ITarget[] targets, Move move){
         //untargets all the enemies from the move
-        foreach(IEnemy enemy in targets){
-            enemy.UnTarget(move);
+        foreach(ITarget target in targets){
+            target.UnTarget(move);
         }
     }
     public void AddToUsedParts(Move move){
@@ -106,17 +106,17 @@ public class PlayerActionManager : StatusBarDelegate {
         _actions.Clear();
     }
     public void UseMoves(){
-        foreach(KeyValuePair<PlayerAction, IEnemy[]> action in _actions){
-            IEnemy[] enemies = action.Value;
+        foreach(KeyValuePair<PlayerAction, ITarget[]> action in _actions){
+            ITarget[] targets = action.Value;
             Move move = action.Key.GetMove();
             List<IBodyPart> bodyParts = action.Key.GetParts();
             float percent = FindPercent(_actionResults,move);
             //TODO fix for Percent
             Dmg dmg = move.GetDmg();
             dmg = dmg.ApplyParts(bodyParts);
-            foreach(IEnemy enemy in enemies){
-                enemy.AddToDmg(dmg);
-                enemy.UseMove(move, percent);
+            foreach(ITarget target in targets){
+                target.AddToDmg(dmg);
+                target.UseMove(move, percent);
             }
         }
     }
@@ -147,7 +147,7 @@ public class PlayerActionManager : StatusBarDelegate {
             PlayerTakeDmg(1);
         }
     }
-    public IEnemy[] GetTargetsFor(IBodyPart bodyPart){
+    public ITarget[] GetTargetsFor(IBodyPart bodyPart){
         PlayerAction action = _actions.First(x => x.Key.GetParts().Contains(bodyPart)).Key;
         return _actions[action];
     }
@@ -157,7 +157,7 @@ public class PlayerActionManager : StatusBarDelegate {
     public Move GetCurMove(){
         return _curAction.GetMove();
     }
-    public IDictionary<PlayerAction, IEnemy[]> GetActions(){
+    public IDictionary<PlayerAction, ITarget[]> GetActions(){
         return _actions;
     }
     public void SetResults(IDictionary<Move,float> results){

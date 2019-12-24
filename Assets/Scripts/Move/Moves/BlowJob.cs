@@ -12,7 +12,7 @@ public class Blowjob : Move {
         _partsUsed = new HashSet<MoveType>{MoveType.Mouth};
         _partsTargeted = new List<TargetType>{TargetType.Penis};
     }
-    public override string GetText(Player player, IEnemy[] targetedEnemies){
+    public override string GetText(Player player, ITarget[] targetedEnemies){
         //TODO check if has happened before
         string text = "you get down on your knees and begin sucking on the " + targetedEnemies[0].GetName()+"'s cock";
         return text;

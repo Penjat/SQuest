@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SequenceFactory {
-    public static Sequence[] CreateSequenceArray(IDictionary<PlayerAction, IEnemy[]> actions, int numberOfBeats){
+    public static Sequence[] CreateSequenceArray(IDictionary<PlayerAction, ITarget[]> actions, int numberOfBeats){
         //create a general array of what inputs will be for the player
         BeatEvent[] playerSequence = CreatePlayerSequence(numberOfBeats);
 
         //create a list of the sequences needed
         List<Sequence> sequenceList = new List<Sequence>();
-        foreach(KeyValuePair<PlayerAction, IEnemy[]> action in actions){
+        foreach(KeyValuePair<PlayerAction, ITarget[]> action in actions){
             //TODO add data from move
             Move move = action.Key.GetMove();
             sequenceList.Add(new Sequence(move));

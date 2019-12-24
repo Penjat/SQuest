@@ -58,7 +58,7 @@ public class InfoLabelManager : MonoBehaviour{
     }
     public void ShowTargetsForMove(IBodyPart bodyPart, Move move){
 
-        IEnemy[] targeted = _playerActionManager.GetTargetsFor(bodyPart);
+        ITarget[] targeted = _playerActionManager.GetTargetsFor(bodyPart);
         string moveName = move.GetName().ColorFor(Entity.MOVE);
         string enemyName = targeted[0].GetName().ColorFor(Entity.ENEMY);
         _infoLabel.SetText("using " + moveName + " on " + enemyName);

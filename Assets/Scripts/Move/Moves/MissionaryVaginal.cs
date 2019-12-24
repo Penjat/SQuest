@@ -11,7 +11,7 @@ public class MissionaryVaginal : Move {
         _partsUsed = new HashSet<MoveType>{MoveType.Vagina};
         _partsTargeted = new List<TargetType>{TargetType.Penis};
     }
-    public override string GetText(Player player, IEnemy[] targetedEnemies){
+    public override string GetText(Player player, ITarget[] targetedEnemies){
         string text = "the " + targetedEnemies[0].GetName() + " begins fucking you in your pussy";
         return text;
     }

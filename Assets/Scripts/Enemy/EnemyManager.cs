@@ -123,7 +123,7 @@ public class EnemyManager : MonoBehaviour, EnemyDelegate {
     public void PointerExit(){
         _delegate.ExitEnemy();
     }
-    public void SetTargeted(IEnemy[] targetedEnemies, Move selectedMove){
+    public void SetTargeted(ITarget[] targets, Move selectedMove){
         //check all the enemies to see if they should be targeted
         //TODO fix how bad this is maybe, maybe doen't matter
 
@@ -131,8 +131,8 @@ public class EnemyManager : MonoBehaviour, EnemyDelegate {
         ClearTargets();
 
         //target the targeted
-        foreach(IEnemy enemy in targetedEnemies){
-            enemy.SetTargeted(true, selectedMove);
+        foreach(ITarget target in targets){
+            target.SetTargeted(true, selectedMove);
         }
     }
     public void ClearTargets(){

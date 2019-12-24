@@ -279,7 +279,7 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
         _categoryManager.CheckCategories(_playerActionManager.GetUsedParts());
     }
     public void ShowTargets(IBodyPart bodyPart, Move selectedMove){
-        IEnemy[] targeted = _playerActionManager.GetTargetsFor(bodyPart);
+        ITarget[] targeted = _playerActionManager.GetTargetsFor(bodyPart);
         _enemyManager.SetTargeted(targeted, selectedMove);
         _infoLabelManager.ShowTargetsForMove(bodyPart, selectedMove);
     }

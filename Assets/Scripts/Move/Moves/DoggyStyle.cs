@@ -11,7 +11,7 @@ public class DoggyStyle : Move {
         _partsUsed = new HashSet<MoveType>{MoveType.Ass,MoveType.Hand};
         _partsTargeted = new List<TargetType>{TargetType.Penis};
     }
-    public override string GetText(Player player, IEnemy[] targetedEnemies){
+    public override string GetText(Player player, ITarget[] targetedEnemies){
         string text = "you get on all fours and take it from behind";
         return text;
     }

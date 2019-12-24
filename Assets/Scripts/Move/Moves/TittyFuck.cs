@@ -11,7 +11,7 @@ public class TittyFuck : Move {
         _partsUsed = new HashSet<MoveType>{MoveType.Breasts,MoveType.Hand};
         _partsTargeted = new List<TargetType>{TargetType.Penis};
     }
-    public override string GetText(Player player, IEnemy[] targetedEnemies){
+    public override string GetText(Player player, ITarget[] targetedEnemies){
         string text = "you use your" + player.BreastDescription() + " to pleasure the " + targetedEnemies[0].GetName()+"'s stiff prick";
         return text;
     }
