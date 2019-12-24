@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class ChooseMoveMenu : MonoBehaviour, MoveButtonDelegate {
 
@@ -26,7 +27,8 @@ public class ChooseMoveMenu : MonoBehaviour, MoveButtonDelegate {
 
         Clear();
         _moveButtons = new List<MoveButton>();
-        foreach(Move move in moves){
+        List<Move> orderedMoves =  moves.OrderBy(x => !x.GetIsSpecial()).ToList();
+        foreach(Move move in orderedMoves){
             if(move.ShouldAppear(bodyPart)){
                 bool isLocked = move.CheckLocked(partsAvailable);
                 CreateButton(move, bodyPart, isLocked);

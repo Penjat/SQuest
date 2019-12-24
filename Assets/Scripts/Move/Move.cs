@@ -11,6 +11,7 @@ public abstract class Move {
     protected List<TargetType> _partsTargeted;
     protected bool _areaAffect;
     protected Dmg _dmg;
+    protected bool _isSpecial;
 
     public Move(){
 
@@ -30,6 +31,9 @@ public abstract class Move {
         }
         //all the parts were found
         return false;
+    }
+    public bool GetIsSpecial(){
+        return _isSpecial;
     }
     public virtual string GetName(){
         return _name;
