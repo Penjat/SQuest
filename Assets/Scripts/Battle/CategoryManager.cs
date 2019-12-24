@@ -60,7 +60,7 @@ public class CategoryManager : MonoBehaviour, MoveCategoryDelegate {
     public void HideTargets(){
         _delegate.HideTargets();
     }
-    public void ClimaxOn(){
+    public void ClimaxOn(IEnemy enemy){
         //TODO just random for now
         int random = Random.Range(0,_categories.Count);
         _categories[1].ClimaxOn();

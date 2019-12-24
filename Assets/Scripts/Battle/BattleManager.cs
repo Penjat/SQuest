@@ -164,7 +164,7 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
 
     //--------------Enemy Manager Delegate----------------
     public void EnemyClimax(IEnemy enemy){
-        _categoryManager.ClimaxOn();
+        _categoryManager.ClimaxOn(enemy);
     }
     public void ShowMsg(string msg){
         _infoLabelManager.ShowMsg(msg);
