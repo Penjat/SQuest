@@ -50,6 +50,12 @@ public class InfoLabelManager : MonoBehaviour{
     public void EndTurn(){
         ShowBlank();
     }
+    public void OverPlayer(){
+        if(_playerActionManager.IsSelectingTarget()){
+            Move move = _playerActionManager.GetCurMove();
+            _infoLabel.SetText("use " + move.GetName().ColorFor(Entity.MOVE) + " on " + "yourself".ColorFor(Entity.PLAYER));
+        }
+    }
 
 
     //---------------------Show Methods-------------------------------

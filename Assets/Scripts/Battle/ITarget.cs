@@ -8,4 +8,9 @@ public interface ITarget {
     void UseMove(Move move, float result);
     string GetName();
     void SetTargeted(bool b, Move selectedMove=null);
+    void TargetWithMove(Move move);
+    void TargetWith(Move move);
+    TargetResult CanTarget(Move move);
+    void SetState(SelectState state);
+    void StopFlashingParts();
 }

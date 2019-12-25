@@ -24,11 +24,16 @@ namespace StringMethods{
                 str2 = "</color></size>";
                 break;
 
+                case Entity.PLAYER:
+                str1 = "<color=#F00C93>";
+                str2 = "</color>";
+                break;
+
             }
             return str1 + str + str2;
         }
     }
 }
 public enum Entity{
-    ENEMY, MOVE, INSTRUCTIONS
+    ENEMY, MOVE, INSTRUCTIONS, PLAYER
 }

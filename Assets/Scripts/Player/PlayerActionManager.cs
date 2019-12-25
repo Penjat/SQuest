@@ -48,7 +48,7 @@ public class PlayerActionManager : StatusBarDelegate {
         _curAction = new PlayerAction(move, bodyParts.ToList());
         Debug.Log("selected Move " + move.GetName());
     }
-    public void SelectTargets(IEnemy[] targets){
+    public void SelectTargets(ITarget[] targets){
         //sets the move to be used on the seleceted enemy
         //TODO check if valid target
         if(_curAction == null){
@@ -59,10 +59,10 @@ public class PlayerActionManager : StatusBarDelegate {
     public void CancelSelected(){
         _curAction = null;
     }
-    public void UsedMoveOn(IEnemy[] targets){
+    public void UsedMoveOn(ITarget[] targets){
         //TODO change for area fx
-        foreach(IEnemy enemy in targets){
-            enemy.TargetWith(_curAction.GetMove());
+        foreach(ITarget target in targets){
+            target.TargetWith(_curAction.GetMove());
         }
         _actions.Add(_curAction, targets);
         AddToUsedParts(_curAction.GetMove());

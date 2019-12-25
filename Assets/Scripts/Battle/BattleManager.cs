@@ -105,7 +105,17 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
     }
 
 
-
+    public void OverPlayer(){
+        Debug.Log("Over Player.");
+        _infoLabelManager.OverPlayer();
+    }
+    public void ExitPlayer(){
+        Debug.Log("Exit Player.");
+        _infoLabelManager.CheckState();
+    }
+    public void PressedPlayer(){
+        Debug.Log("Pressed Player.");
+    }
     //------------------------------------------------------
     //                   DELEGATE METHODS
     //------------------------------------------------------
@@ -172,7 +182,7 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
     public void ShowMsg(string msg){
         _infoLabelManager.ShowMsg(msg);
     }
-    public void EnemyPressed(IEnemy enemy){
+    public void EnemyPressed(ITarget target){
 
         //make sure it is the player's turn
         bool isTurn = _turnManager.GetStage() == TurnStage.PlayerTurn;
@@ -181,7 +191,7 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
         bool selectingTarget = _playerActionManager.IsSelectingTarget();
 
         //make sure we can target the enemy with this move
-        bool canTarget = enemy.CanTarget(_playerActionManager.GetCurMove()) == TargetResult.Available;
+        bool canTarget = target.CanTarget(_playerActionManager.GetCurMove()) == TargetResult.Available;
 
         //return if any are not true
         if( !isTurn || !selectingTarget || !canTarget ){
@@ -192,13 +202,13 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
         if(_playerActionManager.GetCurMove().IsAreaFX()){
             _playerActionManager.SelectTargets(_enemyManager.GetEnemiesAsArray());
         }else{
-            _playerActionManager.SelectTargets(new IEnemy[]{enemy});
+            _playerActionManager.SelectTargets(new ITarget[]{target});
         }
 
         _categoryManager.CheckCategories(_playerActionManager.GetUsedParts());
         _infoLabelManager.MoveSelected();
-        enemy.SetState(SelectState.Over);
-        enemy.StopFlashingParts();
+        target.SetState(SelectState.Over);
+        target.StopFlashingParts();
         _enemyManager.ClearTargets();
     }
     public void DoneBattle(){

@@ -8,18 +8,12 @@ public interface IEnemy : ITarget {
     string GetName();
     void Destroy();
     void DoDmg(Dmg dmg);
-    
     void SetDelay(double delay);
     void SetState(SelectState state);
     void ResolveDMG();
-
     void TakeTurn();
     void UseMove(Move move, float result);
-    void TargetWith(Move move);
-
+    
     void ClearTargets();
-    void TargetWithMove(Move move);
-    void StopFlashingParts();
-    TargetResult CanTarget(Move move);
     MoveType GetMoveTypeClimax();
 }
