@@ -109,7 +109,7 @@ public class EnemyManager : MonoBehaviour, EnemyDelegate {
     }
     public void EnemyPressed(IEnemy enemy){
         Debug.Log("an enemy was pressed.");
-        _delegate.EnemyPressed(enemy as ITarget);
+        _delegate.TargetPressed(enemy as ITarget);
     }
     public void RemoveEnemy(IEnemy enemy){
         _enemies.Remove(enemy);
@@ -177,7 +177,7 @@ public class EnemyManager : MonoBehaviour, EnemyDelegate {
 }
 
 public interface EnemyManagerDelegate {
-    void EnemyPressed(ITarget enemy);
+    void TargetPressed(ITarget enemy);
     void DoneBattle();
     void OverEnemy(IEnemy enemy);
     void ExitEnemy();

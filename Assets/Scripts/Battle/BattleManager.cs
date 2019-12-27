@@ -6,7 +6,7 @@ using System.Linq;
 //TODO remove
 using UnityEngine.SceneManagement;
 
-public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, ChooseMoveMenuDelegate, CategoryManagerDelegate, MiniGameDelegate, BattleMenuManagerDelegate, MainManagerDelegate {
+public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, ChooseMoveMenuDelegate, CategoryManagerDelegate, MiniGameDelegate, BattleMenuManagerDelegate, MainManagerDelegate, PlayerBattleDisplayDelegate {
 
     private SubManagerDelegate _delegate;
 
@@ -20,6 +20,7 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
     private BattleTextFactory _battleTextFactory;
 
     public BattleMenuManager _battleMenuManager;
+    public PlayerBattleDisplay _playerBattleDisplay;
 
     public ChooseMoveMenu _moveMenu;
     public Text _battleStateLabel;
@@ -36,8 +37,6 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
             return;
         }
         SubManagerDelegate subDelegate = g.GetComponent<SubManagerDelegate>();
-
-
 
         SetUp(subDelegate);
         Battle battle = _delegate.GetBattle();
@@ -70,10 +69,9 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
         _enemyManager.SetUp(this);
         _categoryManager.SetUp(this,_delegate.GetPlayer().GetBodyParts());
 
-        StatusBar playerHealthBar = GameObject.Find("Player Health").GetComponent<StatusBar>();
-        StatusBar playerClimaxBar = GameObject.Find("Player Climax").GetComponent<StatusBar>();
 
-        _playerActionManager = new PlayerActionManager(_delegate.GetPlayer(), playerHealthBar, playerClimaxBar);
+        _playerActionManager = new PlayerActionManager(_delegate.GetPlayer());
+        _playerBattleDisplay.SetUp(this);
         _moveMenu.SetUp(this);
         _infoLabelManager.SetUp(_playerActionManager);
         _battleTextFactory = new BattleTextFactory();
@@ -105,20 +103,30 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
     }
 
 
-    public void OverPlayer(){
-        Debug.Log("Over Player.");
-        _infoLabelManager.OverPlayer();
-    }
-    public void ExitPlayer(){
-        Debug.Log("Exit Player.");
-        _infoLabelManager.CheckState();
-    }
-    public void PressedPlayer(){
-        Debug.Log("Pressed Player.");
-    }
+
     //------------------------------------------------------
     //                   DELEGATE METHODS
     //------------------------------------------------------
+    public Player GetPlayer(){
+        return _delegate.GetPlayer();
+    }
+    //------------PlayerBattleDisplayDelegate Methods--------
+    public void OverPlayer(ITarget target){
+        Debug.Log("Over Player.");
+        _infoLabelManager.OverPlayer();
+    }
+    public void ExitPlayer(ITarget target){
+        Debug.Log("Exit Player.");
+        _infoLabelManager.CheckState();
+    }
+    public void PressedPlayer(ITarget target){
+        Debug.Log("Pressed Player.");
+        TargetPressed(target);
+    }
+    public void PlayerDoneResolving(){
+        Debug.Log("The Player is done resolving");
+        ResolveActionsForEnemy();
+    }
 
     //------------Turn Manager Delegate------------
     public void StartPlayerTurn(){
@@ -150,9 +158,12 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
     public void ResolvePlayerActions(){
         Debug.Log("Resolving Actions");
         _playerActionManager.UseMoves();
-        _enemyManager.ResolveDMG();
         _battleStateLabel.text = "resolving actions...";
+        _playerBattleDisplay.ResolveDMG();
         //_turnManager.EndResolveActions();
+    }
+    public void ResolveActionsForEnemy(){
+        _enemyManager.ResolveDMG();
     }
     public void StartEnemyTurn(){
         //start the enemies turn
@@ -182,7 +193,7 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
     public void ShowMsg(string msg){
         _infoLabelManager.ShowMsg(msg);
     }
-    public void EnemyPressed(ITarget target){
+    public void TargetPressed(ITarget target){
 
         //make sure it is the player's turn
         bool isTurn = _turnManager.GetStage() == TurnStage.PlayerTurn;
@@ -256,7 +267,7 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
         _enemyManager.ClearTargets();
     }
     public void DmgPlayer(int dmg){
-        _playerActionManager.PlayerTakeDmg(dmg);
+        //TODO link to PlayerBattleDisplay
     }
     public void EndEnemyTurn(){
         Debug.Log("Ending Enemy Turn.");

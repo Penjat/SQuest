@@ -14,6 +14,9 @@ public class Player {
     private int _maxClimax = 100;
     private int _curClimax = 0;
 
+    private int _maxArousal = 100;
+    private int _curArousal = 0;
+
     public Player(PlayerDelegate playerDelegate){
         _delegate = playerDelegate;
         _moves = new List<Move>();
@@ -52,6 +55,20 @@ public class Player {
     }
     public int GetCurClimax(){
         return _curClimax;
+    }
+    public void AddToCurClimax(int i){
+        //TODO check for max
+        _curClimax += i;
+    }
+    public int GetMaxArousal(){
+        return _maxArousal;
+    }
+    public int GetCurArousal(){
+        return _curArousal;
+    }
+    public void AddToCurArousal(int i){
+        //TODO check for max
+        _curArousal += i;
     }
     public string BreastDescription(){
         return "C Cup Breasts";

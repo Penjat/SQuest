@@ -7,7 +7,7 @@ using System.Linq;
 //Manages the move the player will use this round
 //-------
 
-public class PlayerActionManager : StatusBarDelegate {
+public class PlayerActionManager {
 
     private PlayerAction _curAction;
     private IDictionary<PlayerAction,ITarget[]> _actions = new Dictionary<PlayerAction, ITarget[]>();
@@ -15,19 +15,11 @@ public class PlayerActionManager : StatusBarDelegate {
     private IDictionary<Move,float> _actionResults;
     //TODO posibly have IEnemy[] for multiple targets
 
-    private StatusBar _playerHealthBar;
-    private StatusBar _playerClimaxBar;
     private Player _player;
 
-    public PlayerActionManager(Player player, StatusBar playerHealthBar, StatusBar playerClimaxBar){
+    public PlayerActionManager(Player player){
         _player = player;
-        _playerHealthBar = playerHealthBar;
-        _playerHealthBar.SetUp(this,_player.GetMaxHealth(),50.0f);
-        _playerHealthBar.SetValue(_player.GetCurHealth());
 
-        _playerClimaxBar = playerClimaxBar;
-        _playerClimaxBar.SetUp(this,_player.GetMaxClimax(),50.0f);
-        _playerClimaxBar.SetValue(_player.GetCurClimax());
     }
     public void SelectMove(Move move, IBodyPart categoryBodyPart){
         //selected a move from a category
@@ -132,10 +124,6 @@ public class PlayerActionManager : StatusBarDelegate {
         return 100.0f;
 
     }
-    public void PlayerTakeDmg(int dmg){
-        _player.TakeDmg(dmg);
-        _playerHealthBar.SetValueAnimated(_player.GetCurHealth());
-    }
     public void GemCleared(MoveType moveType, float accuracy){
         //there will be many modifiers to add here
         if(moveType == MoveType.Hand){
@@ -144,7 +132,8 @@ public class PlayerActionManager : StatusBarDelegate {
         }
         //TODO calculate this properly
         if(accuracy > 99.0f){
-            PlayerTakeDmg(1);
+            //TODO have player take dmg for missed
+            //PlayerTakeDmg(1);
         }
     }
     public ITarget[] GetTargetsFor(IBodyPart bodyPart){
@@ -162,9 +151,5 @@ public class PlayerActionManager : StatusBarDelegate {
     }
     public void SetResults(IDictionary<Move,float> results){
         _actionResults = results;
-    }
-    //---------------StatusBar Delegate-----------------
-    public void DoneFilling(int refNumber){
-
     }
 }
