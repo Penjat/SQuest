@@ -121,6 +121,7 @@ public class Enemy : MonoBehaviour, IEnemy, StatusBarDelegate, ICardDelegate {
         Debug.Log("End Turn");
         _usedMoves.Clear();
         _targetedBy.Clear();
+        _dmgToDo.Clear();
         _delegate.EnemyDoneTurn();
     }
     public virtual MoveType GetMoveTypeClimax(){

@@ -103,6 +103,7 @@ public class PlayerBattleDisplay : MonoBehaviour, ITarget, StatusBarDelegate {
         DoneResolving();
     }
     private void DoneResolving(){
+        _dmgToDo.Clear();
         _delegate.PlayerDoneResolving();
     }
     //-------------------ITarget Methods---------------
