@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Swallow : Move {
     public Swallow(){
         _name = "Swallow";
-        _dmg = new Dmg(0,0);
+        _dmg = new Dmg(0,2);
         _areaAffect = false;
         _primaryType = MoveType.Mouth;
         _partsUsed = new HashSet<MoveType>{MoveType.Mouth};
@@ -20,5 +21,9 @@ public class Swallow : Move {
         //checks the primary body to see if the move should appear
         //only show if mouth is creampied
         return bodyPart.GetModifier() == BodyPartModifier.Cum;
+    }
+    public override void ApplyEffects(ITarget target, List<IBodyPart> bodyPartsUsed){
+        IBodyPart mouth = bodyPartsUsed.First(x => x.GetMoveType() == MoveType.Mouth && x.GetModifier() == BodyPartModifier.Cum);
+        mouth.SetModifier(BodyPartModifier.None);
     }
 }

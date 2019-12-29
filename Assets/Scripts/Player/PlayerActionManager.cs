@@ -109,6 +109,7 @@ public class PlayerActionManager {
             foreach(ITarget target in targets){
                 target.AddToDmg(dmg);
                 target.UseMove(move, percent);
+                action.Key.ApplySpecialEffects(target);
             }
         }
     }

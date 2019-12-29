@@ -71,6 +71,10 @@ public class MoveCategory : MonoBehaviour {
         _bodyPart.SetModifier(BodyPartModifier.Cum);
         _categoryEffect.Show(true);
     }
+    public void UpdateCategory(){
+        //check if it should show the modifier
+        _categoryEffect.Show(_bodyPart.GetModifier() == BodyPartModifier.Cum);
+    }
 
 }
 public interface MoveCategoryDelegate {

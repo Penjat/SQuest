@@ -72,6 +72,11 @@ public class CategoryManager : MonoBehaviour, MoveCategoryDelegate {
         }
         category.ClimaxOn();
     }
+    public void UpdateCategories(){
+        foreach(MoveCategory category in _categories){
+            category.UpdateCategory();
+        }
+    }
     private Sprite GetSprite(MoveType moveType){
         switch(moveType){
             case MoveType.Hand:

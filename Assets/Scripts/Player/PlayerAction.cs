@@ -15,4 +15,7 @@ public class PlayerAction {
     public List<IBodyPart> GetParts(){
         return _usedParts;
     }
+    public void ApplySpecialEffects(ITarget target){
+        _move.ApplyEffects(target, _usedParts);
+    }
 }

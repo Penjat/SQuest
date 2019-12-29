@@ -136,6 +136,9 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
         //Reset all moves
         _playerActionManager.ClearUsedParts();
 
+        //check the bodyPart modifiers are up to date
+        _categoryManager.UpdateCategories();
+
         //check what body parts are available and unlock categories
         IDictionary<IBodyPart,Move> used = _playerActionManager.GetUsedParts();
         _categoryManager.CheckCategories(used);

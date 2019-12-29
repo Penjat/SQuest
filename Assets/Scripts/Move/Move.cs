@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using StringMethods;
 
+
 public abstract class Move {
 
     protected string _name;
@@ -64,5 +65,8 @@ public abstract class Move {
     public virtual bool ShouldAppear(IBodyPart bodyPart){
         //checks the primary body to see if the move should appear
         return true;
+    }
+    public virtual void ApplyEffects(ITarget target, List<IBodyPart> bodyPartsUsed){
+        //Do nothing by default
     }
 }
