@@ -6,7 +6,6 @@ public class TittyFuck : Move {
     public TittyFuck(){
         _name = "Titty Fuck";
         _dmg = new Dmg(2,3);
-        _areaAffect = false;
         _primaryType = MoveType.Breasts;
         _partsUsed = new HashSet<MoveType>{MoveType.Breasts,MoveType.Hand};
         _partsTargeted = new List<TargetType>{TargetType.Penis};

@@ -6,7 +6,6 @@ public class Scissor : Move {
     public Scissor(){
         _name = "Scissor";
         _dmg = new Dmg(2,3);
-        _areaAffect = false;
         _primaryType = MoveType.Vagina;
         _partsUsed = new HashSet<MoveType>{MoveType.Vagina};
         _partsTargeted = new List<TargetType>{TargetType.Vagina};

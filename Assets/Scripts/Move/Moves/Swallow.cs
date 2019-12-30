@@ -7,7 +7,6 @@ public class Swallow : Move {
     public Swallow(){
         _name = "Swallow";
         _dmg = new Dmg(0,2);
-        _areaAffect = false;
         _primaryType = MoveType.Mouth;
         _partsUsed = new HashSet<MoveType>{MoveType.Mouth};
         _partsTargeted = new List<TargetType>{};

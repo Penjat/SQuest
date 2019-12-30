@@ -212,12 +212,7 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
             return;
         }
 
-        //Check if it is an area affect move an sould target everyone
-        if(_playerActionManager.GetCurMove().IsAreaFX()){
-            _playerActionManager.SelectTargets(_enemyManager.GetEnemiesAsArray());
-        }else{
-            _playerActionManager.SelectTargets(new ITarget[]{target});
-        }
+        _playerActionManager.SelectTargets(new ITarget[]{target});
 
         _categoryManager.CheckCategories(_playerActionManager.GetUsedParts());
         _infoLabelManager.MoveSelected();
@@ -239,13 +234,13 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
 
         //TODO check if is area effect
         if(_playerActionManager.IsSelectingTarget()){
-            if(_playerActionManager.GetCurMove().IsAreaFX()){
-                Debug.Log("this is an area affect move");
-                _enemyManager.AreaAffect();
-                //TODO change to area effect text
-                _infoLabelManager.OverEnemy(enemy);
-                return;
-            }
+            // if(_playerActionManager.GetCurMove().IsAreaFX()){
+            //     Debug.Log("this is an area affect move");
+            //     _enemyManager.AreaAffect();
+            //     //TODO change to area effect text
+            //     _infoLabelManager.OverEnemy(enemy);
+            //     return;
+            // }
             //check if the enemy can be targeted by the current move
             TargetResult targetResult = enemy.CanTarget(_playerActionManager.GetCurMove());
 

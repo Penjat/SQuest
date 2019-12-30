@@ -6,7 +6,6 @@ public class AssistedBJ : Move {
     public AssistedBJ(){
         _name = "Assisted Blowjob";
         _dmg = new Dmg(2,3);
-        _areaAffect = false;
         _primaryType = MoveType.Mouth;
         _partsUsed = new HashSet<MoveType>{MoveType.Mouth,MoveType.Hand};
         _partsTargeted = new List<TargetType>{TargetType.Penis};

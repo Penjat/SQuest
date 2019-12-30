@@ -10,7 +10,6 @@ public abstract class Move {
     protected MoveType _primaryType;
     protected HashSet<MoveType> _partsUsed;
     protected List<TargetType> _partsTargeted;
-    protected bool _areaAffect;
     protected Dmg _dmg;
     protected bool _isSpecial = false;
     protected UseType _useType = UseType.Norm;
@@ -56,9 +55,6 @@ public abstract class Move {
     }
     public List<TargetType> GetPartsTargeted(){
         return _partsTargeted;
-    }
-    public virtual bool IsAreaFX(){
-        return _areaAffect;
     }
     public virtual Dmg GetDmg(){
             //TODO account for percent
