@@ -12,6 +12,7 @@ public class Swallow : Move {
         _partsUsed = new HashSet<MoveType>{MoveType.Mouth};
         _partsTargeted = new List<TargetType>{};
         _isSpecial = true;
+        _selectType = SelectType.PlayerOnly;
     }
     public override string GetText(Player player, ITarget[] targetedEnemies){
         string text = "you and the " + targetedEnemies[0].GetName() + " begin scissoring your vaginas together";

@@ -150,6 +150,9 @@ public class EnemyManager : MonoBehaviour, EnemyDelegate {
     public IEnemy[] GetEnemiesAsArray(){
         return _enemies.ToArray();
     }
+    public List<IEnemy> GetEnemies(){
+        return _enemies;
+    }
     public void ResolveDMG(){
         //create a list of enemies we are waiting to finish resolving
         _waitingFor = new List<IEnemy>(_enemies);

@@ -14,6 +14,7 @@ public abstract class Move {
     protected Dmg _dmg;
     protected bool _isSpecial = false;
     protected UseType _useType = UseType.Norm;
+    protected SelectType _selectType = SelectType.SingleTarget;
 
     public Move(){
 
@@ -78,5 +79,8 @@ public abstract class Move {
     }
     public UseType GetUseType(){
         return _useType;
+    }
+    public SelectType GetSelectType(){
+        return _selectType;
     }
 }

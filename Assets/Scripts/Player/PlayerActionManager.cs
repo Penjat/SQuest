@@ -21,8 +21,34 @@ public class PlayerActionManager {
         _player = player;
 
     }
-    public void SelectMove(Move move, IBodyPart categoryBodyPart){
+    public void SelectMove(Move move, IBodyPart categoryBodyPart, PlayerBattleDisplay playerDisplay, List<IEnemy> enemies){
         //selected a move from a category
+
+        PlayerAction newAction = CreateAction(move, categoryBodyPart);
+        //check if a target needs to be selected
+        switch(move.GetSelectType()){
+            //for selecting a single enemy target
+            case SelectType.SingleTarget:
+            _curAction = newAction;
+            break;
+
+            //automatically target the player
+            case SelectType.PlayerOnly:
+            ITarget[] playerOnly = new ITarget[]{playerDisplay};
+            UseMoveOn(playerOnly, newAction);
+            break;
+
+            //automatically select all enemies
+            case SelectType.AllEnemies:
+            //TODO select all enemies
+            break;
+
+        }
+
+
+    }
+    private PlayerAction CreateAction(Move move, IBodyPart categoryBodyPart){
+        //creates a PlayerAction with the move and a list of the player's body parts that will be used
 
         //create a collection of body parts for the move
         List<IBodyPart> bodyParts = new List<IBodyPart>();
@@ -37,8 +63,7 @@ public class PlayerActionManager {
             bodyParts.Add(bodyPart);
         }
 
-        _curAction = new PlayerAction(move, bodyParts.ToList());
-        Debug.Log("selected Move " + move.GetName());
+        return new PlayerAction(move, bodyParts.ToList());
     }
     public void SelectTargets(ITarget[] targets){
         //sets the move to be used on the seleceted enemy
@@ -46,19 +71,19 @@ public class PlayerActionManager {
         if(_curAction == null){
             return;
         }
-        UsedMoveOn(targets);
+        UseMoveOn(targets, _curAction);
+        _curAction = null;
     }
     public void CancelSelected(){
         _curAction = null;
     }
-    public void UsedMoveOn(ITarget[] targets){
+    private void UseMoveOn(ITarget[] targets, PlayerAction playerAction){
         //TODO change for area fx
         foreach(ITarget target in targets){
-            target.TargetWith(_curAction.GetMove());
+            target.TargetWith(playerAction.GetMove());
         }
-        _actions.Add(_curAction, targets);
-        AddToUsedParts(_curAction.GetMove());
-        _curAction = null;
+        _actions.Add(playerAction, targets);
+        AddToUsedParts(playerAction.GetMove());
     }
     public void CancelMoveType(IBodyPart bodyPart){
         Move move = _usedParts[bodyPart];
