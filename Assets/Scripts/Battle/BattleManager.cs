@@ -284,7 +284,7 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
 
     //-------------Category Manager Delegate--------------
     public void OpenCategory(IBodyPart bodyPart){
-        List<Move> moves = _delegate.GetPlayer().GetMoves().Where(x => x.GetPrimaryType() == bodyPart.GetMoveType()).ToList();
+        List<Move> moves = _delegate.GetPlayer().GetMoves().Where(x => x.GetPrimaryType() == bodyPart.GetMoveType() && x.GetUseType() != UseType.Used ).ToList();
 
         Player player = _delegate.GetPlayer();
         IDictionary<IBodyPart,Move> usedParts = _playerActionManager.GetUsedParts();

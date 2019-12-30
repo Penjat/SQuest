@@ -110,6 +110,7 @@ public class PlayerActionManager {
                 target.AddToDmg(dmg);
                 target.UseMove(move, percent);
                 action.Key.ApplySpecialEffects(target);
+                move.CountUse();
             }
         }
     }

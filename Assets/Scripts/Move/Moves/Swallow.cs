@@ -10,7 +10,7 @@ public class Swallow : Move {
         _areaAffect = false;
         _primaryType = MoveType.Mouth;
         _partsUsed = new HashSet<MoveType>{MoveType.Mouth};
-        _partsTargeted = new List<TargetType>{TargetType.Penis};
+        _partsTargeted = new List<TargetType>{};
         _isSpecial = true;
     }
     public override string GetText(Player player, ITarget[] targetedEnemies){

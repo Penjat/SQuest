@@ -24,6 +24,7 @@ public class Player {
         //TODO pass in elsewhere
         _bodyParts.Add(new BodyPart(MoveType.Hand));
         _bodyParts.Add(new BodyPart(MoveType.Mouth));
+        _bodyParts.Add(new BodyPart(MoveType.Breasts));
 
     }
     public void AddMove(Move move){

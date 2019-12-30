@@ -37,6 +37,7 @@ public class DemoBattleFactory {
             player.AddMove(new MissionaryAnal());
             player.AddMove(new Scissor());
             player.AddMove(new Swallow());
+            player.AddMove(new FlashTits());
 
             return battle;
 

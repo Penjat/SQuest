@@ -13,6 +13,7 @@ public abstract class Move {
     protected bool _areaAffect;
     protected Dmg _dmg;
     protected bool _isSpecial = false;
+    protected UseType _useType = UseType.Norm;
 
     public Move(){
 
@@ -68,5 +69,14 @@ public abstract class Move {
     }
     public virtual void ApplyEffects(ITarget target, List<IBodyPart> bodyPartsUsed){
         //Do nothing by default
+    }
+    public void CountUse(){
+        //TODO keep a running total
+        if(_useType == UseType.OneTime){
+            _useType = UseType.Used;
+        }
+    }
+    public UseType GetUseType(){
+        return _useType;
     }
 }
