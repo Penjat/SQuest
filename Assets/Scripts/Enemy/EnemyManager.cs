@@ -70,30 +70,6 @@ public class EnemyManager : MonoBehaviour, EnemyDelegate {
         //set button's text
         //TODO store in an array
         IEnemy enemy = g.GetComponent(typeof(IEnemy)) as IEnemy;
-        // locationButton.SetUp(this, location);
-
-        //find the button's position
-        float buttonSize = 5.0f;
-        float buttonWidth = 64.0f*buttonSize;
-        float buttonHeight = 89.0f*buttonSize;
-        float padding = 40.0f;
-        float dir = 1;
-        float count = Mathf.Floor(_enemies.Count/2);
-        if ((_enemies.Count & 1) == 0) {
-            dir = count*-1;
-        }else{
-            dir = count+1;
-        }
-
-        float x1 = dir*(buttonWidth + padding);
-        float y1 = -buttonHeight;
-        float x2 = x1 + buttonWidth;
-        float y2 = y1 + buttonHeight;
-
-        //set the position
-        RectTransform rectTransform = g.GetComponent<RectTransform>();
-        rectTransform.anchoredPosition = new Vector2(x1,0.0f);
-        rectTransform.sizeDelta = new Vector2(buttonWidth, buttonHeight);
 
         enemy.SetUp(this);
         enemy.SetDelay(_enemies.Count*DELAY_TIME);
