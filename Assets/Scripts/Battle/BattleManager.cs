@@ -273,7 +273,7 @@ public class BattleManager : Menu, TurnManagerDelegate, EnemyManagerDelegate, Ch
     }
     //-------------Choose Move Menu Delegate---------------
     public void MoveSelected(Move move, IBodyPart bodyPart){
-        _playerActionManager.SelectMove(move, bodyPart, _playerBattleDisplay, _enemyManager.GetEnemies());
+        _playerActionManager.SelectMove(move, bodyPart, _playerBattleDisplay, _enemyManager.GetEnemiesAsArray());
         _infoLabelManager.MoveSelected();
         _categoryManager.CheckCategories(_playerActionManager.GetUsedParts());
     }

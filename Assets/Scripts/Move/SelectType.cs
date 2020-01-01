@@ -3,6 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //How the move
-public enum SelectType{
+public enum SelectType {
     SingleTarget, PlayerOnly, AllEnemies
-}
+};

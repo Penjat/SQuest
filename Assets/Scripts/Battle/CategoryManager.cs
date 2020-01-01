@@ -12,8 +12,8 @@ public class CategoryManager : MonoBehaviour, MoveCategoryDelegate {
     public Sprite[] _categoryButtonSprites;
     private int HAND = 0;
     private int MOUTH = 1;
-    private int ASS = 2;
-    private int BREASTS = 3;
+    private int BREASTS = 2;
+    private int ASS = 3;
     private int VAGINA = 4;
     private int FEET = 5;
 
