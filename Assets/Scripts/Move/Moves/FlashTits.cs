@@ -10,5 +10,6 @@ public class FlashTits : Move {
         _partsUsed = new HashSet<MoveType>{MoveType.Breasts};
         _partsTargeted = new List<TargetType>{TargetType.Penis};
         _useType = UseType.OneTime;
+        _selectType = SelectType.AllEnemies;
     }
 }

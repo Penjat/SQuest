@@ -21,7 +21,7 @@ public class PlayerActionManager {
         _player = player;
 
     }
-    public void SelectMove(Move move, IBodyPart categoryBodyPart, PlayerBattleDisplay playerDisplay, List<IEnemy> enemies){
+    public void SelectMove(Move move, IBodyPart categoryBodyPart, PlayerBattleDisplay playerDisplay, IEnemy[] enemies){
         //selected a move from a category
 
         PlayerAction newAction = CreateAction(move, categoryBodyPart);
@@ -40,7 +40,7 @@ public class PlayerActionManager {
 
             //automatically select all enemies
             case SelectType.AllEnemies:
-            //TODO select all enemies
+            UseMoveOn(enemies, newAction);
             break;
 
         }
